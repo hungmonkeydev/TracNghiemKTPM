@@ -1,0 +1,2394 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Kiểm thử Phần mềm — CS03045</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #f5f4f0;
+            --surface: #ffffff;
+            --surface2: #f0ede8;
+            --border: rgba(0, 0, 0, 0.1);
+            --border2: rgba(0, 0, 0, 0.18);
+            --text: #1a1a18;
+            --text2: #6b6860;
+            --text3: #a8a49e;
+            --green: #2d7a4f;
+            --green-bg: #e8f5ee;
+            --red: #a33030;
+            --red-bg: #fbeaea;
+            --accent: #3d6b9e;
+            --accent-bg: #e8f0f8;
+            --progress: #2d7a4f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Be Vietnam Pro", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem;
+        }
+
+        /* HOME */
+        .home-header {
+            margin-bottom: 2rem;
+        }
+
+        .home-title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .home-sub {
+            font-size: 14px;
+            color: var(--text2);
+        }
+
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+        }
+
+        .chap-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.1rem 1.25rem;
+            cursor: pointer;
+            transition:
+                border-color 0.15s,
+                transform 0.15s,
+                box-shadow 0.15s;
+        }
+
+        .chap-card:hover {
+            border-color: var(--border2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+        }
+
+        .chap-num {
+            font-size: 11px;
+            color: var(--text3);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .chap-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .chap-meta {
+            font-size: 12px;
+            color: var(--text2);
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .badge-pass {
+            background: var(--green-bg);
+            color: var(--green);
+        }
+
+        .badge-fail {
+            background: var(--red-bg);
+            color: var(--red);
+        }
+
+        .badge-new {
+            background: var(--surface2);
+            color: var(--text2);
+        }
+
+        /* QUIZ */
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .back-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 7px 13px;
+            font-size: 13px;
+            cursor: pointer;
+            color: var(--text);
+            font-family: inherit;
+            transition: background 0.12s;
+        }
+
+        .back-btn:hover {
+            background: var(--surface2);
+        }
+
+        .quiz-title {
+            font-size: 15px;
+            font-weight: 600;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .progress-wrap {
+            background: var(--surface2);
+            border-radius: 99px;
+            height: 5px;
+            width: 110px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--progress);
+            border-radius: 99px;
+            transition: width 0.35s;
+        }
+
+        .q-counter {
+            font-size: 12px;
+            color: var(--text3);
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .qbox {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .q-num {
+            font-size: 11px;
+            color: var(--text3);
+            margin-bottom: 8px;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .q-text {
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        .opts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 1.1rem;
+        }
+
+        .opt-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 15px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 13.5px;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.12s;
+            line-height: 1.5;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--border2);
+            background: var(--surface2);
+        }
+
+        .opt-btn.correct {
+            background: var(--green-bg);
+            border-color: #2d7a4f;
+            color: var(--green);
+        }
+
+        .opt-btn.wrong {
+            background: var(--red-bg);
+            border-color: #a33030;
+            color: var(--red);
+        }
+
+        .explain {
+            background: var(--surface);
+            border-left: 3px solid var(--green);
+            padding: 12px 16px;
+            font-size: 13px;
+            color: var(--text2);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .next-btn {
+            background: var(--surface);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 13.5px;
+            cursor: pointer;
+            color: var(--text);
+            font-family: inherit;
+            transition: background 0.12s;
+        }
+
+        .next-btn:hover {
+            background: var(--surface2);
+        }
+
+        /* RESULT */
+        .result-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .result-score {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -2px;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: var(--text2);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--surface2);
+            border-radius: 10px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .stat-n {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .stat-l {
+            font-size: 11px;
+            color: var(--text2);
+            margin-top: 2px;
+        }
+
+        .result-msg {
+            font-size: 14px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div id="app"></div>
+    </div>
+    <script>
+        const CHAPTERS = [
+            {
+                id: 1,
+                name: "Tổng quan kiểm thử",
+                desc: "Khái niệm, nguyên tắc, vai trò",
+                questions: [
+                    {
+                        q: "Theo Glen Myers, kiểm thử phần mềm là gì?",
+                        o: [
+                            "Quá trình đảm bảo phần mềm không có lỗi",
+                            "Quá trình thực thi chương trình với mục đích tìm ra lỗi",
+                            "Quá trình viết tài liệu phần mềm",
+                            "Quá trình sửa lỗi phần mềm",
+                        ],
+                        a: 1,
+                        e: "Glen Myers định nghĩa: kiểm thử là quá trình thực thi chương trình nhằm mục đích tìm ra lỗi.",
+                    },
+                    {
+                        q: "Theo ANSI/IEEE 1059, kiểm thử phần mềm là gì?",
+                        o: [
+                            "Quy trình phân tích PM để tìm sự khác biệt giữa điều kiện hiện có và điều kiện bắt buộc",
+                            "Quy trình viết code không có lỗi",
+                            "Quy trình đào tạo lập trình viên",
+                            "Quy trình triển khai phần mềm",
+                        ],
+                        a: 0,
+                        e: "ANSI/IEEE 1059: quy trình phân tích PM để tìm sự khác biệt giữa điều kiện hiện có và điều kiện bắt buộc, đồng thời đánh giá tính năng PM.",
+                    },
+                    {
+                        q: "Phát biểu nào của Dijkstra về kiểm thử là đúng?",
+                        o: [
+                            "KT có thể chứng minh PM hoàn toàn không có lỗi",
+                            "KT chỉ ra sự hiện diện của lỗi nhưng không thể chỉ ra sự vắng mặt của lỗi",
+                            "KT là bước cuối trong phát triển PM",
+                            "KT chỉ do tester thực hiện",
+                        ],
+                        a: 1,
+                        e: "Dijkstra: KT giúp tìm ra sự hiện diện của lỗi nhưng không thể chứng minh PM hoàn toàn không có lỗi.",
+                    },
+                    {
+                        q: "Theo Beizer, điều gì xảy ra sau khi áp dụng các phương pháp kiểm thử?",
+                        o: [
+                            "PM không còn lỗi",
+                            "Mọi lỗi đều được tìm thấy",
+                            "Luôn sót lại những lỗi khó phát hiện hơn",
+                            "Chi phí kiểm thử giảm về 0",
+                        ],
+                        a: 2,
+                        e: "Beizer: Mọi phương pháp KT đều sót lại những lỗi khó phát hiện hơn — đây là bản chất không thể tránh khỏi.",
+                    },
+                    {
+                        q: "Theo thống kê, lập trình viên giỏi trung bình có bao nhiêu lỗi trên 100 dòng lệnh?",
+                        o: ["0 lỗi", "1-3 lỗi", "10-20 lỗi", "50 lỗi"],
+                        a: 1,
+                        e: "Theo Boris Beizer: ngay cả lập trình viên giỏi cũng có trung bình 1-3 lỗi trên 100 dòng lệnh.",
+                    },
+                    {
+                        q: "Việc kiểm tra để tìm lỗi chiếm bao nhiêu phần trăm khối lượng công việc phát triển PM?",
+                        o: ["10%", "25%", "50%", "75%"],
+                        a: 2,
+                        e: "Theo tài liệu: việc kiểm tra để tìm ra các lỗi chiếm phân nửa (50%) khối lượng công việc phải làm.",
+                    },
+                    {
+                        q: "Test và Debug khác nhau ở điểm nào?",
+                        o: [
+                            "Test tìm nguyên nhân lỗi, Debug tìm khiếm khuyết",
+                            "Test tìm khiếm khuyết, Debug tìm nguyên nhân lỗi",
+                            "Test do developer làm, Debug do tester làm",
+                            "Không có sự khác biệt",
+                        ],
+                        a: 1,
+                        e: "Test: tìm khiếm khuyết (thường do tester). Debug: tìm nguyên nhân và sửa lỗi (thường do developer).",
+                    },
+                    {
+                        q: "Kiểm thử bao nhiêu là đủ phụ thuộc vào các yếu tố nào?",
+                        o: [
+                            "Tính quan trọng của PM, độ bao phủ, thời gian, ngân sách",
+                            "Số lượng lập trình viên",
+                            "Kích thước file PM",
+                            "Ngôn ngữ lập trình",
+                        ],
+                        a: 0,
+                        e: "Kiểm thử bao nhiêu là đủ dựa vào: tính quan trọng của PM, độ bao phủ code/chức năng, thời gian và ngân sách.",
+                    },
+                    {
+                        q: "Nguyên tắc 'Pesticide paradox' nghĩa là gì?",
+                        o: [
+                            "Dùng quá nhiều thuốc trừ sâu trong nông nghiệp",
+                            "Nếu cùng test case được lặp lại nhiều lần sẽ không tìm thêm lỗi mới",
+                            "KT càng nhiều càng tốt",
+                            "Lỗi tập trung ở một vài module",
+                        ],
+                        a: 1,
+                        e: "Pesticide paradox: nếu cùng bộ test case được lặp lại nhiều lần, chúng sẽ không tìm ra lỗi mới. Cần liên tục cập nhật và bổ sung test case.",
+                    },
+                    {
+                        q: "'Error' trong kiểm thử phần mềm là gì?",
+                        o: [
+                            "Lỗi xuất hiện khi chạy chương trình",
+                            "Sự nhầm lẫn hay hiểu sai của developer trong quá trình phát triển",
+                            "Kết quả sai của chương trình",
+                            "Lỗi phần cứng",
+                        ],
+                        a: 1,
+                        e: "Error: sự nhầm lẫn hay hiểu sai của developer trong quá trình phát triển PM (lỗi của con người).",
+                    },
+                    {
+                        q: "'Fault' hay 'Defect' là gì?",
+                        o: [
+                            "Lỗi xuất hiện trong PM là kết quả của một sai sót (error)",
+                            "Lỗi của người dùng",
+                            "Lỗi phần cứng",
+                            "Lỗi mạng",
+                        ],
+                        a: 0,
+                        e: "Fault/Defect: xuất hiện trong phần mềm như là kết quả của một sai sót (error). Defect là sự thể hiện của fault.",
+                    },
+                    {
+                        q: "'Failure' trong kiểm thử là gì?",
+                        o: [
+                            "Sự nhầm lẫn của developer",
+                            "Kết quả của lỗi làm chương trình không hoạt động hoặc cho kết quả sai",
+                            "Thiếu tài liệu kiểm thử",
+                            "Môi trường kiểm thử lỗi",
+                        ],
+                        a: 1,
+                        e: "Failure: kết quả của một lỗi làm cho chương trình không hoạt động được hay hoạt động nhưng cho kết quả không như mong đợi.",
+                    },
+                    {
+                        q: "'Verification' (xác minh) quan tâm đến điều gì?",
+                        o: [
+                            "Sản phẩm cuối cùng đúng theo yêu cầu KH",
+                            "Ngăn chặn lỗi giữa các công đoạn phát triển",
+                            "Chỉ kiểm tra giao diện",
+                            "Kiểm tra hiệu năng",
+                        ],
+                        a: 1,
+                        e: "Verification: quy trình xác định sản phẩm của một công đoạn có thỏa mãn yêu cầu của công đoạn trước không. Quan tâm đến việc ngăn chặn lỗi.",
+                    },
+                    {
+                        q: "'Validation' (xác nhận) tập trung vào điều gì?",
+                        o: [
+                            "Ngăn chặn lỗi giữa các giai đoạn",
+                            "Chỉ quan tâm đến sản phẩm cuối cùng — có đúng yêu cầu KH không",
+                            "Kiểm tra từng module riêng lẻ",
+                            "Kiểm tra code style",
+                        ],
+                        a: 1,
+                        e: "Validation: tiến trình chỉ ra toàn bộ hệ thống đã hoàn thành phù hợp yêu cầu KH. Chỉ quan tâm đến sản phẩm cuối cùng.",
+                    },
+                    {
+                        q: "'Test oracle' là gì?",
+                        o: [
+                            "Công cụ tạo test case tự động",
+                            "Phương pháp hoặc công cụ xác định kết quả test case có chính xác không",
+                            "Cơ sở dữ liệu test",
+                            "Môi trường chạy test",
+                        ],
+                        a: 1,
+                        e: "Test oracle: phương pháp hoặc công cụ dùng để xác định kết quả của một test case có chính xác hay không (tự động hoặc thủ công).",
+                    },
+                    {
+                        q: "Mục tiêu chung của kiểm thử theo khía cạnh tâm lý học là gì?",
+                        o: [
+                            "Chứng minh developer sai",
+                            "Giúp hệ thống đạt chất lượng tốt hơn",
+                            "Tạo áp lực cho dev team",
+                            "Trì hoãn dự án",
+                        ],
+                        a: 1,
+                        e: "Theo khía cạnh tâm lý học: mục tiêu chung là giúp hệ thống đạt chất lượng tốt hơn, không phải để 'phá hoại' hay tạo thù địch cá nhân.",
+                    },
+                    {
+                        q: "'Tính độc lập' trong kiểm thử tâm lý học nghĩa là gì?",
+                        o: [
+                            "Tester làm việc độc lập, không cần trao đổi",
+                            "Tester khách quan, không bị ảnh hưởng bởi người viết code",
+                            "Tester tự viết code và test",
+                            "Tester không cần báo cáo",
+                        ],
+                        a: 1,
+                        e: "Tính độc lập trong KT: tester cần khách quan, tập trung vào thực tế, không có sự thù ghét cá nhân với developer.",
+                    },
+                    {
+                        q: "Hoạt động nào KHÔNG thuộc các hoạt động kiểm thử cơ bản?",
+                        o: [
+                            "Lên kế hoạch và xử lý",
+                            "Thiết kế test case",
+                            "Viết code mới cho PM",
+                            "Đánh giá tiêu chuẩn hoàn thành",
+                        ],
+                        a: 2,
+                        e: "Viết code mới là hoạt động phát triển, không phải kiểm thử. Các hoạt động KT: lên kế hoạch, thiết kế TC, kiểm tra kết quả, đánh giá, báo cáo.",
+                    },
+                    {
+                        q: "Nguyên tắc 'KT phụ thuộc vào ngữ cảnh' nghĩa là gì?",
+                        o: [
+                            "Chỉ KT vào buổi sáng",
+                            "Phương pháp KT phù hợp khác nhau tùy loại PM và dự án",
+                            "KT chỉ dùng một công cụ cố định",
+                            "KT không thay đổi theo thời gian",
+                        ],
+                        a: 1,
+                        e: "KT phụ thuộc vào ngữ cảnh: KT PM điều khiển máy bay khác với KT web thương mại điện tử — phương pháp phải phù hợp với từng loại dự án.",
+                    },
+                    {
+                        q: "'Test data' (dữ liệu thử) là gì?",
+                        o: [
+                            "Kết quả đầu ra mong đợi",
+                            "Dữ liệu vào cần cung cấp cho PM trong khi thực thi",
+                            "Báo cáo kiểm thử",
+                            "Tài liệu đặc tả",
+                        ],
+                        a: 1,
+                        e: "Test data: dữ liệu vào (input) cần cung cấp cho PM trong quá trình thực thi test case.",
+                    },
+                    {
+                        q: "'Test scenario' (kịch bản kiểm thử) là gì?",
+                        o: [
+                            "Một test case cụ thể",
+                            "Mô tả tổng quát về một tình huống kiểm thử cần thực hiện",
+                            "Báo cáo lỗi",
+                            "Môi trường kiểm thử",
+                        ],
+                        a: 1,
+                        e: "Test scenario: mô tả tổng quát về một tình huống KT cần thực hiện. Đầu vào là test plan, là cơ sở để thiết kế test case.",
+                    },
+                    {
+                        q: "Nguyên tắc 'sự tập trung của các lỗi' nghĩa là gì?",
+                        o: [
+                            "Tất cả module có số lỗi bằng nhau",
+                            "Lỗi thường tập trung ở một số ít module",
+                            "Lỗi phân bổ đều khắp PM",
+                            "Không thể dự đoán lỗi tập trung ở đâu",
+                        ],
+                        a: 1,
+                        e: "Nguyên tắc 80/20: phần lớn lỗi thường tập trung ở một số ít module. Nên tập trung KT kỹ hơn vào các module có nguy cơ cao.",
+                    },
+                    {
+                        q: "Nguyên tắc 'KT toàn bộ là không thể' nghĩa là gì?",
+                        o: [
+                            "Chỉ cần kiểm thử một phần",
+                            "Không thể kiểm thử toàn bộ mọi tổ hợp đầu vào có thể",
+                            "Không cần kiểm thử",
+                            "Chỉ developer mới kiểm thử được",
+                        ],
+                        a: 1,
+                        e: "Exhaustive testing là không thể thực hiện vì số lượng tổ hợp đầu vào là vô hạn. Cần chiến lược KT thông minh để tối ưu độ bao phủ.",
+                    },
+                    {
+                        q: "Theo nguyên tắc 'KT sớm', lợi ích chính là gì?",
+                        o: [
+                            "Hoàn thành dự án trước hạn",
+                            "Tiết kiệm thời gian và tiền bạc",
+                            "Không cần tester chuyên nghiệp",
+                            "Giảm số lượng test case",
+                        ],
+                        a: 1,
+                        e: "Kiểm thử càng sớm càng tiết kiệm: phát hiện lỗi ở giai đoạn đầu ít tốn kém hơn nhiều so với sửa lỗi ở giai đoạn sau.",
+                    },
+                    {
+                        q: "'Ngụy biện không có lỗi' (Absence-of-errors fallacy) là gì?",
+                        o: [
+                            "PM không có lỗi là PM tốt nhất",
+                            "Dù PM không có lỗi kỹ thuật nhưng vẫn có thể không đáp ứng yêu cầu KH",
+                            "Không cần kiểm thử nếu không tìm thấy lỗi",
+                            "Lỗi luôn tồn tại trong mọi PM",
+                        ],
+                        a: 1,
+                        e: "Absence-of-errors fallacy: dù PM vượt qua tất cả test case mà không có lỗi, nó vẫn có thể thất bại nếu không đáp ứng đúng nhu cầu người dùng.",
+                    },
+                    {
+                        q: "Bug ngân hàng Mỹ được nhắc đến trong bài học gây thiệt hại bao nhiêu?",
+                        o: ["$1,000,000", "$920,000,000", "$100,000", "$10,000,000,000"],
+                        a: 1,
+                        e: "Bài học nhắc đến bug ngân hàng ở Mỹ làm lộ 823 tài khoản và gây thiệt hại 920 triệu đô — minh chứng cho tầm quan trọng của kiểm thử.",
+                    },
+                    {
+                        q: "Tester và Test leader cần kỹ năng gì quan trọng nhất về giao tiếp?",
+                        o: [
+                            "Chỉ cần viết báo cáo kỹ thuật",
+                            "Truyền đạt thực tế về lỗi, tiến độ và rủi ro một cách khách quan",
+                            "Tranh luận với developer",
+                            "Im lặng và làm việc độc lập",
+                        ],
+                        a: 1,
+                        e: "Test leader và tester cần kỹ năng giao tiếp tốt để truyền đạt thông tin thực tế về lỗi, tiến độ và rủi ro — một cách khách quan, không thù ghét cá nhân.",
+                    },
+                    {
+                        q: "Các hoạt động xác minh (Verification) bao gồm?",
+                        o: [
+                            "Chỉ testing",
+                            "Testing và Review",
+                            "Chỉ review",
+                            "Deployment và testing",
+                        ],
+                        a: 1,
+                        e: "Các hoạt động xác minh bao gồm: Kiểm thử (Testing) và Rà soát loại (Review).",
+                    },
+                    {
+                        q: "Khác biệt giữa Defect và Failure là gì?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Defect là lỗi trong code, Failure là kết quả sai khi thực thi",
+                            "Failure nghiêm trọng hơn Defect",
+                            "Defect do user báo cáo",
+                        ],
+                        a: 1,
+                        e: "Defect: sự thể hiện của fault trong code. Failure: kết quả khi defect đó được kích hoạt làm chương trình hoạt động sai.",
+                    },
+                    {
+                        q: "Mục đích chính của kiểm thử phần mềm là gì?",
+                        o: [
+                            "Chứng minh PM không có lỗi",
+                            "Tìm ra lỗi để cải thiện chất lượng PM",
+                            "Thay thế việc viết code tốt",
+                            "Tạo tài liệu PM",
+                        ],
+                        a: 1,
+                        e: "Mục đích chính: tìm ra lỗi (không phải chứng minh không có lỗi). KT là công cụ để cải thiện chất lượng phần mềm.",
+                    },
+                    {
+                        q: "Khi nào nên bắt đầu kiểm thử?",
+                        o: [
+                            "Chỉ sau khi PM hoàn thành",
+                            "Chỉ trước khi release",
+                            "Càng sớm càng tốt, ngay từ giai đoạn đầu",
+                            "Sau khi deploy lên production",
+                        ],
+                        a: 2,
+                        e: "Nguyên tắc: kiểm thử càng sớm càng tiết kiệm. Nên bắt đầu từ giai đoạn đầu của dự án, không phải chỉ cuối cùng.",
+                    },
+                    {
+                        q: "Validation khác Verification ở điểm chính nào?",
+                        o: [
+                            "Validation kiểm tra từng giai đoạn, Verification kiểm tra sản phẩm cuối",
+                            "Verification kiểm tra từng giai đoạn, Validation kiểm tra sản phẩm cuối cùng theo yêu cầu KH",
+                            "Chúng hoàn toàn giống nhau",
+                            "Validation do tester làm, Verification do PM làm",
+                        ],
+                        a: 1,
+                        e: "Verification: ngăn chặn lỗi giữa các công đoạn. Validation: chỉ quan tâm sản phẩm cuối cùng có đúng yêu cầu KH không.",
+                    },
+                    {
+                        q: "Tại sao KT thường bị coi là 'hành động phá hoại'?",
+                        o: [
+                            "Vì tester phá hoại code",
+                            "Vì tìm lỗi có thể gây căng thẳng với developer",
+                            "Vì KT làm chậm dự án",
+                            "Vì KT tốn nhiều tiền",
+                        ],
+                        a: 1,
+                        e: "KT tìm lỗi trong sản phẩm của developer nên có thể tạo cảm giác 'phá hoại'. Đó là lý do tester cần kỹ năng giao tiếp và thái độ khách quan.",
+                    },
+                    {
+                        q: "Test script là gì?",
+                        o: [
+                            "Kịch bản phim về testing",
+                            "Nhóm mã lệnh đặc tả kịch bản dùng để tự động hóa trình tự kiểm thử",
+                            "Tài liệu yêu cầu kiểm thử",
+                            "Báo cáo kết quả kiểm thử",
+                        ],
+                        a: 1,
+                        e: "Test script: nhóm mã lệnh đặc tả kịch bản dùng để tự động hóa một trình tự kiểm thử. Có thể tạo thủ công hoặc tự động bằng công cụ.",
+                    },
+                    {
+                        q: "Nguyên tắc nào sau đây KHÔNG phải là nguyên tắc kiểm thử phần mềm?",
+                        o: [
+                            "KT toàn bộ là không thể",
+                            "KT phụ thuộc ngữ cảnh",
+                            "KT có thể chứng minh PM hoàn toàn đúng",
+                            "Pesticide paradox",
+                        ],
+                        a: 2,
+                        e: "'KT có thể chứng minh PM hoàn toàn đúng' là sai — KT chỉ có thể chỉ ra sự hiện diện của lỗi, không thể chứng minh không có lỗi.",
+                    },
+                    {
+                        q: "Bug ngân hàng Mỹ trong bài học làm lộ bao nhiêu tài khoản?",
+                        o: ["100", "500", "823", "1000"],
+                        a: 2,
+                        e: "Bug ngân hàng ở Mỹ được nhắc đến trong bài học làm lộ 823 tài khoản và gây thiệt hại 920 triệu đô.",
+                    },
+                    {
+                        q: "Câu phát biểu nào sau đây là ĐÚNG về kiểm thử?",
+                        o: [
+                            "KT có thể tìm ra tất cả lỗi",
+                            "KT đảm bảo PM không có lỗi sau khi kiểm thử",
+                            "KT chỉ ra sự hiện diện của lỗi, không chứng minh không có lỗi",
+                            "KT thay thế hoàn toàn quá trình review",
+                        ],
+                        a: 2,
+                        e: "Phát biểu đúng: KT chỉ ra sự hiện diện của lỗi nhưng không thể chứng minh PM hoàn toàn không có lỗi (Dijkstra).",
+                    },
+                    {
+                        q: "Hoạt động 'Báo cáo quá trình kiểm thử' quan trọng vì?",
+                        o: [
+                            "Để in ấn tài liệu đẹp",
+                            "Để cung cấp thông tin về tiến độ, rủi ro và chất lượng cho các bên liên quan",
+                            "Để giao nộp cho giáo viên",
+                            "Để tính lương tester",
+                        ],
+                        a: 1,
+                        e: "Báo cáo KT cung cấp thông tin minh bạch về tình trạng PM, tiến độ test, lỗi phát hiện và rủi ro — giúp PM và KH ra quyết định.",
+                    },
+                    {
+                        q: "Khi nào KT được xem là hoàn thành?",
+                        o: [
+                            "Khi tester cảm thấy đủ",
+                            "Khi tất cả lỗi đã được sửa",
+                            "Khi đánh giá đạt tiêu chuẩn hoàn thành đã định",
+                            "Khi hết thời gian",
+                        ],
+                        a: 2,
+                        e: "KT được xem là hoàn thành khi đánh giá đạt các tiêu chuẩn hoàn thành đã định trước (exit criteria), không phải khi tester 'cảm thấy đủ'.",
+                    },
+                    {
+                        q: "Ai thường thực hiện Debug?",
+                        o: ["Tester", "Developer", "Product Manager", "Khách hàng"],
+                        a: 1,
+                        e: "Debug (tìm nguyên nhân và sửa lỗi) thường do Developer thực hiện. Test (tìm lỗi) thường do Tester thực hiện.",
+                    },
+                    {
+                        q: "Phán xét kiểm thử thủ công là gì?",
+                        o: [
+                            "Tester chạy công cụ tự động",
+                            "Tester tính kết quả bằng tay và so sánh với kết quả chương trình",
+                            "Tester ghi nhớ kết quả",
+                            "Tester hỏi developer",
+                        ],
+                        a: 1,
+                        e: "Test oracle thủ công: tester tự tính kết quả mong đợi bằng tay rồi so sánh với kết quả thực tế của chương trình.",
+                    },
+                    {
+                        q: "Kiểm thử phần mềm giúp ích gì cho việc quản lý rủi ro dự án?",
+                        o: [
+                            "Không giúp ích gì",
+                            "Tìm ra lỗi sớm, giảm rủi ro sản phẩm chất lượng kém khi release",
+                            "Đảm bảo dự án không bao giờ bị trễ",
+                            "Tự động sửa lỗi",
+                        ],
+                        a: 1,
+                        e: "KT giúp phát hiện lỗi sớm, từ đó giảm rủi ro sản phẩm lỗi khi release tới khách hàng — đây là giá trị cốt lõi của kiểm thử trong quản lý dự án.",
+                    },
+                    {
+                        q: "'Error' khác 'Fault' ở điểm nào?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Error là hành động sai của người (developer), Fault là lỗi trong code gây ra bởi error",
+                            "Fault nghiêm trọng hơn",
+                            "Error do môi trường, Fault do con người",
+                        ],
+                        a: 1,
+                        e: "Error: hành động sai của developer (nhầm lẫn trong đầu). Fault/Defect: lỗi trong code là kết quả của error đó.",
+                    },
+                    {
+                        q: "Trong khía cạnh tâm lý học, 'đoán lỗi' (error guessing) là gì?",
+                        o: [
+                            "Đoán mò không có cơ sở",
+                            "Kinh nghiệm của tester giúp đoán những chỗ thường có lỗi",
+                            "Dùng AI để đoán lỗi",
+                            "Đoán lỗi từ tên function",
+                        ],
+                        a: 1,
+                        e: "Đoán lỗi: dựa vào kinh nghiệm của tester để đoán những khu vực, tình huống thường xuyên có lỗi — một kỹ thuật KT heuristic hiệu quả.",
+                    },
+                    {
+                        q: "Tại sao KT sớm tiết kiệm chi phí hơn?",
+                        o: [
+                            "Tester làm việc nhanh hơn lúc đầu",
+                            "Chi phí sửa lỗi tăng theo cấp số nhân theo thời gian — lỗi trong thiết kế tốn gấp nhiều lần lỗi trong coding",
+                            "KT sớm dùng ít công cụ hơn",
+                            "Developer ít bận hơn lúc đầu",
+                        ],
+                        a: 1,
+                        e: "Chi phí sửa lỗi tăng theo thời gian: lỗi phát hiện ở giai đoạn yêu cầu rẻ hơn nhiều so với lỗi phát hiện khi production — đây là lý do KT sớm.",
+                    },
+                    {
+                        q: "Hoạt động 'Lựa chọn các điều kiện kiểm thử' thuộc giai đoạn nào?",
+                        o: [
+                            "Giai đoạn phát triển code",
+                            "Các hoạt động cơ bản của việc kiểm thử",
+                            "Giai đoạn triển khai",
+                            "Giai đoạn bảo trì",
+                        ],
+                        a: 1,
+                        e: "Lựa chọn điều kiện kiểm thử là một trong các hoạt động cơ bản của việc kiểm thử, cùng với lên kế hoạch, thiết kế TC, kiểm tra kết quả, đánh giá và báo cáo.",
+                    },
+                    {
+                        q: "Tại sao 'tính độc lập' của tester quan trọng?",
+                        o: [
+                            "Để tester không cần họp",
+                            "Để đảm bảo đánh giá khách quan, không bị ảnh hưởng cảm xúc với code mình viết",
+                            "Để tester làm việc từ xa",
+                            "Để giảm chi phí",
+                        ],
+                        a: 1,
+                        e: "Tính độc lập đảm bảo tester đánh giá khách quan. Developer thường bị thiên kiến khi test code mình viết — họ vô thức tránh các test case có thể phá vỡ code của mình.",
+                    },
+                    {
+                        q: "Mối quan hệ giữa Error → Fault → Failure là gì?",
+                        o: [
+                            "Chúng không liên quan",
+                            "Error (nhầm lẫn của người) → Fault (lỗi trong code) → Failure (PM hoạt động sai)",
+                            "Failure xảy ra trước Error",
+                            "Fault và Failure giống nhau",
+                        ],
+                        a: 1,
+                        e: "Chuỗi nhân quả: Error (nhầm lẫn của developer) → sinh ra Fault/Defect (lỗi trong code) → khi được kích hoạt gây ra Failure (PM hoạt động sai).",
+                    },
+                ],
+            },
+            {
+                id: 2,
+                name: "Quy trình & Kế hoạch",
+                desc: "Mô hình, quy trình KT, kế hoạch",
+                questions: [
+                    {
+                        q: "Mô hình thác nước chia quá trình phát triển PM như thế nào?",
+                        o: [
+                            "Song song tất cả giai đoạn",
+                            "Các giai đoạn tuần tự, kết quả giai đoạn này là đầu vào giai đoạn sau",
+                            "Vòng lặp liên tục",
+                            "Ngẫu nhiên",
+                        ],
+                        a: 1,
+                        e: "Mô hình thác nước: chia quá trình phát triển thành những giai đoạn tuần tự, mỗi giai đoạn có mục đích nhất định, kết quả làm đầu vào cho giai đoạn sau.",
+                    },
+                    {
+                        q: "Ưu điểm chính của mô hình thác nước là gì?",
+                        o: [
+                            "Dễ thay đổi yêu cầu",
+                            "Các giai đoạn được định nghĩa và đầu vào rõ ràng, dễ phân công",
+                            "Phù hợp với dự án linh hoạt",
+                            "Kiểm thử sớm ngay từ đầu",
+                        ],
+                        a: 1,
+                        e: "Ưu điểm: giai đoạn được định nghĩa rõ ràng → dễ phân công. Quá trình đơn giản → phù hợp dự án ít thay đổi. Giảm thiểu lỗi thiết kế.",
+                    },
+                    {
+                        q: "Khuyết điểm chính của mô hình thác nước là gì?",
+                        o: [
+                            "Tài liệu quá ít",
+                            "Tốn nhiều thời gian, sửa lỗi giai đoạn đầu rất tốn kém",
+                            "Không có giai đoạn kiểm thử",
+                            "Chỉ dùng được cho PM nhỏ",
+                        ],
+                        a: 1,
+                        e: "Khuyết điểm: tốn nhiều thời gian thực hiện. Sửa lỗi rất tốn chi phí — đặc biệt là lỗi trong giai đoạn đầu (như yêu cầu, thiết kế).",
+                    },
+                    {
+                        q: "Mô hình chữ V có đặc điểm gì nổi bật?",
+                        o: [
+                            "Chỉ có giai đoạn phát triển, không có KT",
+                            "Các pha phát triển và KT tương thích, hỗ trợ nhau — mỗi giai đoạn phát triển tương ứng một cấp độ KT",
+                            "Không cần tài liệu",
+                            "Chỉ KT cuối cùng",
+                        ],
+                        a: 1,
+                        e: "Mô hình V: mỗi giai đoạn phát triển (trái) tương ứng với một giai đoạn KT (phải). Ưu điểm: khuyến khích lập kế hoạch KT sớm từ giai đoạn đầu.",
+                    },
+                    {
+                        q: "Khuyết điểm của mô hình chữ V là gì?",
+                        o: [
+                            "Không có giai đoạn phân tích yêu cầu",
+                            "Pha sau chỉ thực hiện khi pha trước kết thúc; chỉ phù hợp dự án ít thay đổi",
+                            "Không có tài liệu KT",
+                            "Quá nhanh, bỏ qua nhiều bước",
+                        ],
+                        a: 1,
+                        e: "Khuyết điểm V-model: pha sau chỉ được thực hiện khi pha trước kết thúc. Chỉ phù hợp các dự án có đầy đủ thông tin và ít thay đổi.",
+                    },
+                    {
+                        q: "Trong mô hình Scrum-Agile, kiểm thử được thực hiện như thế nào?",
+                        o: [
+                            "Chỉ ở cuối dự án",
+                            "Liên tục trong từng sprint/iteration",
+                            "Chỉ sau khi toàn bộ code hoàn thành",
+                            "Không cần KT trong Agile",
+                        ],
+                        a: 1,
+                        e: "Trong Scrum/Agile: KT được thực hiện liên tục trong mỗi sprint — tester là thành viên của scrum team, không phải nhóm riêng biệt.",
+                    },
+                    {
+                        q: "Bước đầu tiên trong quy trình kiểm thử là gì?",
+                        o: [
+                            "Thiết lập môi trường",
+                            "Viết test case",
+                            "Phân tích yêu cầu",
+                            "Thực thi test",
+                        ],
+                        a: 2,
+                        e: "Quy trình KT bắt đầu bằng: (1) Phân tích yêu cầu → xác định chức năng cần KT. Sau đó mới đến lập kế hoạch, thiết kế TC, thiết lập MT, thực hiện.",
+                    },
+                    {
+                        q: "'Phân tích yêu cầu' trong quy trình KT nhằm mục đích gì?",
+                        o: [
+                            "Viết code",
+                            "Xác định các chức năng cần kiểm thử",
+                            "Sửa lỗi",
+                            "Triển khai PM",
+                        ],
+                        a: 1,
+                        e: "Phân tích yêu cầu: xác định các chức năng cần KT. Kết quả là tài liệu chứa câu hỏi/câu trả lời liên quan nghiệp vụ và phân tích rủi ro KT.",
+                    },
+                    {
+                        q: "'Lập kế hoạch kiểm thử' bao gồm các hoạt động nào?",
+                        o: [
+                            "Viết test case",
+                            "Xác định phạm vi, phương pháp, nguồn lực và lên kế hoạch thiết kế công việc test",
+                            "Sửa lỗi",
+                            "Triển khai PM",
+                        ],
+                        a: 1,
+                        e: "Lập kế hoạch KT: xác định phạm vi dự án, phương pháp tiếp cận, nguồn lực cần thiết và lên kế hoạch thiết kế công việc test → tạo ra Test Plan.",
+                    },
+                    {
+                        q: "'Test case development' bao gồm những gì?",
+                        o: [
+                            "Chỉ viết test case",
+                            "Thiết kế scenario, thiết kế test case/checklist, tạo script, chuẩn bị data, review TC",
+                            "Chỉ chuẩn bị data",
+                            "Chỉ tạo automation script",
+                        ],
+                        a: 1,
+                        e: "Test case development: thiết kế kịch bản (scenario), thiết kế test case/checklist, tạo test automation script, chuẩn bị data test, review test case.",
+                    },
+                    {
+                        q: "'Test scenario' khác 'test case' như thế nào?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Scenario là mô tả tổng quát, test case là thiết kế chi tiết cụ thể từ scenario",
+                            "Test case rộng hơn scenario",
+                            "Scenario chỉ dùng cho automation",
+                        ],
+                        a: 1,
+                        e: "Scenario: mô tả tổng quát về tình huống KT. Test case: thiết kế chi tiết (steps, data, expected result) từ scenario. Scenario là đầu vào để tạo test case.",
+                    },
+                    {
+                        q: "Giai đoạn 'Thiết lập môi trường' cần đầu vào nào?",
+                        o: [
+                            "Chỉ test case",
+                            "Test plan, test case và test data",
+                            "Chỉ test plan",
+                            "Chỉ test data",
+                        ],
+                        a: 1,
+                        e: "Thiết lập môi trường cần đầu vào: test plan, test case, test data. Phụ thuộc đặc thù PM và yêu cầu KH (ví dụ: dựng server, cấu hình mạng...).",
+                    },
+                    {
+                        q: "Trong giai đoạn 'Thực hiện', 'KT hồi qui' là gì?",
+                        o: [
+                            "KT lần đầu tiên",
+                            "Kiểm thử lại sau khi sửa lỗi để đảm bảo không tạo ra lỗi mới",
+                            "KT toàn bộ PM từ đầu",
+                            "KT ngẫu nhiên",
+                        ],
+                        a: 1,
+                        e: "KT hồi qui (regression testing): KT lại sau khi sửa bug để đảm bảo việc sửa không tạo ra lỗi mới ở các phần khác của PM.",
+                    },
+                    {
+                        q: "Giai đoạn 'Kết thúc' kiểm thử bao gồm hoạt động nào?",
+                        o: [
+                            "Xóa toàn bộ test case",
+                            "Tổng kết, báo cáo, đánh giá tiêu chí hoàn thành và rút ra bài học kinh nghiệm",
+                            "Bắt đầu dự án mới",
+                            "Chỉ đóng bug tracker",
+                        ],
+                        a: 1,
+                        e: "Kết thúc KT: thực hiện tổng kết, báo cáo kết quả, đánh giá tiêu chí hoàn thành, thảo luận điểm tốt/chưa tốt và rút ra bài học kinh nghiệm.",
+                    },
+                    {
+                        q: "Bao nhiêu hoạt động chính trong giai đoạn kết thúc kiểm thử?",
+                        o: ["3", "5", "7", "10"],
+                        a: 2,
+                        e: "Có 7 hoạt động chính trong giai đoạn kết thúc KT: kiểm tra deliverables, đóng báo cáo sự cố, viết biên bản chấp nhận, lưu trữ, bàn giao, phân tích bài học, cải tiến.",
+                    },
+                    {
+                        q: "Ai thực hiện việc 'Xác định các yêu cầu kiểm thử'?",
+                        o: [
+                            "Chỉ tester",
+                            "Test lead, tester và khách hàng",
+                            "Chỉ developer",
+                            "Chỉ PM",
+                        ],
+                        a: 1,
+                        e: "Xác định yêu cầu KT: do Test lead, Tester và Khách hàng cùng thực hiện. Đầu vào là đặc tả yêu cầu, tiêu chí chấp nhận, thiết kế chi tiết.",
+                    },
+                    {
+                        q: "'Test Plan' là kết quả của giai đoạn nào?",
+                        o: [
+                            "Phân tích yêu cầu",
+                            "Lập kế hoạch kiểm thử",
+                            "Thiết kế test case",
+                            "Thiết lập môi trường",
+                        ],
+                        a: 1,
+                        e: "Test Plan là đầu ra của giai đoạn Lập kế hoạch kiểm thử. Nó định nghĩa phạm vi, phương pháp, nguồn lực và lịch trình KT.",
+                    },
+                    {
+                        q: "Quy trình xử lý lỗi (bug) sau khi phát hiện là gì?",
+                        o: [
+                            "Xóa bug ngay lập tức",
+                            "Đưa bug lên hệ thống quản lý lỗi, developer sửa, tester re-test",
+                            "Bỏ qua bug nhỏ",
+                            "Restart lại dự án",
+                        ],
+                        a: 1,
+                        e: "Quy trình xử lý lỗi: phát hiện → đưa lên bug tracking system → developer sửa → tester re-test để xác nhận lỗi đã được sửa.",
+                    },
+                    {
+                        q: "Các thành phần chính trong Kế hoạch Kiểm thử (KHKT) gồm bao nhiêu mục?",
+                        o: ["3", "5", "7", "10"],
+                        a: 2,
+                        e: "7 thành phần chính trong KHKT: (1) Giới thiệu, (2) Điều kiện chấp nhận, (3) Yêu cầu KT, (4) Chiến lược, (5) Nguồn lực, (6) Test milestone, (7) Deliverables.",
+                    },
+                    {
+                        q: "'Test milestone' trong kế hoạch kiểm thử là gì?",
+                        o: [
+                            "Số lượng bug tìm được",
+                            "Các mốc thời gian quan trọng trong quá trình kiểm thử",
+                            "Số lượng test case",
+                            "Danh sách tester",
+                        ],
+                        a: 1,
+                        e: "Test milestone: các mốc thời gian quan trọng trong kế hoạch KT — ví dụ: ngày hoàn thành thiết kế TC, ngày bắt đầu KT, ngày kết thúc KT.",
+                    },
+                    {
+                        q: "'Deliverables of test' bao gồm những gì?",
+                        o: [
+                            "Chỉ test case",
+                            "Test Plan, Test Case, Test Reports",
+                            "Chỉ bug report",
+                            "Source code",
+                        ],
+                        a: 1,
+                        e: "Deliverables of test (sản phẩm bàn giao của KT): Test Plan, Test Case và Test Reports — đây là 3 tài liệu cốt lõi.",
+                    },
+                    {
+                        q: "'Re-test' (kiểm thử lại) được thực hiện khi nào?",
+                        o: [
+                            "Khi bắt đầu dự án",
+                            "Sau khi developer sửa lỗi đã báo cáo",
+                            "Mỗi ngày",
+                            "Trước khi viết test case",
+                        ],
+                        a: 1,
+                        e: "Re-test: thực hiện sau khi developer đã sửa lỗi được báo cáo, để xác nhận lỗi đã được khắc phục hoàn toàn.",
+                    },
+                    {
+                        q: "Trong quy trình KT, 'Theo dõi và phân tích tiến độ' thuộc giai đoạn nào?",
+                        o: [
+                            "Lập kế hoạch",
+                            "Thực hiện",
+                            "Thiết lập môi trường",
+                            "Kết thúc",
+                        ],
+                        a: 1,
+                        e: "Theo dõi và phân tích tiến độ là hoạt động trong giai đoạn Thực hiện — giúp PM và stakeholders biết tình trạng KT hiện tại.",
+                    },
+                    {
+                        q: "Ưu điểm của mô hình chữ V so với mô hình thác nước là gì?",
+                        o: [
+                            "Nhanh hơn",
+                            "Khuyến khích KT từ giai đoạn đầu, các pha phát triển và KT hỗ trợ nhau",
+                            "Rẻ hơn",
+                            "Không cần tài liệu",
+                        ],
+                        a: 1,
+                        e: "V-model ưu điểm: các pha tương thích nhau, khuyến khích lập kế hoạch KT sớm, và KT bắt đầu từ giai đoạn đầu của dự án.",
+                    },
+                    {
+                        q: "Mô hình nào phù hợp nhất với dự án có yêu cầu thay đổi liên tục?",
+                        o: [
+                            "Mô hình thác nước",
+                            "Mô hình chữ V",
+                            "Mô hình Scrum-Agile",
+                            "Không mô hình nào",
+                        ],
+                        a: 2,
+                        e: "Scrum-Agile phù hợp nhất với dự án có yêu cầu thay đổi liên tục nhờ tính linh hoạt, vòng lặp ngắn và phản hồi nhanh.",
+                    },
+                    {
+                        q: "Xác định nguồn lực KT bao gồm những gì?",
+                        o: [
+                            "Chỉ số lượng tester",
+                            "Số người, kỹ năng cần có, yêu cầu phần cứng/phần mềm, công cụ hỗ trợ, loại dữ liệu",
+                            "Chỉ công cụ test",
+                            "Chỉ ngân sách",
+                        ],
+                        a: 1,
+                        e: "Xác định nguồn lực: số lượng người, kỹ năng cần có, yêu cầu phần cứng/phần mềm, công cụ hỗ trợ (nếu có), loại dữ liệu cần thiết.",
+                    },
+                    {
+                        q: "Điều gì xảy ra sau khi kế hoạch KT được phê duyệt?",
+                        o: [
+                            "Bắt đầu viết code",
+                            "Test lead tạo baseline và thông báo qua mail cho toàn bộ người liên quan",
+                            "Xóa kế hoạch cũ",
+                            "Họp toàn bộ công ty",
+                        ],
+                        a: 1,
+                        e: "Sau khi được phê duyệt: Test lead tạo baseline cho Test Plan và gửi thông báo qua email tới toàn bộ người trong dự án có liên quan.",
+                    },
+                    {
+                        q: "Trong quy trình KT, 'Chuẩn bị data test' là bước trong giai đoạn nào?",
+                        o: [
+                            "Phân tích yêu cầu",
+                            "Test case development",
+                            "Thiết lập môi trường",
+                            "Thực hiện",
+                        ],
+                        a: 1,
+                        e: "Chuẩn bị data test là một trong các bước của Test case development (cùng với thiết kế scenario, viết TC, tạo script, review TC).",
+                    },
+                    {
+                        q: "Tại sao cần 'Review test case' trong quy trình KT?",
+                        o: [
+                            "Để đếm số lượng TC",
+                            "Đảm bảo TC đúng, đủ và phù hợp trước khi thực thi",
+                            "Để báo cáo với khách hàng",
+                            "Để tính chi phí",
+                        ],
+                        a: 1,
+                        e: "Review TC: đảm bảo TC được thiết kế đúng, đủ, phù hợp với yêu cầu và không bị thiếu/thừa trước khi thực thi — tiết kiệm công sửa đổi sau này.",
+                    },
+                    {
+                        q: "'Lưu trữ sản phẩm kiểm thử' trong giai đoạn kết thúc có nghĩa là gì?",
+                        o: [
+                            "Xóa tất cả tài liệu",
+                            "Lưu trữ test plan, test case, test data, môi trường KT để dùng cho lần sau",
+                            "Chỉ lưu bug report",
+                            "Chỉ lưu source code",
+                        ],
+                        a: 1,
+                        e: "Lưu trữ: lưu trữ các sản phẩm KT (test plan, TC, môi trường, cơ sở hạ tầng) cho các lần sử dụng sau — tiết kiệm thời gian cho dự án tương lai.",
+                    },
+                    {
+                        q: "Tại sao cần 'Đóng các báo cáo về sự cố' trong giai đoạn kết thúc?",
+                        o: [
+                            "Để tính lương",
+                            "Đảm bảo tất cả lỗi được giải quyết hoặc có kế hoạch giải quyết trong tương lai",
+                            "Để làm đẹp tài liệu",
+                            "Không cần thiết",
+                        ],
+                        a: 1,
+                        e: "Đóng báo cáo sự cố: đảm bảo mọi lỗi đã được giải quyết hoặc có kế hoạch rõ ràng. Các vấn đề chưa giải quyết cần được ghi chép và theo dõi.",
+                    },
+                    {
+                        q: "Yêu cầu từ đầu vào nào được dùng để xác định các yêu cầu KT?",
+                        o: [
+                            "Chỉ source code",
+                            "Yêu cầu khách hàng, đặc tả yêu cầu người dùng, tiêu chí chấp nhận, thiết kế chi tiết",
+                            "Chỉ meeting notes",
+                            "Chỉ kinh nghiệm tester",
+                        ],
+                        a: 1,
+                        e: "Xác định yêu cầu KT từ: yêu cầu khách hàng, đặc tả yêu cầu người dùng, tiêu chí chấp nhận, thiết kế chi tiết (nếu có) và các ràng buộc.",
+                    },
+                    {
+                        q: "'Bàn giao sản phẩm kiểm thử' trong giai đoạn kết thúc được thực hiện cho ai?",
+                        o: [
+                            "Xóa tất cả",
+                            "Các bộ quản lý dữ liệu và bảo trì sản phẩm",
+                            "Chỉ khách hàng",
+                            "Chỉ developer",
+                        ],
+                        a: 1,
+                        e: "Bàn giao sản phẩm KT cho: các bộ quản lý dữ liệu và bảo trì sản phẩm — để tiếp tục sử dụng trong giai đoạn vận hành và bảo trì.",
+                    },
+                    {
+                        q: "'Base line' trong kế hoạch KT có nghĩa là gì?",
+                        o: [
+                            "Số lượng test case tối thiểu",
+                            "Phiên bản tài liệu test plan đã được phê duyệt chính thức",
+                            "Đường cơ sở của code",
+                            "Ngày bắt đầu KT",
+                        ],
+                        a: 1,
+                        e: "Baseline: Test Plan đã được phê duyệt chính thức. Sau đó mọi thay đổi phải đi qua change management process.",
+                    },
+                    {
+                        q: "Trong giai đoạn kết thúc KT, 'phân tích bài học kinh nghiệm' nhằm mục đích gì?",
+                        o: [
+                            "Đánh giá lương tester",
+                            "Xác định điểm cần thay đổi để cải thiện cho dự án sau",
+                            "Tạo báo cáo đẹp",
+                            "Xóa dữ liệu cũ",
+                        ],
+                        a: 1,
+                        e: "Phân tích bài học kinh nghiệm (lessons learned): xác định những điểm tốt, chưa tốt để cải tiến công việc KT trong các dự án tiếp theo.",
+                    },
+                    {
+                        q: "Trong Scrum, tần suất kiểm thử như thế nào?",
+                        o: [
+                            "Chỉ cuối project",
+                            "Chỉ đầu project",
+                            "Liên tục trong từng sprint (iteration)",
+                            "Mỗi tháng một lần",
+                        ],
+                        a: 2,
+                        e: "Trong Scrum/Agile: KT được tích hợp liên tục vào từng sprint (thường 1-4 tuần), không phải chỉ một lần ở cuối project.",
+                    },
+                    {
+                        q: "Quy trình KT chuẩn có bao nhiêu giai đoạn chính?",
+                        o: ["3", "4", "5 hoặc 6", "2"],
+                        a: 2,
+                        e: "Quy trình KT có 5-6 giai đoạn chính: (1) Phân tích yêu cầu, (2) Lập kế hoạch, (3) Test case development, (4) Thiết lập môi trường, (5) Thực hiện, (6) Kết thúc.",
+                    },
+                    {
+                        q: "Mục tiêu của 'sử dụng thông tin để cải tiến công việc KT định kỳ' là gì?",
+                        o: [
+                            "Tốn thêm chi phí",
+                            "Liên tục nâng cao chất lượng quy trình KT qua thời gian",
+                            "Không cần thiết",
+                            "Chỉ để làm báo cáo đẹp",
+                        ],
+                        a: 1,
+                        e: "Cải tiến định kỳ (continuous improvement): sử dụng bài học từ các dự án để nâng cao hiệu quả và chất lượng quy trình KT trong tương lai.",
+                    },
+                    {
+                        q: "Điều kiện nào cần có để lập kế hoạch KT?",
+                        o: [
+                            "Chỉ cần có source code",
+                            "Cần có yêu cầu kiểm thử (test requirement) rõ ràng",
+                            "Chỉ cần có đội tester",
+                            "Không cần điều kiện gì",
+                        ],
+                        a: 1,
+                        e: "Để lập kế hoạch KT cần có test requirement (yêu cầu KT) rõ ràng — bao gồm danh sách chức năng cần test, phương thức, tiêu chí đầu ra.",
+                    },
+                    {
+                        q: "'Đánh giá kế hoạch KT' là trách nhiệm của ai?",
+                        o: [
+                            "Chỉ tester",
+                            "PM và những người liên quan cùng đánh giá xem kế hoạch có phù hợp với yêu cầu dự án chưa",
+                            "Chỉ developer",
+                            "Chỉ khách hàng",
+                        ],
+                        a: 1,
+                        e: "Đánh giá kế hoạch: PM và tất cả người liên quan tham gia đánh giá kế hoạch KT có phù hợp với yêu cầu dự án. Sau đó Test lead tạo baseline và thông báo.",
+                    },
+                    {
+                        q: "'Kiểm tra sản phẩm thực tế được bàn giao so với kế hoạch' nhằm mục đích gì?",
+                        o: [
+                            "Tính lương",
+                            "Đảm bảo tất cả deliverables theo kế hoạch đã được hoàn thành và lỗi đã được xử lý",
+                            "Tổ chức ăn mừng",
+                            "Xóa dữ liệu test",
+                        ],
+                        a: 1,
+                        e: "Kiểm tra deliverables: đảm bảo tất cả sản phẩm theo kế hoạch đã hoàn thành và mọi lỗi đều được giải quyết hoặc có kế hoạch cho lần bàn giao sau.",
+                    },
+                    {
+                        q: "Trong quy trình KT, bước 'lập báo cáo' thuộc giai đoạn nào?",
+                        o: [
+                            "Lập kế hoạch",
+                            "Thực hiện",
+                            "Phân tích yêu cầu",
+                            "Test case development",
+                        ],
+                        a: 1,
+                        e: "Lập báo cáo là hoạt động trong giai đoạn Thực hiện — song song với thực thi TC, re-test và theo dõi tiến độ.",
+                    },
+                    {
+                        q: "Khi nào cần viết 'biên bản chấp nhận phần mềm'?",
+                        o: [
+                            "Đầu dự án",
+                            "Cuối giai đoạn kết thúc KT khi PM đã đạt tiêu chí",
+                            "Khi bắt đầu KT",
+                            "Khi tìm thấy lỗi",
+                        ],
+                        a: 1,
+                        e: "Biên bản chấp nhận PM được viết trong giai đoạn kết thúc KT — sau khi PM đã được xác nhận đạt tiêu chí chấp nhận.",
+                    },
+                    {
+                        q: "Phương pháp tiếp cận (approach) trong Test Plan xác định điều gì?",
+                        o: [
+                            "Danh sách tester",
+                            "Phương thức KT, tiêu chí đầu ra, điều kiện tiến hành KT",
+                            "Ngày hoàn thành",
+                            "Chi phí KT",
+                        ],
+                        a: 1,
+                        e: "Phương thức KT trong Test Plan: xác định loại KT cần thực hiện, tiêu chí đầu ra và các điều kiện đặc biệt cần lưu ý khi thực hiện KT.",
+                    },
+                    {
+                        q: "Mô hình phát triển nào có kiểm thử tách biệt nhất với phát triển?",
+                        o: [
+                            "Scrum",
+                            "Mô hình thác nước truyền thống",
+                            "V-model",
+                            "Agile",
+                        ],
+                        a: 1,
+                        e: "Mô hình thác nước truyền thống thường có kiểm thử là giai đoạn riêng biệt sau khi phát triển hoàn thành — đây là điểm yếu lớn nhất của nó.",
+                    },
+                ],
+            },
+            {
+                id: 3,
+                name: "Các cấp độ kiểm thử",
+                desc: "Unit, tích hợp, hệ thống, chấp nhận",
+                questions: [
+                    {
+                        q: "KT Unit được thực hiện ở mức độ nào?",
+                        o: [
+                            "Mức độ KT cao nhất",
+                            "Mức độ KT thấp nhất, kiểm tra các đơn vị/thành phần độc lập",
+                            "Mức độ KT hệ thống",
+                            "Mức độ KT tích hợp",
+                        ],
+                        a: 1,
+                        e: "KT Unit: mức độ KT thấp nhất, kiểm tra các đơn vị/thành phần nhỏ nhất của PM một cách độc lập. Thường do lập trình viên thực hiện.",
+                    },
+                    {
+                        q: "Ai thường thực hiện KT Unit?",
+                        o: [
+                            "Khách hàng",
+                            "Tester chuyên nghiệp",
+                            "Lập trình viên (developer)",
+                            "Test lead",
+                        ],
+                        a: 2,
+                        e: "KT Unit được thực hiện bởi lập trình viên (developer) — người viết code là người có hiểu biết sâu nhất về từng unit để test.",
+                    },
+                    {
+                        q: "Mục đích chính của KT Unit là gì?",
+                        o: [
+                            "Kiểm tra toàn bộ hệ thống",
+                            "Đánh giá mỗi đơn vị phần mềm thực hiện đúng như thiết kế",
+                            "Kiểm tra tích hợp giữa các module",
+                            "Kiểm tra giao diện người dùng",
+                        ],
+                        a: 1,
+                        e: "KT Unit mục đích: đánh giá mỗi đơn vị của PM thực hiện đúng như thiết kế — kiểm tra sự hoàn chỉnh chức năng, xử lý lỗi, đầu vào/đầu ra.",
+                    },
+                    {
+                        q: "Điều kiện để KT Unit hiệu quả là gì?",
+                        o: [
+                            "Chạy một lần duy nhất",
+                            "Các đơn vị KT phải độc lập, thực hiện lặp lại, tự động, dễ viết, dễ thực hiện, đo được",
+                            "Không cần tự động",
+                            "Chỉ test positive case",
+                        ],
+                        a: 1,
+                        e: "KT Unit hiệu quả cần: đơn vị độc lập, thực hiện lặp lại, tự động, dễ viết, dễ thực hiện và đo được (có số liệu rõ ràng).",
+                    },
+                    {
+                        q: "Lợi ích của KT Unit là gì?",
+                        o: [
+                            "Thay thế KT tích hợp",
+                            "Giúp developer điều chỉnh code đúng đắn; KT giai đoạn sau nhanh hơn; phát hiện bug sớm",
+                            "Không cần KT giai đoạn sau",
+                            "Thay thế review code",
+                        ],
+                        a: 1,
+                        e: "Lợi ích KT Unit: (1) Developer đảm bảo code đúng. (2) KT các giai đoạn sau nhanh hơn vì unit đã đúng. (3) Phát hiện bug sớm — ít tốn kém hơn.",
+                    },
+                    {
+                        q: "KT tích hợp (Integration Testing) nhằm mục đích gì?",
+                        o: [
+                            "KT từng module riêng lẻ",
+                            "Nhận được một bộ phận chức năng hay hệ con tốt bằng cách ghép các module đã qua Unit Test",
+                            "KT toàn bộ hệ thống",
+                            "KT giao diện người dùng",
+                        ],
+                        a: 1,
+                        e: "KT tích hợp: nhằm nhận được một bộ phận chức năng hay hệ con tốt. Từ các module đã qua Unit Test, xây dựng cấu trúc chương trình đúng thiết kế.",
+                    },
+                    {
+                        q: "Có bao nhiêu cách tích hợp modules chính?",
+                        o: ["1", "2", "3", "4"],
+                        a: 1,
+                        e: "Có 2 cách tích hợp: (1) Tích hợp từng bước (gồm top-down, bottom-up, sandwich). (2) Tích hợp đồng thời (Big Bang testing).",
+                    },
+                    {
+                        q: "KT Top-down bắt đầu từ đâu?",
+                        o: [
+                            "Module lá (leaf module)",
+                            "Module gốc ở trên cùng của cây cấu trúc chương trình",
+                            "Module giữa",
+                            "Module I/O",
+                        ],
+                        a: 1,
+                        e: "KT top-down: bắt đầu từ module gốc (root) ở trên cùng của cây cấu trúc. Sau đó lan xuống các module con theo chiều từ trên xuống.",
+                    },
+                    {
+                        q: "'Stub' trong KT Top-down được dùng để làm gì?",
+                        o: [
+                            "Thay thế module cha",
+                            "Thay thế module con chưa được phát triển để có thể test module cha",
+                            "Tạo dữ liệu test",
+                            "Chạy automation test",
+                        ],
+                        a: 1,
+                        e: "Stub: module giả thay thế module con chưa có — dùng trong top-down để test module cha khi module con chưa được phát triển hoặc tích hợp.",
+                    },
+                    {
+                        q: "Ưu điểm của KT Top-down là gì?",
+                        o: [
+                            "Dễ tạo stub",
+                            "Phát hiện sớm lỗi thiết kế; chương trình khung sườn sớm hình thành để demo",
+                            "Không cần viết stub",
+                            "Phát hiện lỗi module lá sớm",
+                        ],
+                        a: 1,
+                        e: "Top-down ưu điểm: (1) Phát hiện sớm lỗi thiết kế. (2) Chương trình khung sườn sớm hình thành để demo và tiếp thêm tinh thần cho team.",
+                    },
+                    {
+                        q: "Khuyết điểm của KT Top-down là gì?",
+                        o: [
+                            "Phải viết driver",
+                            "Tạo stub thường phức tạp; nếu module I/O xa module test thì khó cung cấp dữ liệu",
+                            "Không phát hiện lỗi thiết kế",
+                            "Chậm hơn bottom-up",
+                        ],
+                        a: 1,
+                        e: "Top-down khuyết điểm: (1) Tạo stub phức tạp. (2) Nếu module nhập/xuất xa với module cần test → rất khó cung cấp dữ liệu kiểm thử.",
+                    },
+                    {
+                        q: "KT Bottom-up bắt đầu từ đâu?",
+                        o: [
+                            "Module gốc",
+                            "Module lá — module không gọi module nào khác",
+                            "Module giữa",
+                            "Module main",
+                        ],
+                        a: 1,
+                        e: "KT bottom-up: bắt đầu từ module lá (không gọi module khác). Sau đó tích hợp lên dần theo chiều từ dưới lên.",
+                    },
+                    {
+                        q: "'Driver' trong KT Bottom-up được dùng để làm gì?",
+                        o: [
+                            "Thay thế module con",
+                            "Mô phỏng module cha để test module con đang được KT",
+                            "Tạo test data",
+                            "Chạy test tự động",
+                        ],
+                        a: 1,
+                        e: "Driver: module giả mô phỏng module cha — dùng trong bottom-up để gọi và test module con khi module cha chưa được phát triển.",
+                    },
+                    {
+                        q: "Driver hay Stub dễ tạo hơn?",
+                        o: [
+                            "Stub dễ hơn",
+                            "Driver dễ hơn",
+                            "Chúng có độ khó tương đương",
+                            "Cả hai đều dễ",
+                        ],
+                        a: 1,
+                        e: "Driver dễ tạo hơn stub: driver chỉ cần gọi module con với dữ liệu test. Stub phức tạp hơn vì phải mô phỏng hành vi và trả về dữ liệu của module con.",
+                    },
+                    {
+                        q: "Ưu điểm của KT Bottom-up là gì?",
+                        o: [
+                            "Chương trình khung sườn hình thành sớm",
+                            "Phát hiện sớm lỗi module mức thấp; dễ cung cấp điều kiện KT và quan sát kết quả",
+                            "Không cần viết driver",
+                            "Phát hiện lỗi thiết kế sớm",
+                        ],
+                        a: 1,
+                        e: "Bottom-up ưu điểm: (1) Phát hiện sớm lỗi ở module mức thấp. (2) Tạo điều kiện KT dễ dàng hơn. (3) Quan sát kết quả KT dễ dàng hơn.",
+                    },
+                    {
+                        q: "Khuyết điểm của KT Bottom-up là gì?",
+                        o: [
+                            "Phải viết stub",
+                            "Phải viết driver; chương trình khung sườn chưa tồn tại lâu; lỗi thiết kế phát hiện muộn",
+                            "Không phát hiện lỗi module thấp",
+                            "Chậm hơn top-down",
+                        ],
+                        a: 1,
+                        e: "Bottom-up khuyết điểm: (1) Phải viết driver. (2) Chương trình khung sườn chưa tồn tại một thời gian dài — khó demo sớm. (3) Lỗi thiết kế phát hiện muộn.",
+                    },
+                    {
+                        q: "'Big Bang Testing' là gì?",
+                        o: [
+                            "KT hiệu năng dưới tải lớn",
+                            "Tích hợp và kiểm thử tất cả module cùng lúc (tích hợp đồng thời)",
+                            "KT bảo mật toàn diện",
+                            "KT toàn bộ bằng automation",
+                        ],
+                        a: 1,
+                        e: "Big Bang testing (tích hợp đồng thời): tích hợp tất cả module cùng một lúc rồi test. Ngược với tích hợp từng bước (top-down/bottom-up).",
+                    },
+                    {
+                        q: "KT hệ thống được thực hiện khi nào?",
+                        o: [
+                            "Ngay khi bắt đầu dự án",
+                            "Sau khi KT unit và tích hợp hoàn thành, hệ thống hoàn thiện",
+                            "Trong từng sprint",
+                            "Trước khi viết code",
+                        ],
+                        a: 1,
+                        e: "KT hệ thống thực hiện khi: hệ thống hoàn thiện, KT unit và tích hợp đã xong, sản phẩm tích hợp đúng thiết kế, tài liệu đặc tả là bản cuối.",
+                    },
+                    {
+                        q: "KT hệ thống đặc biệt thích hợp phát hiện loại lỗi nào?",
+                        o: [
+                            "Lỗi thuật toán trong từng module",
+                            "Lỗi giao tiếp với PM/HW bên ngoài, lỗi deadlock, chiếm dụng bộ nhớ",
+                            "Lỗi chính tả",
+                            "Lỗi giao diện đơn giản",
+                        ],
+                        a: 1,
+                        e: "KT hệ thống đặc biệt tốt để phát hiện: lỗi giao tiếp với PM/HW bên ngoài, deadlock, chiếm dụng bộ nhớ — những lỗi chỉ xuất hiện khi toàn hệ thống hoạt động.",
+                    },
+                    {
+                        q: "'Usability Testing' trong KT hệ thống kiểm tra điều gì?",
+                        o: [
+                            "Hiệu năng",
+                            "Khả năng sử dụng — giao diện có dễ dùng với người dùng không",
+                            "Bảo mật",
+                            "Cài đặt",
+                        ],
+                        a: 1,
+                        e: "Usability Testing: kiểm tra khả năng sử dụng — PM có dễ dùng, trực quan và thân thiện với người dùng không.",
+                    },
+                    {
+                        q: "'Security Testing' trong KT hệ thống kiểm tra điều gì?",
+                        o: [
+                            "Tốc độ PM",
+                            "Khả năng chịu tải",
+                            "Tính bảo mật — PM có chống được các tấn công, bảo vệ dữ liệu không",
+                            "Khả năng cài đặt",
+                        ],
+                        a: 2,
+                        e: "Security Testing: kiểm tra tính bảo mật của hệ thống — chống truy cập trái phép, bảo vệ dữ liệu, chống các loại tấn công.",
+                    },
+                    {
+                        q: "'Performance Testing' bao gồm những loại nào?",
+                        o: [
+                            "Chỉ load test",
+                            "Load & Stability Testing; kiểm tra tốc độ, khả năng đáp ứng và ổn định dưới tải",
+                            "Chỉ stress test",
+                            "Chỉ kiểm tra thời gian phản hồi",
+                        ],
+                        a: 1,
+                        e: "Performance Testing bao gồm Load Testing, Stress Testing, Stability Testing — kiểm tra hệ thống hoạt động như thế nào dưới các điều kiện tải khác nhau.",
+                    },
+                    {
+                        q: "'Regression Testing' trong KT hệ thống là gì?",
+                        o: [
+                            "KT tính năng mới",
+                            "KT lại sau khi sửa lỗi để đảm bảo không phá vỡ tính năng đang hoạt động",
+                            "KT bảo mật",
+                            "KT cài đặt",
+                        ],
+                        a: 1,
+                        e: "Regression Testing: KT lại các tính năng đã hoạt động sau khi có thay đổi (sửa bug, thêm feature) để đảm bảo không bị phá vỡ.",
+                    },
+                    {
+                        q: "'Installation Testing' kiểm tra điều gì?",
+                        o: [
+                            "Hiệu năng",
+                            "Quy trình cài đặt PM hoạt động đúng trên các môi trường khác nhau",
+                            "Bảo mật",
+                            "Khả năng sử dụng",
+                        ],
+                        a: 1,
+                        e: "Installation Testing: kiểm tra quy trình cài đặt, cập nhật và gỡ cài đặt PM diễn ra đúng và suôn sẻ trên các môi trường/OS khác nhau.",
+                    },
+                    {
+                        q: "'Interoperability Testing' kiểm tra điều gì?",
+                        o: [
+                            "Tốc độ",
+                            "Khả năng tương tác của PM với các hệ thống, PM hoặc phần cứng khác",
+                            "Giao diện người dùng",
+                            "Bảo mật",
+                        ],
+                        a: 1,
+                        e: "Interoperability Testing: kiểm tra khả năng tương tác và tích hợp của PM với các hệ thống, ứng dụng hoặc phần cứng khác.",
+                    },
+                    {
+                        q: "'Scalability Testing' kiểm tra điều gì?",
+                        o: [
+                            "Kích thước file",
+                            "Khả năng mở rộng của hệ thống khi tải/dữ liệu tăng",
+                            "Giao diện",
+                            "Bảo mật",
+                        ],
+                        a: 1,
+                        e: "Scalability Testing: kiểm tra khả năng mở rộng (scale) của hệ thống khi số lượng người dùng, dữ liệu hoặc giao dịch tăng lên.",
+                    },
+                    {
+                        q: "KT hệ thống đòi hỏi điều gì đặc biệt so với các cấp độ khác?",
+                        o: [
+                            "Ít tài nguyên hơn",
+                            "Nhiều thời gian, công sức và thiết bị hơn",
+                            "Ít kỹ năng hơn",
+                            "Ít tài liệu hơn",
+                        ],
+                        a: 1,
+                        e: "KT hệ thống đòi hỏi nhiều thời gian, công sức và thiết bị hơn so với KT unit và tích hợp vì phải test toàn bộ hệ thống trong môi trường gần thực tế.",
+                    },
+                    {
+                        q: "'Reliability Testing' kiểm tra điều gì?",
+                        o: [
+                            "Tốc độ xử lý",
+                            "Độ tin cậy — PM có hoạt động ổn định và nhất quán theo thời gian không",
+                            "Bảo mật",
+                            "Cài đặt",
+                        ],
+                        a: 1,
+                        e: "Reliability Testing: kiểm tra độ tin cậy của hệ thống — PM có hoạt động ổn định, nhất quán và không bị crash trong thời gian dài không.",
+                    },
+                    {
+                        q: "'Document Testing' trong KT hệ thống là gì?",
+                        o: [
+                            "KT code documentation",
+                            "Kiểm tra tài liệu hướng dẫn người dùng, help files có chính xác và đủ không",
+                            "KT API documentation",
+                            "KT comment trong code",
+                        ],
+                        a: 1,
+                        e: "Document Testing: kiểm tra tài liệu đi kèm PM (user manual, help files) có chính xác, đầy đủ và phù hợp với PM thực tế không.",
+                    },
+                    {
+                        q: "'Recoverability Testing' kiểm tra điều gì?",
+                        o: [
+                            "Tốc độ PM",
+                            "Khả năng PM phục hồi sau sự cố/lỗi",
+                            "Bảo mật",
+                            "Giao diện",
+                        ],
+                        a: 1,
+                        e: "Recoverability Testing: kiểm tra khả năng hệ thống phục hồi sau sự cố, lỗi hoặc crash — đảm bảo dữ liệu không bị mất và hệ thống quay lại trạng thái bình thường.",
+                    },
+                    {
+                        q: "'Sandwich testing' trong tích hợp là gì?",
+                        o: [
+                            "KT module giống sandwich",
+                            "Kết hợp cả hai chiến lược top-down và bottom-up",
+                            "Một loại Big Bang testing",
+                            "KT bằng nhiều công cụ",
+                        ],
+                        a: 1,
+                        e: "Sandwich testing: chiến lược kết hợp top-down và bottom-up. Đồng thời test từ trên xuống và từ dưới lên, gặp nhau ở giữa.",
+                    },
+                    {
+                        q: "Khi chọn module kế tiếp trong KT Top-down, ưu tiên module nào?",
+                        o: [
+                            "Module ngắn nhất",
+                            "Module thực hiện nhiều I/O trước, sau đó module 'critical' (phức tạp, nhiều lỗi tiềm ẩn)",
+                            "Module mới nhất",
+                            "Module nhỏ nhất",
+                        ],
+                        a: 1,
+                        e: "Trong top-down, sau module hiện hành chọn module: (1) Được dùng trực tiếp. (2) Nhiều I/O. (3) Module critical (thuật giải phức tạp, nhiều lỗi tiềm ẩn).",
+                    },
+                    {
+                        q: "Mục đích của KT hệ thống là gì?",
+                        o: [
+                            "Kiểm tra từng module",
+                            "Kiểm tra thiết kế và toàn bộ hệ thống có thỏa mãn yêu cầu đặt ra",
+                            "Kiểm tra code style",
+                            "Kiểm tra tài liệu",
+                        ],
+                        a: 1,
+                        e: "Mục đích KT hệ thống: kiểm tra thiết kế và toàn bộ hệ thống — đánh giá hoạt động, thao tác, độ tin cậy và các yêu cầu chất lượng tổng thể.",
+                    },
+                    {
+                        q: "Functionality Testing kiểm tra điều gì?",
+                        o: [
+                            "Hiệu năng",
+                            "Các chức năng của hệ thống có hoạt động đúng theo yêu cầu không",
+                            "Bảo mật",
+                            "Giao diện",
+                        ],
+                        a: 1,
+                        e: "Functionality Testing: kiểm tra các chức năng (features) của hệ thống có hoạt động đúng theo đặc tả và yêu cầu người dùng không.",
+                    },
+                    {
+                        q: "Tại sao KT Unit giúp 'KT giai đoạn sau nhanh hơn'?",
+                        o: [
+                            "Vì tester làm quen rồi",
+                            "Vì khi unit đã đúng, lỗi ở KT tích hợp/hệ thống sẽ ít hơn và dễ cô lập hơn",
+                            "Vì ít test case hơn",
+                            "Vì không cần KT tích hợp",
+                        ],
+                        a: 1,
+                        e: "Khi unit đã đúng, các bug ở KT tích hợp chủ yếu là lỗi giao tiếp giữa module — ít hơn và dễ cô lập hơn nhiều so với khi không có Unit Test.",
+                    },
+                    {
+                        q: "Tài liệu nào cần hoàn thành TRƯỚC KHI thực hiện KT hệ thống?",
+                        o: [
+                            "Chỉ cần test plan",
+                            "Test plan và test case phải hoàn thành; tài liệu đặc tả phải là bản cuối",
+                            "Không cần tài liệu",
+                            "Chỉ cần bug report template",
+                        ],
+                        a: 1,
+                        e: "Để thực hiện KT hệ thống cần: hệ thống hoàn thiện, KT unit/tích hợp xong, tài liệu đặc tả là bản cuối, test plan và test case hoàn thành.",
+                    },
+                    {
+                        q: "Các vấn đề quan tâm trong KT Unit gồm những gì?",
+                        o: [
+                            "Chỉ kiểm tra tốc độ",
+                            "Sự hoàn chỉnh chức năng, xử lý lỗi, kiểm tra input, đúng đắn output, tối ưu thuật toán",
+                            "Chỉ kiểm tra giao diện",
+                            "Chỉ kiểm tra bảo mật",
+                        ],
+                        a: 1,
+                        e: "Các vấn đề quan tâm trong Unit Test: sự hoàn chỉnh chức năng, xử lý lỗi, kiểm tra giá trị đầu vào, tính đúng đắn của đầu ra, tối ưu thuật toán.",
+                    },
+                    {
+                        q: "Tại sao phát hiện bug sớm ít tốn kém hơn?",
+                        o: [
+                            "Tester ít kinh nghiệm hơn lúc đầu",
+                            "Chi phí sửa lỗi tăng dần theo thời gian — lỗi phát hiện ở Unit Test rẻ hơn nhiều so với sau khi release",
+                            "Ít người trong team",
+                            "Máy tính nhanh hơn lúc đầu",
+                        ],
+                        a: 1,
+                        e: "Chi phí sửa lỗi tăng theo thời gian (rule of 10): lỗi ở requirements = $1, ở design = $10, ở coding = $100, sau release = $1000+. KT sớm tiết kiệm chi phí đáng kể.",
+                    },
+                    {
+                        q: "Khi nào sử dụng Bottom-up thay vì Top-down?",
+                        o: [
+                            "Khi cần demo sớm",
+                            "Khi lỗi thường nằm ở module mức thấp và cần phát hiện sớm",
+                            "Khi cần phát hiện lỗi thiết kế",
+                            "Khi module gốc quan trọng nhất",
+                        ],
+                        a: 1,
+                        e: "Dùng Bottom-up khi: lỗi có khuynh hướng nằm ở module mức thấp — bottom-up sẽ phát hiện chúng sớm hơn top-down.",
+                    },
+                    {
+                        q: "'Functionality Testing' khác gì với 'Usability Testing'?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Functionality: chức năng có đúng không. Usability: chức năng có dễ sử dụng không",
+                            "Functionality chỉ test UI",
+                            "Usability chỉ test performance",
+                        ],
+                        a: 1,
+                        e: "Functionality Testing: chức năng có hoạt động đúng theo spec không. Usability Testing: chức năng có dễ dùng, trực quan với người dùng thực tế không.",
+                    },
+                    {
+                        q: "Tại sao KT hệ thống cần môi trường gần thực tế nhất?",
+                        o: [
+                            "Để tốn nhiều tiền hơn",
+                            "Để phát hiện lỗi chỉ xuất hiện trong điều kiện thực tế như tương tác phần cứng, hiệu năng thực",
+                            "Để tester thoải mái hơn",
+                            "Để demo cho khách hàng",
+                        ],
+                        a: 1,
+                        e: "KT hệ thống cần môi trường gần thực tế vì nhiều lỗi (deadlock, memory leak, performance) chỉ xuất hiện khi hệ thống chạy đủ tải trong môi trường thực.",
+                    },
+                ],
+            },
+            {
+                id: 4,
+                name: "Phương pháp & Kỹ thuật",
+                desc: "Hộp đen, hộp trắng, hộp xám, kỹ thuật",
+                questions: [
+                    {
+                        q: "Kiểm thử hộp đen tập trung vào điều gì?",
+                        o: [
+                            "Cấu trúc logic bên trong code",
+                            "Các yêu cầu chức năng của PM dựa trên dữ liệu từ đặc tả, không quan tâm bên trong",
+                            "Chỉ test giao diện",
+                            "Chỉ test database",
+                        ],
+                        a: 1,
+                        e: "KT hộp đen: coi hệ thống là hộp đen — không thể thấy bên trong. Tập trung vào yêu cầu chức năng, dựa trên đặc tả, test qua giao diện.",
+                    },
+                    {
+                        q: "Đặc trưng nào KHÔNG phải của KT hộp đen?",
+                        o: [
+                            "Kiểm tra PM có đủ chức năng chưa",
+                            "Các chức năng có đúng không",
+                            "Xem xét cấu trúc bên trong code",
+                            "Thực hiện qua giao diện",
+                        ],
+                        a: 2,
+                        e: "KT hộp đen KHÔNG xem xét cấu trúc bên trong code. Nó chỉ test qua giao diện, dựa trên đặc tả — không cần biết cách implement.",
+                    },
+                    {
+                        q: "Kỹ thuật nào KHÔNG thuộc KT hộp đen?",
+                        o: [
+                            "Phân vùng tương đương",
+                            "Phân tích giá trị biên",
+                            "Phân tích độ phức tạp Cyclomatic",
+                            "Bảng hỗ trợ quyết định",
+                        ],
+                        a: 2,
+                        e: "Phân tích độ phức tạp Cyclomatic là kỹ thuật của KT hộp trắng (dựa trên cấu trúc code). Ba kỹ thuật còn lại thuộc KT hộp đen.",
+                    },
+                    {
+                        q: "'Phân vùng tương đương' (Equivalence Partitioning) là gì?",
+                        o: [
+                            "Chia chương trình thành các module",
+                            "Chia miền đầu vào thành các lớp dữ liệu — đại diện cho trạng thái hợp lệ hoặc không hợp lệ",
+                            "Chia test case theo độ ưu tiên",
+                            "Chia team theo kỹ năng",
+                        ],
+                        a: 1,
+                        e: "EC: chia miền đầu vào thành các lớp tương đương — mỗi lớp đại diện cho tập trạng thái hợp lệ hoặc không hợp lệ. Chỉ cần test một đại diện mỗi lớp.",
+                    },
+                    {
+                        q: "Trong phân vùng tương đương, lớp tương đương được xác định bằng cách nào?",
+                        o: [
+                            "Chia ngẫu nhiên",
+                            "Lấy mỗi điều kiện đầu vào và phân chia thành 2 hay nhiều nhóm (hợp lệ/không hợp lệ)",
+                            "Chỉ chia theo giá trị số",
+                            "Theo ý kiến tester",
+                        ],
+                        a: 1,
+                        e: "Lớp tương đương xác định bằng cách: lấy mỗi trạng thái đầu vào (câu/cụm từ trong đặc tả) và phân chia thành 2 hay nhiều nhóm trạng thái.",
+                    },
+                    {
+                        q: "'Weak Normal EC' khác 'Strong Normal EC' như thế nào?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Weak Normal: chọn 1 đại diện mỗi lớp tương đương. Strong Normal: tổ hợp tất cả lớp tương đương hợp lệ",
+                            "Strong Normal ít test case hơn",
+                            "Weak Normal phức tạp hơn",
+                        ],
+                        a: 1,
+                        e: "Weak Normal EC: chọn 1 test case đại diện từ mỗi lớp tương đương. Strong Normal EC: tổ hợp tất cả các lớp tương đương với nhau — nhiều test case hơn.",
+                    },
+                    {
+                        q: "'Weak Robust EC' khác 'Weak Normal EC' như thế nào?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Robust EC bổ sung thêm test case cho giá trị nằm NGOÀI miền hợp lệ (giá trị không hợp lệ)",
+                            "Robust EC ít test case hơn",
+                            "Robust EC chỉ test invalid",
+                        ],
+                        a: 1,
+                        e: "Robust EC: bổ sung thêm test case cho các giá trị nằm ngoài miền hợp lệ (robust = kiểm tra tính bền vững khi nhận input không hợp lệ).",
+                    },
+                    {
+                        q: "'Phân tích giá trị biên' (Boundary Value Analysis) tập trung vào đâu?",
+                        o: [
+                            "Giá trị trung bình",
+                            "Các giá trị biên của miền dữ liệu — nơi thường xảy ra lỗi nhất",
+                            "Giá trị ngẫu nhiên",
+                            "Giá trị âm",
+                        ],
+                        a: 1,
+                        e: "BVA: tập trung phân tích giá trị biên vì lỗi thường xảy ra tại ranh giới miền. Kiểm tra: min, min+1, min-1, max, max+1, max-1.",
+                    },
+                    {
+                        q: "Theo BVA, với biến có miền [a,b], cần test những giá trị nào (Normal BV)?",
+                        o: [
+                            "Chỉ a và b",
+                            "a, a+1, a-1, b, b+1, b-1",
+                            "Chỉ giá trị giữa",
+                            "Ngẫu nhiên trong [a,b]",
+                        ],
+                        a: 1,
+                        e: "Normal BV: kiểm tra min(a), min+1, max-1, max(b) — và thêm min-1, max+1 cho Robustness BV. Đây là 4-6 giá trị quan trọng nhất.",
+                    },
+                    {
+                        q: "'Robustness BV' khác 'Normal BV' ở điểm nào?",
+                        o: [
+                            "Chúng giống nhau",
+                            "Robustness BV bổ sung giá trị min-1 và max+1 (ngoài miền hợp lệ)",
+                            "Normal BV nhiều test case hơn",
+                            "Robustness BV chỉ test giá trị hợp lệ",
+                        ],
+                        a: 1,
+                        e: "Robustness BV: bổ sung test case với giá trị ngoài miền (min-1, max+1) — kiểm tra PM xử lý đúng khi nhận input ngoài phạm vi cho phép.",
+                    },
+                    {
+                        q: "'Worst-Cases BV' là gì?",
+                        o: [
+                            "Chỉ test giá trị lớn nhất",
+                            "Tổ hợp đầy đủ tất cả các giá trị biên của nhiều biến — nhiều test case nhất",
+                            "Test case ngẫu nhiên",
+                            "Chỉ test trường hợp xấu nhất theo ý kiến tester",
+                        ],
+                        a: 1,
+                        e: "Worst-Cases BV: tổ hợp tất cả các giá trị biên (min, min+1, nominal, max-1, max) của tất cả biến với nhau — tạo ra số lượng test case rất lớn nhưng bao phủ toàn diện.",
+                    },
+                    {
+                        q: "Bảng hỗ trợ quyết định (Decision Table) dùng để làm gì?",
+                        o: [
+                            "Lưu trữ dữ liệu test",
+                            "Mô tả các tổ hợp điều kiện đầu vào và hành động tương ứng — test logic nghiệp vụ phức tạp",
+                            "Vẽ sơ đồ luồng",
+                            "Quản lý bug",
+                        ],
+                        a: 1,
+                        e: "Decision Table: mô tả tổ hợp điều kiện (conditions) và hành động tương ứng (actions). Đặc biệt hiệu quả để test logic nghiệp vụ phức tạp với nhiều điều kiện.",
+                    },
+                    {
+                        q: "KT hộp trắng dựa trên điều gì?",
+                        o: [
+                            "Chỉ đặc tả yêu cầu",
+                            "Xem xét cấu trúc bên trong của chương trình — kiểm tra code có đúng thiết kế không",
+                            "Kinh nghiệm tester",
+                            "Giao diện người dùng",
+                        ],
+                        a: 1,
+                        e: "KT hộp trắng: kiểm tra đoạn mã chương trình dựa trên cấu trúc điều khiển bên trong — đường thi hành, nhánh, điều kiện.",
+                    },
+                    {
+                        q: "'Đường thi hành' (Execution path) là gì?",
+                        o: [
+                            "Đường dẫn file",
+                            "Danh sách có thứ tự các lệnh được thi hành ứng với một lần chạy cụ thể",
+                            "Đường mạng",
+                            "Lịch sử git",
+                        ],
+                        a: 1,
+                        e: "Execution path: danh sách có thứ tự các lệnh được thi hành ứng với 1 lần chạy cụ thể, từ điểm nhập đến điểm kết thúc của đơn vị PM.",
+                    },
+                    {
+                        q: "Công thức tính độ phức tạp Cyclomatic V(G) là gì?",
+                        o: [
+                            "V(G) = E + N",
+                            "V(G) = E - N + 2",
+                            "V(G) = N - E + 2",
+                            "V(G) = E × N",
+                        ],
+                        a: 1,
+                        e: "V(G) = E - N + 2, trong đó E là số cạnh (edges) và N là số đỉnh (nodes) trong sơ đồ dòng điều khiển.",
+                    },
+                    {
+                        q: "Độ phức tạp Cyclomatic V(G) cho biết điều gì?",
+                        o: [
+                            "Kích thước chương trình",
+                            "Số đường thi hành tuyến tính độc lập — số test case cần thiết cho hộp trắng",
+                            "Số lỗi trong chương trình",
+                            "Thời gian chạy",
+                        ],
+                        a: 1,
+                        e: "V(G) = số đường thi hành tuyến tính độc lập = số test case tối thiểu cần để phủ toàn bộ đường thi hành trong KT hộp trắng.",
+                    },
+                    {
+                        q: "'Phủ cấp 1' (Statement Coverage) nghĩa là gì?",
+                        o: [
+                            "Chỉ test 1 test case",
+                            "Mỗi lệnh (statement) được thực thi ít nhất 1 lần",
+                            "Mỗi nhánh được test",
+                            "Mỗi điều kiện được test",
+                        ],
+                        a: 1,
+                        e: "Phủ cấp 1 (Statement Coverage): mỗi câu lệnh trong chương trình được thực thi ít nhất 1 lần trong toàn bộ bộ test case.",
+                    },
+                    {
+                        q: "'Phủ cấp 2' (Branch Coverage) nghĩa là gì?",
+                        o: [
+                            "Mỗi lệnh chạy 1 lần",
+                            "Mỗi điểm quyết định luận lý được thực hiện ít nhất 1 lần cả TRUE lẫn FALSE",
+                            "Mỗi điều kiện con test 1 lần",
+                            "Tổ hợp tất cả điều kiện",
+                        ],
+                        a: 1,
+                        e: "Phủ cấp 2 (Branch/Decision Coverage): mỗi điểm quyết định (if, while...) được thực hiện ít nhất 1 lần cho cả nhánh TRUE lẫn FALSE.",
+                    },
+                    {
+                        q: "'Phủ cấp 3' (Condition Coverage) nghĩa là gì?",
+                        o: [
+                            "Mỗi nhánh test 1 lần",
+                            "Mỗi điều kiện luận lý CON của từng điểm quyết định thực hiện 1 lần TRUE và 1 lần FALSE",
+                            "Mỗi lệnh chạy 1 lần",
+                            "Tổ hợp tất cả điều kiện con",
+                        ],
+                        a: 1,
+                        e: "Phủ cấp 3 (Condition Coverage): mỗi điều kiện luận lý CON trong từng điểm quyết định phức hợp (vd: if(A&&B)) phải được test cả TRUE lẫn FALSE.",
+                    },
+                    {
+                        q: "'Phủ cấp 4' kết hợp những phủ cấp nào?",
+                        o: [
+                            "Phủ cấp 1 và 2",
+                            "Phủ cấp 2 và 3 (Branch và Condition)",
+                            "Phủ cấp 1 và 3",
+                            "Phủ cấp 1, 2 và 3",
+                        ],
+                        a: 1,
+                        e: "Phủ cấp 4 (Branch/Condition Coverage): kết hợp phủ cấp 2 (branch) và phủ cấp 3 (condition) — đòi hỏi cao nhất, thường dùng trong PM an toàn cao.",
+                    },
+                    {
+                        q: "'Phủ cấp 0' nghĩa là gì?",
+                        o: [
+                            "Không KT gì cả",
+                            "KT những gì có thể KT được, phần còn lại để người dùng phát hiện và báo lại",
+                            "Phủ 100% code",
+                            "Phủ ngẫu nhiên",
+                        ],
+                        a: 1,
+                        e: "Phủ cấp 0: kiểm tra những gì có thể, phần còn lại để người dùng phát hiện và báo lại sau — mức độ bao phủ thấp nhất.",
+                    },
+                    {
+                        q: "Quy trình xác định đường thi hành trong KT hộp trắng gồm những bước nào?",
+                        o: [
+                            "Chỉ vẽ sơ đồ",
+                            "Vẽ sơ đồ dòng điều khiển → tính V(G) → xác định đường thi hành → tạo TC → chạy TC → so sánh kết quả → báo cáo",
+                            "Chỉ viết test case",
+                            "Chỉ tính V(G)",
+                        ],
+                        a: 1,
+                        e: "Quy trình: (1) Vẽ sơ đồ dòng điều khiển. (2) Tính V(G)=E-N+2. (3) Xác định số đường thi hành tuyến tính. (4) Tạo TC. (5) Chạy TC. (6) So sánh kết quả. (7) Báo cáo.",
+                    },
+                    {
+                        q: "KT hộp xám là gì?",
+                        o: [
+                            "KT không có tài liệu",
+                            "Kết hợp lợi ích của cả hộp đen và hộp trắng — biết một phần cấu trúc bên trong",
+                            "Chỉ test màu sắc giao diện",
+                            "KT với dữ liệu mờ",
+                        ],
+                        a: 1,
+                        e: "KT hộp xám: kết hợp lợi ích của hộp đen và hộp trắng. Tester biết một phần cấu trúc bên trong (DB schema, UML, kiến trúc) để thiết kế TC thông minh hơn.",
+                    },
+                    {
+                        q: "Lợi ích của KT hộp xám là gì?",
+                        o: [
+                            "Đơn giản hơn hộp đen",
+                            "Cung cấp lợi ích kết hợp cả hai; tester thiết kế kịch bản phức tạp thông minh hơn dựa trên UML, DB schema, kiến trúc",
+                            "Không cần biết spec",
+                            "Không cần tester kỹ thuật cao",
+                        ],
+                        a: 1,
+                        e: "KT hộp xám: (1) Kết hợp lợi ích hộp đen + hộp trắng. (2) Dựa trên đặc tả chức năng, UML, DB schema, kiến trúc. (3) Tester thiết kế kịch bản phức tạp thông minh hơn.",
+                    },
+                    {
+                        q: "'Strong Robust EC' là gì?",
+                        o: [
+                            "Weak EC với ít test case",
+                            "Tổ hợp tất cả lớp tương đương cả hợp lệ lẫn không hợp lệ — nhiều test case nhất trong EC",
+                            "Chỉ test invalid class",
+                            "Giống Normal EC",
+                        ],
+                        a: 1,
+                        e: "Strong Robust EC: tổ hợp TẤT CẢ lớp tương đương (hợp lệ VÀ không hợp lệ) với nhau — tạo ra số lượng test case lớn nhất, bao phủ toàn diện nhất.",
+                    },
+                    {
+                        q: "Sơ đồ dòng điều khiển (Control Flow Graph) dùng để làm gì trong KT hộp trắng?",
+                        o: [
+                            "Vẽ giao diện",
+                            "Biểu diễn cấu trúc điều khiển của chương trình để xác định đường thi hành và tính V(G)",
+                            "Vẽ kiến trúc hệ thống",
+                            "Vẽ database schema",
+                        ],
+                        a: 1,
+                        e: "Control Flow Graph: biểu diễn cấu trúc điều khiển (các lệnh, nhánh, vòng lặp) dưới dạng đồ thị. Dùng để tính V(G) và xác định các đường thi hành cần test.",
+                    },
+                    {
+                        q: "Tại sao lỗi hay xảy ra ở giá trị biên?",
+                        o: [
+                            "Ngẫu nhiên",
+                            "Lập trình viên thường mắc lỗi off-by-one (sai một đơn vị), nhầm > với >=, sai điều kiện vòng lặp",
+                            "Giá trị biên khó test",
+                            "Không có lý do đặc biệt",
+                        ],
+                        a: 1,
+                        e: "Lỗi biên thường xảy ra do: off-by-one errors (> vs >=, < vs <=), sai điều kiện vòng lặp, sai khi xử lý min/max — đây là pattern lỗi phổ biến nhất.",
+                    },
+                    {
+                        q: "Kỹ thuật nào hiệu quả nhất để test logic nghiệp vụ phức tạp với nhiều điều kiện kết hợp?",
+                        o: [
+                            "Phân vùng tương đương",
+                            "Phân tích giá trị biên",
+                            "Bảng hỗ trợ quyết định",
+                            "Đường thi hành",
+                        ],
+                        a: 2,
+                        e: "Bảng hỗ trợ quyết định (Decision Table) hiệu quả nhất cho logic nghiệp vụ phức tạp với nhiều điều kiện — đảm bảo mọi tổ hợp điều kiện đều được test.",
+                    },
+                    {
+                        q: "Trong KT hộp trắng, sau khi tính V(G)=4, cần ít nhất bao nhiêu test case?",
+                        o: ["1", "2", "4", "8"],
+                        a: 2,
+                        e: "V(G) = số đường thi hành tuyến tính độc lập = số test case TỐI THIỂU cần thiết. V(G)=4 → cần ít nhất 4 test case để phủ toàn bộ đường thi hành.",
+                    },
+                    {
+                        q: "Phương pháp KT nào phù hợp nhất khi tester không có quyền truy cập source code?",
+                        o: [
+                            "KT hộp trắng",
+                            "KT hộp đen",
+                            "KT hộp xám",
+                            "Không loại nào phù hợp",
+                        ],
+                        a: 1,
+                        e: "KT hộp đen phù hợp khi không có source code vì nó chỉ test dựa trên đặc tả và giao diện — không cần nhìn vào bên trong code.",
+                    },
+                    {
+                        q: "Phương pháp KT nào phù hợp nhất khi cần đảm bảo mọi dòng code đều được thực thi?",
+                        o: [
+                            "KT hộp đen",
+                            "KT hộp xám",
+                            "KT hộp trắng",
+                            "Phân vùng tương đương",
+                        ],
+                        a: 2,
+                        e: "KT hộp trắng phù hợp nhất để đảm bảo code coverage — nó trực tiếp dựa trên cấu trúc code để thiết kế TC đảm bảo mọi lệnh, nhánh được thực thi.",
+                    },
+                    {
+                        q: "'Worst-Cases + Robustness BV' là gì?",
+                        o: [
+                            "Chỉ test worst case",
+                            "Tổ hợp worst-cases với cả giá trị ngoài miền hợp lệ — số test case nhiều nhất",
+                            "Test case ngẫu nhiên",
+                            "Giống Normal BV",
+                        ],
+                        a: 1,
+                        e: "Worst-Cases + Robustness BV: kết hợp worst-cases (tổ hợp tất cả giá trị biên) với robustness (thêm giá trị ngoài miền) — số lượng test case lớn nhất nhưng bao phủ toàn diện nhất.",
+                    },
+                    {
+                        q: "Điểm mạnh của 'Phân tích giá trị biên' so với phân vùng tương đương là gì?",
+                        o: [
+                            "Ít test case hơn",
+                            "Phát hiện lỗi off-by-one và lỗi điều kiện biên mà EC bỏ qua",
+                            "Dễ áp dụng hơn",
+                            "Không cần đặc tả",
+                        ],
+                        a: 1,
+                        e: "BVA mạnh hơn EC ở chỗ: phát hiện lỗi tại ranh giới miền (off-by-one, sai điều kiện biên) — những lỗi rất phổ biến mà EC không kiểm tra.",
+                    },
+                    {
+                        q: "Kỹ thuật EC (Equivalence Class) giúp giảm số lượng test case bằng cách nào?",
+                        o: [
+                            "Xóa bớt test case",
+                            "Thay vì test mọi giá trị, chỉ cần test 1 đại diện của mỗi lớp — các giá trị trong cùng lớp cho kết quả tương tự",
+                            "Chỉ test happy path",
+                            "Dùng AI để giảm",
+                        ],
+                        a: 1,
+                        e: "EC giảm số TC bằng cách: thay vì test mọi giá trị trong một miền, chỉ cần test 1 đại diện — vì tất cả giá trị trong cùng lớp tương đương sẽ cho kết quả tương tự.",
+                    },
+                    {
+                        q: "Khi áp dụng EC, có bao nhiêu loại kết hợp input chính?",
+                        o: ["2", "3", "4", "5"],
+                        a: 2,
+                        e: "Có 4 loại kết hợp input khi áp dụng EC: Weak Normal EC, Strong Normal EC, Weak Robust EC, Strong Robust EC.",
+                    },
+                    {
+                        q: "Phân tích giá trị biên có bao nhiêu loại kết hợp input chính?",
+                        o: ["2", "3", "4", "5"],
+                        a: 2,
+                        e: "Có 4 loại khi áp dụng BVA: Normal BV, Robustness BV, Worst-Cases BV, Worst-Cases + Robustness BV.",
+                    },
+                    {
+                        q: "Sự kết hợp EC và BVA trong thực tế mang lại lợi ích gì?",
+                        o: [
+                            "Không có lợi ích gì thêm",
+                            "EC giảm số lớp, BVA kiểm tra biên của mỗi lớp — kết hợp cho độ bao phủ cao hơn với ít test case hơn",
+                            "Làm tăng số test case",
+                            "Chỉ cần dùng một trong hai",
+                        ],
+                        a: 1,
+                        e: "EC + BVA bổ sung cho nhau: EC phân vùng miền đầu vào, BVA kiểm tra giá trị tại ranh giới mỗi phân vùng — kết hợp này bao phủ toàn diện hơn mỗi kỹ thuật riêng lẻ.",
+                    },
+                    {
+                        q: "Tại sao KT hộp trắng cần developer tham gia?",
+                        o: [
+                            "Để tiết kiệm tiền",
+                            "Vì developer hiểu cấu trúc code, có thể thiết kế TC bao phủ đường thi hành hiệu quả hơn",
+                            "Để có thêm người test",
+                            "Để debug nhanh hơn",
+                        ],
+                        a: 1,
+                        e: "KT hộp trắng cần developer vì: họ biết cấu trúc code bên trong, hiểu các đường thi hành quan trọng, và có thể thiết kế TC phủ các trường hợp đặc biệt hiệu quả hơn.",
+                    },
+                    {
+                        q: "Điểm yếu của KT hộp trắng là gì?",
+                        o: [
+                            "Không bao giờ tìm thấy lỗi",
+                            "Không kiểm tra xem PM có đáp ứng yêu cầu người dùng không — chỉ kiểm tra code đúng thiết kế",
+                            "Quá đơn giản",
+                            "Không cần tool",
+                        ],
+                        a: 1,
+                        e: "KT hộp trắng điểm yếu: kiểm tra code có đúng thiết kế nhưng không đảm bảo PM đáp ứng yêu cầu thực tế của người dùng — đó là lý do cần kết hợp với hộp đen.",
+                    },
+                    {
+                        q: "Điểm yếu của KT hộp đen là gì?",
+                        o: [
+                            "Không test giao diện được",
+                            "Không kiểm tra bên trong code nên có thể bỏ sót lỗi logic và dead code",
+                            "Cần source code",
+                            "Quá chậm",
+                        ],
+                        a: 1,
+                        e: "KT hộp đen điểm yếu: không thấy bên trong code nên có thể bỏ sót lỗi logic, dead code, hoặc các đường thi hành ít được sử dụng.",
+                    },
+                    {
+                        q: "Tại sao cần kết hợp nhiều kỹ thuật KT hộp đen?",
+                        o: [
+                            "Để tốn nhiều thời gian hơn",
+                            "Mỗi kỹ thuật phát hiện loại lỗi khác nhau — kết hợp cho độ bao phủ toàn diện hơn",
+                            "Để có nhiều tài liệu hơn",
+                            "Để chứng minh test kỹ",
+                        ],
+                        a: 1,
+                        e: "Kết hợp EC + BVA + Decision Table: EC phân vùng miền, BVA kiểm tra biên, Decision Table kiểm tra logic phức tạp — cùng nhau bao phủ các loại lỗi khác nhau.",
+                    },
+                ],
+            },
+        ];
+
+        let state = {
+            view: "home",
+            chapIdx: 0,
+            qIdx: 0,
+            sel: null,
+            answered: false,
+            scores: {},
+            correct: 0,
+        };
+
+        function render() {
+            const app = document.getElementById("app");
+            if (state.view === "home") app.innerHTML = renderHome();
+            else if (state.view === "quiz") app.innerHTML = renderQuiz();
+            else if (state.view === "result") app.innerHTML = renderResult();
+            bind();
+        }
+
+        function renderHome() {
+            const cards = CHAPTERS.map((ch, i) => {
+                const sc = state.scores[ch.id];
+                const badge =
+                    sc !== undefined
+                        ? `<span class="badge ${sc >= 70 ? "badge-pass" : "badge-fail"}">${sc}% — ${sc >= 70 ? "Đạt" : "Ôn lại"}</span>`
+                        : `<span class="badge badge-new">Chưa làm</span>`;
+                return `<div class="chap-card" data-c="${i}">
+      <div class="chap-num">Chương ${ch.id}</div>
+      <div class="chap-name">${ch.name}</div>
+      <div class="chap-meta">${ch.desc} · 50 câu</div>
+      <div style="margin-top:10px">${badge}</div>
+    </div>`;
+            }).join("");
+            return `<div class="home-header">
+    <div class="home-title">Kiểm thử Phần mềm</div>
+    <div class="home-sub">CS03045 · 4 chương · 50 câu mỗi chương — chọn chương để ôn tập</div>
+  </div>
+  <div class="chapters">${cards}</div>`;
+        }
+
+        function renderQuiz() {
+            const ch = CHAPTERS[state.chapIdx];
+            const q = ch.questions[state.qIdx];
+            const prog = Math.round((state.qIdx / ch.questions.length) * 100);
+            const opts = q.o
+                .map((opt, i) => {
+                    let cls = "opt-btn";
+                    if (state.answered) {
+                        if (i === q.a) cls += " correct";
+                        else if (i === state.sel) cls += " wrong";
+                    }
+                    return `<button class="${cls}" data-o="${i}" ${state.answered ? "disabled" : ""}>${opt}</button>`;
+                })
+                .join("");
+            const exp = state.answered ? `<div class="explain">${q.e}</div>` : "";
+            const isLast = state.qIdx === ch.questions.length - 1;
+            const nxt = state.answered
+                ? `<button class="next-btn" id="nxt">${isLast ? "Xem kết quả →" : "Câu tiếp →"}</button>`
+                : "";
+            return `<div class="quiz-header">
+    <button class="back-btn" id="back">← Trang chủ</button>
+    <span class="quiz-title">${ch.name}</span>
+    <div class="progress-wrap"><div class="progress-fill" style="width:${prog}%"></div></div>
+    <span class="q-counter">${state.qIdx + 1}/${ch.questions.length}</span>
+  </div>
+  <div class="qbox">
+    <div class="q-num">Câu ${state.qIdx + 1}</div>
+    <div class="q-text">${q.q}</div>
+  </div>
+  <div class="opts">${opts}</div>
+  ${exp}${nxt}`;
+        }
+
+        function renderResult() {
+            const ch = CHAPTERS[state.chapIdx];
+            const sc = state.scores[ch.id];
+            const pass = sc >= 70;
+            const wrong = ch.questions.length - state.correct;
+            return `<div class="result-box">
+    <div class="result-score">${sc}%</div>
+    <div class="result-label">${ch.name} — ${pass ? "Đạt (≥70%)" : "Chưa đạt (<70%)"}</div>
+    <div class="stats">
+      <div class="stat-card"><div class="stat-n">${ch.questions.length}</div><div class="stat-l">Tổng câu</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--green)">${state.correct}</div><div class="stat-l">Đúng</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--red)">${wrong}</div><div class="stat-l">Sai</div></div>
+    </div>
+    <div class="result-msg">${pass ? "🎉 Xuất sắc! Bạn đã nắm vững chương này." : "💪 Cần ôn thêm! Xem lại lý thuyết rồi thử lại."}</div>
+    <div class="btn-row">
+      <button class="next-btn" id="retry">Làm lại</button>
+      <button class="next-btn" id="home2">Về trang chủ</button>
+    </div>
+  </div>`;
+        }
+
+        function bind() {
+            document.querySelectorAll(".chap-card").forEach((c) => {
+                c.addEventListener("click", () => {
+                    state.chapIdx = parseInt(c.dataset.c);
+                    state.qIdx = 0;
+                    state.sel = null;
+                    state.answered = false;
+                    state.correct = 0;
+                    state.view = "quiz";
+                    render();
+                });
+            });
+            document.querySelectorAll(".opt-btn").forEach((b) => {
+                b.addEventListener("click", () => {
+                    if (state.answered) return;
+                    const q = CHAPTERS[state.chapIdx].questions[state.qIdx];
+                    state.sel = parseInt(b.dataset.o);
+                    state.answered = true;
+                    if (state.sel === q.a) state.correct++;
+                    render();
+                });
+            });
+            const nxt = document.getElementById("nxt");
+            if (nxt)
+                nxt.addEventListener("click", () => {
+                    const ch = CHAPTERS[state.chapIdx];
+                    if (state.qIdx < ch.questions.length - 1) {
+                        state.qIdx++;
+                        state.sel = null;
+                        state.answered = false;
+                        render();
+                    } else {
+                        state.scores[ch.id] = Math.round(
+                            (state.correct / ch.questions.length) * 100,
+                        );
+                        state.view = "result";
+                        render();
+                    }
+                });
+            const back = document.getElementById("back");
+            if (back)
+                back.addEventListener("click", () => {
+                    state.view = "home";
+                    render();
+                });
+            const retry = document.getElementById("retry");
+            if (retry)
+                retry.addEventListener("click", () => {
+                    state.qIdx = 0;
+                    state.sel = null;
+                    state.answered = false;
+                    state.correct = 0;
+                    state.view = "quiz";
+                    render();
+                });
+            const home2 = document.getElementById("home2");
+            if (home2)
+                home2.addEventListener("click", () => {
+                    state.view = "home";
+                    render();
+                });
+        }
+
+        render();
+    </script>
+</body>
+
+</html>
