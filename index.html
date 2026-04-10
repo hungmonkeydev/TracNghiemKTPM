@@ -353,6 +353,50 @@
                         e: "Glen Myers định nghĩa: kiểm thử là quá trình thực thi chương trình nhằm mục đích tìm ra lỗi.",
                     },
                     {
+                        q: "Đâu là thứ tự hợp lý của các cấp kiểm thử theo quy trình?",
+                        o: [
+                            "Test Plan -> QC Test -> Test chấp nhận",
+                            "QC Test -> Test Plan -> Test chấp nhận",
+                            "Test chấp nhận -> QC Test -> Test Plan",
+                            "QC Test -> Test chấp nhận -> Test Plan",
+                        ],
+                        a: 0,
+                        e: "Thứ tự hợp lý là lập kế hoạch kiểm thử (Test Plan), sau đó QC tiến hành kiểm thử để phát hiện lỗi, cuối cùng là kiểm thử chấp nhận để xác nhận hệ thống đáp ứng yêu cầu người dùng.",
+                    },
+                    {
+                        q: "Đâu là quy trình kiểm thử đúng?",
+                        o: [
+                            "Yêu cầu -> Test Plan -> Test Case -> Test Script -> Chạy thực tế",
+                            "Test Case -> Yêu cầu -> Test Plan -> Chạy thực tế -> Test Script",
+                            "Test Script -> Test Plan -> Yêu cầu -> Chạy thực tế -> Test Case",
+                            "Chạy thực tế -> Test Plan -> Test Case -> Yêu cầu -> Test Script",
+                        ],
+                        a: 0,
+                        e: "Quy trình kiểm thử đúng thường bắt đầu từ yêu cầu, sau đó lập Test Plan, viết Test Case, xây dựng Test Script và cuối cùng là chạy kiểm thử thực tế.",
+                    },
+                    {
+                        q: "Test Plan trả lời cho điều gì?",
+                        o: [
+                            "Điều kiện để việc kiểm thử được thực hiện đúng",
+                            "Điều kiện để code chạy nhanh hơn",
+                            "Điều kiện để giao diện đẹp hơn",
+                            "Điều kiện để triển khai hệ thống",
+                        ],
+                        a: 0,
+                        e: "Test Plan mô tả các điều kiện và kế hoạch cần thiết để quá trình kiểm thử được thực hiện đúng.",
+                    },
+                    {
+                        q: "TDD là gì?",
+                        o: [
+                            "Phương pháp phát triển phần mềm bằng cách viết code trước rồi mới kiểm thử",
+                            "Phương pháp phát triển phần mềm bằng cách viết test case trước rồi mới viết code",
+                            "Phương pháp chỉ dùng để sửa lỗi sau khi triển khai",
+                            "Phương pháp tập trung vào thiết kế giao diện trước",
+                        ],
+                        a: 1,
+                        e: "TDD (Test-Driven Development) là phương pháp phát triển phần mềm trong đó lập trình viên viết test case trước, sau đó mới viết code để làm cho test chạy thành công.",
+                    },
+                    {
                         q: "Theo ANSI/IEEE 1059, kiểm thử phần mềm là gì?",
                         o: [
                             "Quy trình phân tích PM để tìm sự khác biệt giữa điều kiện hiện có và điều kiện bắt buộc",
@@ -1321,6 +1365,143 @@
                         e: "Phương thức KT trong Test Plan: xác định loại KT cần thực hiện, tiêu chí đầu ra và các điều kiện đặc biệt cần lưu ý khi thực hiện KT.",
                     },
                     {
+                        q: "Test Requirement là gì?",
+                        o: [
+                            "Tài liệu mô tả các yêu cầu cần được kiểm thử",
+                            "Tài liệu mô tả mã nguồn chương trình",
+                            "Tài liệu dùng để sửa lỗi phần mềm",
+                            "Tài liệu mô tả giao diện người dùng",
+                        ],
+                        a: 0,
+                        e: "Test Requirement là tài liệu mô tả các yêu cầu chức năng và phi chức năng cần được kiểm thử để đảm bảo hệ thống đáp ứng đúng mong đợi.",
+                    },
+                    {
+                        q: "Test Requirement được dùng để làm gì?",
+                        o: [
+                            "Xác định các yêu cầu cần kiểm thử và làm cơ sở viết test case",
+                            "Dùng để viết mã nguồn",
+                            "Dùng để thiết kế cơ sở dữ liệu",
+                            "Dùng để triển khai hệ thống",
+                        ],
+                        a: 0,
+                        e: "Test Requirement giúp xác định những gì cần kiểm thử và là cơ sở để xây dựng Test Plan, Test Case và Test Script.",
+                    },
+                    {
+                        q: "Đâu là vai trò chính của Requirement trong quy trình kiểm thử?",
+                        o: [
+                            "Là đầu vào để lập Test Plan và viết Test Case",
+                            "Là bước cuối cùng của kiểm thử",
+                            "Là công cụ chạy test tự động",
+                            "Là tài liệu báo lỗi",
+                        ],
+                        a: 0,
+                        e: "Requirement là đầu vào quan trọng nhất trong kiểm thử vì mọi test case đều phải dựa trên yêu cầu của hệ thống.",
+                    },
+                    {
+                        q: "Bước nào thường được thực hiện sau khi có Requirement?",
+                        o: [
+                            "Test Plan",
+                            "Chạy thực tế",
+                            "Báo bug",
+                            "Triển khai hệ thống",
+                        ],
+                        a: 0,
+                        e: "Sau khi có Requirement, bước tiếp theo thường là lập Test Plan để xác định phạm vi và phương pháp kiểm thử.",
+                    },
+                    {
+                        q: "Sau Test Plan, bước tiếp theo trong quy trình kiểm thử là gì?",
+                        o: [
+                            "Test Case",
+                            "Requirement",
+                            "Báo lỗi",
+                            "Triển khai hệ thống",
+                        ],
+                        a: 0,
+                        e: "Sau khi lập Test Plan, bước tiếp theo là viết Test Case để xác định các trường hợp kiểm thử cụ thể dựa trên yêu cầu.",
+                    },
+                    {
+                        q: "Test Deliverable là gì?",
+                        o: [
+                            "Các tài liệu và kết quả được tạo ra trong quá trình kiểm thử",
+                            "Mã nguồn của chương trình",
+                            "Thiết kế giao diện người dùng",
+                            "Kế hoạch triển khai hệ thống",
+                        ],
+                        a: 0,
+                        e: "Test Deliverable là các tài liệu và kết quả đầu ra của quá trình kiểm thử như Test Plan, Test Case, Bug Report và Test Summary Report.",
+                    }, {
+                        q: "Đâu là một Test Deliverable?",
+                        o: [
+                            "Test Plan",
+                            "Mã nguồn chương trình",
+                            "Thiết kế database",
+                            "Giao diện người dùng",
+                        ],
+                        a: 0,
+                        e: "Test Plan là một Test Deliverable vì nó là tài liệu đầu ra được tạo trong quá trình kiểm thử.",
+                    }, {
+                        q: "Bug Report thuộc loại nào?",
+                        o: [
+                            "Test Deliverable",
+                            "Requirement",
+                            "Source Code",
+                            "Deployment Plan",
+                        ],
+                        a: 0,
+                        e: "Bug Report là một Test Deliverable vì nó là tài liệu ghi nhận lỗi được tạo ra sau khi thực hiện kiểm thử.",
+                    }, {
+                        q: "Test Suite là gì?",
+                        o: [
+                            "Tập hợp nhiều test case liên quan với nhau",
+                            "Một test case duy nhất",
+                            "Một bug report",
+                            "Một kế hoạch triển khai",
+                        ],
+                        a: 0,
+                        e: "Test Suite là tập hợp các test case được nhóm lại để kiểm thử một chức năng hoặc module cụ thể.",
+                    },
+                    {
+                        q: "Vai trò của Test Suite là gì?",
+                        o: [
+                            "Nhóm các test case để dễ quản lý và thực thi",
+                            "Viết lại requirement",
+                            "Thiết kế giao diện",
+                            "Triển khai phần mềm",
+                        ],
+                        a: 0,
+                        e: "Test Suite giúp nhóm các test case liên quan để dễ quản lý, chạy test và theo dõi kết quả.",
+                    }, {
+                        q: "Mục đích của Test Description là gì?",
+                        o: [
+                            "Mô tả mục tiêu và nội dung cần kiểm tra",
+                            "Viết mã nguồn chương trình",
+                            "Thiết kế cơ sở dữ liệu",
+                            "Báo cáo lỗi sau khi test",
+                        ],
+                        a: 0,
+                        e: "Test Description dùng để mô tả ngắn gọn mục tiêu, phạm vi và nội dung mà test case sẽ kiểm tra.",
+                    }, {
+                        q: "Đâu là ví dụ của Test Description?",
+                        o: [
+                            "Kiểm tra chức năng đăng nhập với tài khoản hợp lệ",
+                            "return username + password;",
+                            "CREATE TABLE USER",
+                            "Bug login failed",
+                        ],
+                        a: 0,
+                        e: "Đây là ví dụ mô tả mục tiêu kiểm thử nên thuộc Test Description.",
+                    }, {
+                        q: "Test Description trả lời cho câu hỏi nào?",
+                        o: [
+                            "Kiểm tra cái gì?",
+                            "Ai viết code?",
+                            "Hệ thống chạy ở server nào?",
+                            "Ngôn ngữ lập trình là gì?",
+                        ],
+                        a: 0,
+                        e: "Test Description tập trung trả lời câu hỏi test này dùng để kiểm tra cái gì.",
+                    },
+                    {
                         q: "Mô hình phát triển nào có kiểm thử tách biệt nhất với phát triển?",
                         o: [
                             "Scrum",
@@ -1392,6 +1573,17 @@
                         ],
                         a: 1,
                         e: "Lợi ích KT Unit: (1) Developer đảm bảo code đúng. (2) KT các giai đoạn sau nhanh hơn vì unit đã đúng. (3) Phát hiện bug sớm — ít tốn kém hơn.",
+                    },
+                    {
+                        q: "Nội dung nào không có trong Test Plan?",
+                        o: [
+                            "Phạm vi và mục tiêu kiểm thử",
+                            "Lịch trình và nhân sự kiểm thử",
+                            "Kế hoạch đánh giá chất lượng",
+                            "Phương pháp và tài nguyên kiểm thử",
+                        ],
+                        a: 2,
+                        e: "Test Plan tập trung vào kế hoạch kiểm thử như phạm vi, mục tiêu, lịch trình, nhân sự, phương pháp và tài nguyên kiểm thử. Kế hoạch đánh giá chất lượng thuộc phạm vi QA/QC tổng thể, không phải nội dung chính của Test Plan.",
                     },
                     {
                         q: "KT tích hợp (Integration Testing) nhằm mục đích gì?",
@@ -1774,6 +1966,68 @@
                         e: "Functionality Testing: chức năng có hoạt động đúng theo spec không. Usability Testing: chức năng có dễ dùng, trực quan với người dùng thực tế không.",
                     },
                     {
+                        q: "Unit Test là gì?",
+                        o: [
+                            "Kiểm thử đơn vị nhỏ nhất của chương trình như hàm hoặc method",
+                            "Kiểm thử toàn bộ hệ thống",
+                            "Kiểm thử giao diện người dùng",
+                            "Kiểm thử sau khi triển khai",
+                        ],
+                        a: 0,
+                        e: "Unit Test là kiểm thử ở mức nhỏ nhất của chương trình, thường là hàm, method hoặc class.",
+                    }, {
+                        q: "Unit Test thường do ai thực hiện?",
+                        o: [
+                            "Lập trình viên",
+                            "Khách hàng",
+                            "Người dùng cuối",
+                            "Quản lý dự án",
+                        ],
+                        a: 0,
+                        e: "Unit Test thường do lập trình viên thực hiện vì họ hiểu rõ logic bên trong của code.",
+                    }, {
+                        q: "Unit Test thường kiểm tra ở mức nào?",
+                        o: [
+                            "Hàm, method hoặc class",
+                            "Toàn bộ hệ thống",
+                            "Server",
+                            "Mạng nội bộ",
+                        ],
+                        a: 0,
+                        e: "Unit Test tập trung vào các đơn vị nhỏ nhất của chương trình như hàm, method hoặc class.",
+                    }, {
+                        q: "Đâu là các đặc điểm thể hiện hiệu quả của Unit Test?",
+                        o: [
+                            "Kiểm tra độc lập, lặp lại, tự động, dễ thực hiện, đo được, dễ viết",
+                            "Chỉ kiểm tra toàn bộ hệ thống",
+                            "Chỉ dùng để kiểm tra giao diện",
+                            "Chỉ thực hiện sau khi triển khai",
+                        ],
+                        a: 0,
+                        e: "Unit Test hiệu quả khi có thể kiểm tra độc lập từng đơn vị, chạy lặp lại nhiều lần, hỗ trợ tự động hóa, dễ thực hiện, có thể đo lường kết quả và dễ viết.",
+                    }, {
+                        q: "Yếu tố nào không thuộc hiệu quả của Unit Test?",
+                        o: [
+                            "Kiểm tra độc lập",
+                            "Có thể tự động hóa",
+                            "Dễ đo lường kết quả",
+                            "Phụ thuộc toàn bộ hệ thống",
+                        ],
+                        a: 3,
+                        e: "Unit Test cần kiểm tra độc lập từng thành phần nhỏ, không nên phụ thuộc toàn bộ hệ thống.",
+                    },
+                    {
+                        q: "Test sử dụng do tài liệu nào đưa ra?",
+                        o: [
+                            "Test Plan",
+                            "Test Case",
+                            "Bug Report",
+                            "Source Code",
+                        ],
+                        a: 0,
+                        e: "Theo nội dung môn học, các điều kiện và kế hoạch cho việc kiểm thử sử dụng được xác định trong Test Plan.",
+                    },
+                    {
                         q: "Tại sao KT hệ thống cần môi trường gần thực tế nhất?",
                         o: [
                             "Để tốn nhiều tiền hơn",
@@ -1801,6 +2055,50 @@
                         ],
                         a: 1,
                         e: "KT hộp đen: coi hệ thống là hộp đen — không thể thấy bên trong. Tập trung vào yêu cầu chức năng, dựa trên đặc tả, test qua giao diện.",
+                    },
+                    {
+                        q: "Alpha Test là gì?",
+                        o: [
+                            "Kiểm thử nội bộ trước khi phát hành",
+                            "Kiểm thử bởi người dùng cuối",
+                            "Kiểm thử sau khi triển khai",
+                            "Kiểm thử từng hàm",
+                        ],
+                        a: 0,
+                        e: "Alpha Test là kiểm thử nội bộ do đội phát triển hoặc tester thực hiện trước khi phát hành cho người dùng.",
+                    },
+                    {
+                        q: "Beta Test là gì?",
+                        o: [
+                            "Kiểm thử bởi người dùng thật trước khi phát hành chính thức",
+                            "Kiểm thử trong công ty",
+                            "Kiểm thử từng module",
+                            "Kiểm thử mã nguồn",
+                        ],
+                        a: 0,
+                        e: "Beta Test là kiểm thử do người dùng thật hoặc khách hàng thực hiện trong môi trường thực tế.",
+                    },
+                    {
+                        q: "Kiểm thử hộp đen thường do ai thực hiện?",
+                        o: [
+                            "Tester / QC",
+                            "Lập trình viên",
+                            "Khách hàng",
+                            "Quản lý dự án",
+                        ],
+                        a: 0,
+                        e: "Kiểm thử hộp đen tập trung vào chức năng bên ngoài nên thường do tester hoặc QC thực hiện.",
+                    },
+                    {
+                        q: "Kiểm thử hộp trắng thường do ai thực hiện?",
+                        o: [
+                            "Lập trình viên",
+                            "Khách hàng",
+                            "Người dùng cuối",
+                            "QC không cần biết code",
+                        ],
+                        a: 0,
+                        e: "Kiểm thử hộp trắng yêu cầu hiểu rõ logic và mã nguồn bên trong nên thường do lập trình viên thực hiện.",
                     },
                     {
                         q: "Đặc trưng nào KHÔNG phải của KT hộp đen?",
