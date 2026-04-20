@@ -3568,6 +3568,38 @@
                         ],
                         "a": 0,
                         "e": "Nghịch lý thuốc trừ sâu chỉ ra rằng nếu bạn chạy một bộ test case lặp đi lặp lại nhiều lần, đến một lúc bộ test đó sẽ không thể phát hiện thêm lỗi mới nào nữa. Để khắc phục, tester cần thường xuyên xem xét (review) và bổ sung, cập nhật các kịch bản test mới để tìm lỗi ở những phần khác của hệ thống."
+                    }, {
+                        "q": "Câu 63: Cho đoạn mã sau, cần tối thiểu bao nhiêu test case để phủ nhánh 100%?\n```cpp\nint n;\ncout << \"Nhap n: \";\ncin >> n;\nswitch (n%3)\n{\n    case 0:\n        cout << \"Chia het cho 3\";\n        break;\n    case 1:\n    case 2:\n        cout << \"Khong chia het cho 3\";\n}\n```",
+                        "o": [
+                            "2",
+                            "3",
+                            "1",
+                            "4"
+                        ],
+                        "a": 1,
+                        "e": "Để bao phủ 100% nhánh (branch coverage) cho cấu trúc `switch-case`, ta cần thiết kế test case để chương trình rẽ vào tất cả các `case` đã được định nghĩa. Biểu thức `n%3` có 3 trường hợp có thể xảy ra được bắt trong code là 0, 1, và 2. Do đó, cần tối thiểu 3 test case (ví dụ n=3 để vào case 0, n=4 để vào case 1, n=5 để vào case 2) để đi qua hết các nhánh này."
+                    },
+                    {
+                        "q": "Câu 64: Kịch bản test được tạo ra trong giai đoạn nào?",
+                        "o": [
+                            "Phát triển test case.",
+                            "Phân tích yêu cầu",
+                            "Thiết lập môi trường test",
+                            "Lập kế hoạch test"
+                        ],
+                        "a": 0,
+                        "e": "Kịch bản kiểm thử (Test case / Test script) được thiết kế, định nghĩa các bước và dữ liệu đầu vào trong giai đoạn Thiết kế và Phát triển kiểm thử (Test Design and Implementation / Phát triển test case). Các giai đoạn như phân tích yêu cầu hay lập kế hoạch chỉ mang tính chuẩn bị lý thuyết và chiến lược trước đó."
+                    },
+                    {
+                        "q": "Câu 65: Các bước cơ bản của quá trình kiểm thử dòng điều khiển là",
+                        "o": [
+                            "Tính độ phức tạp chu trình để xác định loại đồ thị dòng điều khiển, xác định đường thi hành, sinh test case dựa vào đường thi hành",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các đường thi hành, sinh các test case, thực hiện các test case",
+                            "Sinh đồ thị các test case từ code với độ đo cần kiểm thử, thực hiện các test case",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các test case, thực hiện các test case"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử dòng điều khiển (Control Flow Testing) là một kỹ thuật hộp trắng bao gồm các bước tuần tự chuẩn xác: 1. Dựng đồ thị dòng điều khiển (CFG) từ mã nguồn. 2. Dựa vào tiêu chí bao phủ mong muốn (statement, branch, path...) để tìm ra các đường thi hành (execution paths) cần đi qua trên đồ thị. 3. Thiết kế/sinh test case có dữ liệu đầu vào khớp với các đường đó. 4. Thực thi test."
                     }
                 ]
             },
