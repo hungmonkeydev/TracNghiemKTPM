@@ -3611,8 +3611,9 @@
             qIdx: 0,
             sel: null,
             answered: false,
-            scores: {},
+            scores: JSON.parse(localStorage.getItem('quiz_scores') || '{}'),
             correct: 0,
+            answers: []
         };
 
         function render() {
@@ -3620,6 +3621,7 @@
             if (state.view === "home") app.innerHTML = renderHome();
             else if (state.view === "quiz") app.innerHTML = renderQuiz();
             else if (state.view === "result") app.innerHTML = renderResult();
+            else if (state.view === "review") app.innerHTML = renderReview();
             bind();
         }
 
@@ -3633,13 +3635,13 @@
                 return `<div class="chap-card" data-c="${i}">
       <div class="chap-num">Chương ${ch.id}</div>
       <div class="chap-name">${ch.name}</div>
-      <div class="chap-meta">${ch.desc} · 50 câu</div>
+      <div class="chap-meta">${ch.desc} · ${ch.questions.length} câu</div>
       <div style="margin-top:10px">${badge}</div>
     </div>`;
             }).join("");
             return `<div class="home-header">
     <div class="home-title">Kiểm thử Phần mềm</div>
-    <div class="home-sub">CS03045 · 4 chương · 50 câu mỗi chương — chọn chương để ôn tập</div>
+    <div class="home-sub">CS03045 · ${CHAPTERS.length} chương — chọn chương để ôn tập</div>
   </div>
   <div class="chapters">${cards}</div>`;
         }
@@ -3665,6 +3667,7 @@
                 : "";
             return `<div class="quiz-header">
     <button class="back-btn" id="back">← Trang chủ</button>
+    <button class="back-btn" id="stop-quiz" style="color:var(--red); border-color:var(--red-bg); margin-left: 8px;">Dừng & Chấm điểm</button>
     <span class="quiz-title">${ch.name}</span>
     <div class="progress-wrap"><div class="progress-fill" style="width:${prog}%"></div></div>
     <span class="q-counter">${state.qIdx + 1}/${ch.questions.length}</span>
@@ -3675,6 +3678,47 @@
   </div>
   <div class="opts">${opts}</div>
   ${exp}${nxt}`;
+        }
+
+        function renderReview() {
+            const ch = CHAPTERS[state.chapIdx];
+            const q = ch.questions[state.qIdx];
+            const prog = Math.round((state.qIdx / ch.questions.length) * 100);
+            const sel = state.answers[state.qIdx];
+            
+            const opts = q.o.map((opt, i) => {
+                let cls = "opt-btn";
+                if (i === q.a) cls += " correct";
+                else if (i === sel) cls += " wrong";
+                return `<button class="${cls}" disabled>${opt}</button>`;
+            }).join("");
+            
+            let exp = `<div class="explain">${q.e}</div>`;
+            if (sel === undefined || sel === null) {
+               exp = `<div class="explain" style="color:var(--text3); border-color:var(--text3)">Chưa trả lời.<br>${q.e}</div>`;
+            }
+
+            const isLast = state.qIdx === ch.questions.length - 1;
+            const isFirst = state.qIdx === 0;
+            
+            const prvBtn = !isFirst ? `<button class="back-btn" id="rev-prv" style="margin-right: 8px;">← Câu trước</button>` : '';
+            const nxtBtn = !isLast ? `<button class="next-btn" id="rev-nxt">Câu tiếp →</button>` : '';
+
+            return `<div class="quiz-header">
+    <button class="back-btn" id="back-result">← Kết quả</button>
+    <span class="quiz-title">${ch.name} (Xem lại)</span>
+    <div class="progress-wrap"><div class="progress-fill" style="width:${prog}%"></div></div>
+    <span class="q-counter">${state.qIdx + 1}/${ch.questions.length}</span>
+  </div>
+  <div class="qbox">
+    <div class="q-num">Câu ${state.qIdx + 1}</div>
+    <div class="q-text">${q.q}</div>
+  </div>
+  <div class="opts">${opts}</div>
+  ${exp}
+  <div style="margin-top: 1rem; display: flex;">
+    ${prvBtn}${nxtBtn}
+  </div>`;
         }
 
         function renderResult() {
@@ -3692,49 +3736,49 @@
     </div>
     <div class="result-msg">${pass ? "🎉 Xuất sắc! Bạn đã nắm vững chương này." : "💪 Cần ôn thêm! Xem lại lý thuyết rồi thử lại."}</div>
     <div class="btn-row">
+      <button class="next-btn" id="review" style="background:var(--accent); color:white; border-color:var(--accent);">Xem lại đáp án</button>
       <button class="next-btn" id="retry">Làm lại</button>
       <button class="next-btn" id="home2">Về trang chủ</button>
     </div>
   </div>`;
         }
 
+        function saveScore() {
+            const ch = CHAPTERS[state.chapIdx];
+            state.scores[ch.id] = Math.round((state.correct / ch.questions.length) * 100);
+            localStorage.setItem('quiz_scores', JSON.stringify(state.scores));
+        }
+
         function bind() {
-            // Thay vì gắn từng listener, dùng event delegation
-            document.getElementById("app").addEventListener("click", (e) => {
-                // Kiểm tra click vào chap-card
-                const chapCard = e.target.closest(".chap-card");
-                if (chapCard) {
-                    state.chapIdx = parseInt(chapCard.dataset.c);
+            // HOME
+            document.querySelectorAll(".chap-card").forEach((c) => {
+                c.addEventListener("click", () => {
+                    state.chapIdx = parseInt(c.dataset.c);
                     state.qIdx = 0;
                     state.sel = null;
                     state.answered = false;
                     state.correct = 0;
+                    state.answers = [];
                     state.view = "quiz";
                     render();
-                    return;
-                }
-
-                // Kiểm tra click vào opt-btn
-                const optBtn = e.target.closest(".opt-btn");
-                if (optBtn && !state.answered) {
-                    const q = CHAPTERS[state.chapIdx].questions[state.qIdx];
-                    state.sel = parseInt(optBtn.dataset.o);
-                    state.answered = true;
-                    if (state.sel === q.a) state.correct++;
-                    render();
-                    return;
-                }
+                });
             });
+
+            // QUIZ
             document.querySelectorAll(".opt-btn").forEach((b) => {
                 b.addEventListener("click", () => {
+                    if (state.view === "review") return;
                     if (state.answered) return;
+                    
                     const q = CHAPTERS[state.chapIdx].questions[state.qIdx];
                     state.sel = parseInt(b.dataset.o);
+                    state.answers[state.qIdx] = state.sel;
                     state.answered = true;
                     if (state.sel === q.a) state.correct++;
                     render();
                 });
             });
+
             const nxt = document.getElementById("nxt");
             if (nxt)
                 nxt.addEventListener("click", () => {
@@ -3745,19 +3789,59 @@
                         state.answered = false;
                         render();
                     } else {
-                        state.scores[ch.id] = Math.round(
-                            (state.correct / ch.questions.length) * 100,
-                        );
+                        saveScore();
                         state.view = "result";
                         render();
                     }
                 });
+
             const back = document.getElementById("back");
             if (back)
                 back.addEventListener("click", () => {
                     state.view = "home";
                     render();
                 });
+
+            const stopQuiz = document.getElementById("stop-quiz");
+            if (stopQuiz) {
+                stopQuiz.addEventListener("click", () => {
+                    saveScore();
+                    state.view = "result";
+                    render();
+                });
+            }
+
+            // REVIEW NAVIGATION
+            const revPrv = document.getElementById("rev-prv");
+            if (revPrv) {
+                revPrv.addEventListener("click", () => {
+                    if (state.qIdx > 0) {
+                        state.qIdx--;
+                        render();
+                    }
+                });
+            }
+
+            const revNxt = document.getElementById("rev-nxt");
+            if (revNxt) {
+                revNxt.addEventListener("click", () => {
+                    const ch = CHAPTERS[state.chapIdx];
+                    if (state.qIdx < ch.questions.length - 1) {
+                        state.qIdx++;
+                        render();
+                    }
+                });
+            }
+
+            const backResult = document.getElementById("back-result");
+            if (backResult) {
+                backResult.addEventListener("click", () => {
+                    state.view = "result";
+                    render();
+                });
+            }
+
+            // RESULT
             const retry = document.getElementById("retry");
             if (retry)
                 retry.addEventListener("click", () => {
@@ -3765,9 +3849,20 @@
                     state.sel = null;
                     state.answered = false;
                     state.correct = 0;
+                    state.answers = [];
                     state.view = "quiz";
                     render();
                 });
+
+            const reviewBtn = document.getElementById("review");
+            if (reviewBtn) {
+                reviewBtn.addEventListener("click", () => {
+                    state.qIdx = 0;
+                    state.view = "review";
+                    render();
+                });
+            }
+
             const home2 = document.getElementById("home2");
             if (home2)
                 home2.addEventListener("click", () => {
