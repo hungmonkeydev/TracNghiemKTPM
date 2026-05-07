@@ -243,6 +243,39 @@
             color: var(--red);
         }
 
+        .opt-btn.selected {
+            background: var(--accent-bg);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .multi-hint {
+            font-size: 12px;
+            color: var(--accent);
+            background: var(--accent-bg);
+            border: 1px solid #c5d9ee;
+            border-radius: 8px;
+            padding: 7px 12px;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .confirm-btn {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .confirm-btn:hover:not(:disabled) {
+            background: #2f5a8a;
+        }
+
+        .confirm-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
         .explain {
             background: var(--surface);
             border-left: 3px solid var(--green);
@@ -3603,18 +3636,179 @@
                     }
                 ]
             },
+            {
+                id: 7,
+                name: "Đề thi AI mấy tuần trước",
+                desc: "Đề thi AI thầy Khuê mấy tuần trước",
+                questions: [
+                    {
+                        "q": "Trong giai đoạn 1980–2000 AI được xây dựng dựa trên",
+                        "o": [
+                            "Hàm học mục tiêu Xác suất – Bayesian networks, xác suất thống kê được dùng rộng rãi",
+                            "Mạng Neural Network – Backpropagation ra đời 1986 (Rumelhart), perceptron phổ biến",
+                            "Thuật toán & giải thuật – Expert systems, search algorithms (A*, minimax) là nền tảng AI thời kỳ này",
+                            "Deep Learning – Chỉ bùng nổ sau 2010 (AlexNet 2012), giai đoạn này chưa khả thi do thiếu GPU và dữ liệu"
+                        ],
+                        "a": [0, 1, 2],
+                        "e": "Giai đoạn 1980-2000 AI phát triển dựa trên Xác suất, Mạng Neural Network và Thuật toán/Giải thuật. Deep Learning chỉ bùng nổ sau 2010 do trước đó còn hạn chế về GPU và dữ liệu."
+                    },
+                    {
+                        "q": "Căn cứ để xác định một thủ tục là thuật toán hay giải thuật",
+                        "o": [
+                            "Tính hiệu quả",
+                            "Tính phổ quát",
+                            "Tính đúng đắn",
+                            "Tính dừng & xác định"
+                        ],
+                        "a": [2, 3],
+                        "e": "Giáo trình viết rõ: 'Tiêu chuẩn: tính xác định và tính đúng đắn được mở rộng'. Tính xác định thay đổi (có thể dùng đệ quy ngẫu nhiên), tính đúng không còn bắt buộc (chấp nhận kết quả gần đúng). Tính hiệu quả và phổ quát là đặc trưng chung của cả hai."
+                    },
+                    {
+                        "q": "Hàm kích hoạt (activation function) có vai trò gì trong Neural Network?",
+                        "o": [
+                            "Giúp học nhanh hơn trực tiếp (đóng vai trò như learning rate, optimizer)",
+                            "Giảm số lượng tham số cho mô hình",
+                            "Đưa tính phi tuyến vào mô hình",
+                            "Khuếch đại giá trị đầu vào"
+                        ],
+                        "a": 2,
+                        "e": "Nếu không có hàm kích hoạt, nhiều lớp chồng nhau vẫn chỉ là hàm tuyến tính → không học được pattern phức tạp. Các hàm như ReLU, Sigmoid, Tanh giúp đưa tính phi tuyến vào mô hình."
+                    },
+                    {
+                        "q": "Phương pháp chia tập ngữ liệu hiệu quả – đơn giản nhưng hạn chế overfitting là:",
+                        "o": [
+                            "Leave-one-out",
+                            "Hold-out truyền thống",
+                            "Cross-validation",
+                            "Repeated hold-out"
+                        ],
+                        "a": 2,
+                        "e": "Cross-validation (k-fold) là phương pháp hiệu quả tiêu chuẩn để hạn chế overfitting, được giáo trình đề cao hơn để khắc phục nhược điểm trùng lặp dữ liệu kiểm thử của Repeated hold-out."
+                    },
+                    {
+                        "q": "Thành phần cơ bản của một mạng Neural Network là gì?",
+                        "o": [
+                            "Layer (input, hidden, output)",
+                            "Link (các kết nối/trọng số giữa các neuron)",
+                            "Vector (cấu trúc dữ liệu)",
+                            "Neuron (đơn vị tính toán cơ bản)"
+                        ],
+                        "a": [0, 1, 3],
+                        "e": "Mạng Neural Network gồm các Layer, các Link (kết nối) và các Neuron. Vector là cấu trúc dữ liệu, không phải thành phần kiến trúc mạng."
+                    },
+                    {
+                        "q": "Trong ma trận nhầm lẫn, chỉ số FPi (False Positive) đại diện cho:",
+                        "o": [
+                            "Số lượng các ví dụ không thuộc lớp ci bị phân loại nhầm vào lớp ci",
+                            "Số lượng các ví dụ thuộc lớp ci được phân loại đúng vào lớp ci (TP)",
+                            "Số lượng các ví dụ không thuộc lớp ci được phân loại đúng là không thuộc lớp ci (TN)",
+                            "Số lượng các ví dụ thuộc lớp ci bị phân loại nhầm vào lớp khác (FN)"
+                        ],
+                        "a": 0,
+                        "e": "FP = False Positive: mô hình dự đoán là ci nhưng thực tế không phải ci — tức các ví dụ từ lớp khác bị nhầm vào ci."
+                    },
+                    {
+                        "q": "Đối tượng nghiên cứu của AI là",
+                        "o": [
+                            "Data mining, knowledge discovery",
+                            "Mô phỏng tư duy (Turing test, cognitive AI)",
+                            "Ứng dụng tri thức (expert systems, inference engine)",
+                            "Biểu diễn tri thức (ontology, logic, frames)"
+                        ],
+                        "a": [0, 1, 2, 3],
+                        "e": "AI là lĩnh vực rộng, bao gồm cả biểu diễn tri thức, suy luận, học (data mining) và mô phỏng tư duy con người. Tất cả các phương án đều đúng."
+                    },
+                    {
+                        "q": "Việc chia tập huấn luyện không đảm bảo độ phủ đối với các nhãn có thể dẫn đến",
+                        "o": [
+                            "Quá trình học hội tụ",
+                            "Hiệu suất (P) giảm",
+                            "Quá khớp (over-fitting)",
+                            "Hiệu suất tăng"
+                        ],
+                        "a": [1, 2],
+                        "e": "Khi số lượng ví dụ quá nhỏ không đại diện cho phân bố (thiếu độ phủ), mô hình sẽ bị quá khớp (over-fitting) vào nhãn chiếm đa số, khiến khả năng tổng quát hóa kém đi và làm giảm hiệu suất dự đoán trên thực tế."
+                    },
+                    {
+                        "q": "Vấn đề chưa giải quyết được của AI cổ điển",
+                        "o": [
+                            "Chưa xử lý được Big Data / tích hợp tri thức",
+                            "Khả năng tự học như con người",
+                            "AI ảo giác (Hallucination)",
+                            "Khả năng tự thích nghi môi trường"
+                        ],
+                        "a": [0, 1],
+                        "e": "AI cổ điển hạn chế ở khả năng xử lý Big Data, tích hợp tri thức và tự học. AI ảo giác (Hallucination) không phải là vấn đề của AI cổ điển vì nó hoạt động dựa trên logic cứng (rule-based) khắt khe, không có khả năng tự 'bịa' ra dữ liệu như LLM/GenAI hiện đại."
+                    },
+                    {
+                        "q": "Ưu điểm chính của thuật toán phân lớp Naïve Bayes là gì?",
+                        "o": [
+                            "Luôn chính xác nhất so với mọi thuật toán khác",
+                            "Hoạt động tốt với tập dữ liệu vừa/lớn và số lượng lớn các đặc trưng",
+                            "Không có giả định gì về sự phụ thuộc giữa các đặc trưng",
+                            "Hoàn toàn không bao giờ bị hiện tượng overfitting"
+                        ],
+                        "a": 1,
+                        "e": "Giáo trình chỉ rõ: Naïve Bayes nên được sử dụng khi tập huấn luyện có kích thước từ vừa đến lớn và các ví dụ được biểu diễn bởi một số lượng lớn các thuộc tính. Nó có giả định mạnh về việc các đặc trưng độc lập với nhau."
+                    },
+                    {
+                        "q": "Vai trò của tập dữ liệu kiểm chứng (Validation set) là",
+                        "o": [
+                            "Khai phá tri thức từ toàn bộ dữ liệu",
+                            "Sử dụng trực tiếp để cập nhật trọng số (huấn luyện)",
+                            "Kiểm thử kết quả sau quá trình huấn luyện",
+                            "Hiệu chỉnh các tham số (tuning hyperparameters)"
+                        ],
+                        "a": [2, 3],
+                        "e": "Validation set dùng để đánh giá mô hình sau mỗi epoch/iteration và để hiệu chỉnh các siêu tham số (như learning rate, số lớp, số neuron...). Huấn luyện thì dùng Training set."
+                    },
+                    {
+                        "q": "Cấu tạo của một Neuron là sự kết hợp của",
+                        "o": [
+                            "1 hàm tuyến tính với 1 hàm phi tuyến",
+                            "1 hàm f(x) với 1 hàm kích hoạt",
+                            "1 hàm f(x) với 1 hàm f(y)",
+                            "1 hàm tuyến tính với 1 hàm θ(y)"
+                        ],
+                        "a": 0,
+                        "e": "Một Neuron cơ bản là sự kết hợp của tổng có trọng số z = Wx + b (hàm tuyến tính) và một hàm kích hoạt (activation function) như ReLU, Sigmoid (hàm phi tuyến). Ký hiệu θ(y) không phải là ký hiệu chuẩn của neuron."
+                    }
+                ]
+            }
         ];
 
         let state = {
             view: "home",
             chapIdx: 0,
             qIdx: 0,
-            sel: null,
+            sel: null,          // null | number (single) | number[] (multi)
             answered: false,
             scores: JSON.parse(localStorage.getItem('quiz_scores') || '{}'),
             correct: 0,
             answers: []
         };
+
+        // ── Helper functions for multi-answer support ──
+        function isMulti(q) {
+            return Array.isArray(q.a);
+        }
+
+        function isCorrectIdx(q, i) {
+            return isMulti(q) ? q.a.includes(i) : i === q.a;
+        }
+
+        function isSelectedIdx(sel, i) {
+            if (Array.isArray(sel)) return sel.includes(i);
+            return i === sel;
+        }
+
+        function isCorrectAnswer(q, sel) {
+            if (isMulti(q)) {
+                if (!Array.isArray(sel) || sel.length !== q.a.length) return false;
+                return [...q.a].sort().join() === [...sel].sort().join();
+            }
+            return sel === q.a;
+        }
 
         function render() {
             const app = document.getElementById("app");
@@ -3649,22 +3843,35 @@
         function renderQuiz() {
             const ch = CHAPTERS[state.chapIdx];
             const q = ch.questions[state.qIdx];
+            const multi = isMulti(q);
             const prog = Math.round((state.qIdx / ch.questions.length) * 100);
-            const opts = q.o
-                .map((opt, i) => {
-                    let cls = "opt-btn";
-                    if (state.answered) {
-                        if (i === q.a) cls += " correct";
-                        else if (i === state.sel) cls += " wrong";
-                    }
-                    return `<button class="${cls}" data-o="${i}" ${state.answered ? "disabled" : ""}>${opt}</button>`;
-                })
-                .join("");
+
+            const opts = q.o.map((opt, i) => {
+                let cls = "opt-btn";
+                if (state.answered) {
+                    if (isCorrectIdx(q, i)) cls += " correct";
+                    else if (isSelectedIdx(state.sel, i)) cls += " wrong";
+                } else if (multi && Array.isArray(state.sel) && state.sel.includes(i)) {
+                    cls += " selected";
+                }
+                return `<button class="${cls}" data-o="${i}" ${state.answered ? "disabled" : ""}>${opt}</button>`;
+            }).join("");
+
             const exp = state.answered ? `<div class="explain">${q.e}</div>` : "";
             const isLast = state.qIdx === ch.questions.length - 1;
-            const nxt = state.answered
-                ? `<button class="next-btn" id="nxt">${isLast ? "Xem kết quả →" : "Câu tiếp →"}</button>`
+
+            let actionBtn = "";
+            if (state.answered) {
+                actionBtn = `<button class="next-btn" id="nxt">${isLast ? "Xem kết quả →" : "Câu tiếp →"}</button>`;
+            } else if (multi) {
+                const hasSelected = Array.isArray(state.sel) && state.sel.length > 0;
+                actionBtn = `<button class="next-btn confirm-btn" id="confirm-multi" ${hasSelected ? "" : "disabled"}>✓ Xác nhận đáp án</button>`;
+            }
+
+            const multiHint = (multi && !state.answered)
+                ? `<div class="multi-hint">☑ Câu hỏi nhiều đáp án — chọn tất cả đáp án đúng rồi nhấn Xác nhận</div>`
                 : "";
+
             return `<div class="quiz-header">
     <button class="back-btn" id="back">← Trang chủ</button>
     <button class="back-btn" id="stop-quiz" style="color:var(--red); border-color:var(--red-bg); margin-left: 8px;">Dừng & Chấm điểm</button>
@@ -3676,8 +3883,9 @@
     <div class="q-num">Câu ${state.qIdx + 1}</div>
     <div class="q-text">${q.q}</div>
   </div>
+  ${multiHint}
   <div class="opts">${opts}</div>
-  ${exp}${nxt}`;
+  ${exp}${actionBtn}`;
         }
 
         function renderReview() {
@@ -3685,22 +3893,24 @@
             const q = ch.questions[state.qIdx];
             const prog = Math.round((state.qIdx / ch.questions.length) * 100);
             const sel = state.answers[state.qIdx];
-            
+
             const opts = q.o.map((opt, i) => {
                 let cls = "opt-btn";
-                if (i === q.a) cls += " correct";
-                else if (i === sel) cls += " wrong";
+                if (isCorrectIdx(q, i)) cls += " correct";
+                else if (isSelectedIdx(sel, i)) cls += " wrong";
                 return `<button class="${cls}" disabled>${opt}</button>`;
             }).join("");
-            
+
+            const notAnswered = sel === undefined || sel === null ||
+                (Array.isArray(sel) && sel.length === 0);
             let exp = `<div class="explain">${q.e}</div>`;
-            if (sel === undefined || sel === null) {
-               exp = `<div class="explain" style="color:var(--text3); border-color:var(--text3)">Chưa trả lời.<br>${q.e}</div>`;
+            if (notAnswered) {
+                exp = `<div class="explain" style="color:var(--text3); border-color:var(--text3)">Chưa trả lời.<br>${q.e}</div>`;
             }
 
             const isLast = state.qIdx === ch.questions.length - 1;
             const isFirst = state.qIdx === 0;
-            
+
             const prvBtn = !isFirst ? `<button class="back-btn" id="rev-prv" style="margin-right: 8px;">← Câu trước</button>` : '';
             const nxtBtn = !isLast ? `<button class="next-btn" id="rev-nxt">Câu tiếp →</button>` : '';
 
@@ -3769,15 +3979,45 @@
                 b.addEventListener("click", () => {
                     if (state.view === "review") return;
                     if (state.answered) return;
-                    
+
                     const q = CHAPTERS[state.chapIdx].questions[state.qIdx];
-                    state.sel = parseInt(b.dataset.o);
-                    state.answers[state.qIdx] = state.sel;
-                    state.answered = true;
-                    if (state.sel === q.a) state.correct++;
-                    render();
+                    const idx = parseInt(b.dataset.o);
+
+                    if (isMulti(q)) {
+                        // Toggle selection without full re-render
+                        if (!Array.isArray(state.sel)) state.sel = [];
+                        const pos = state.sel.indexOf(idx);
+                        if (pos === -1) state.sel.push(idx);
+                        else state.sel.splice(pos, 1);
+
+                        // Update button style in-place
+                        b.classList.toggle("selected", state.sel.includes(idx));
+
+                        // Enable / disable confirm button
+                        const confirmBtn = document.getElementById("confirm-multi");
+                        if (confirmBtn) confirmBtn.disabled = state.sel.length === 0;
+                    } else {
+                        // Single-answer: auto-submit
+                        state.sel = idx;
+                        state.answers[state.qIdx] = state.sel;
+                        state.answered = true;
+                        if (isCorrectAnswer(q, state.sel)) state.correct++;
+                        render();
+                    }
                 });
             });
+
+            // Confirm button for multi-answer questions
+            const confirmMulti = document.getElementById("confirm-multi");
+            if (confirmMulti) {
+                confirmMulti.addEventListener("click", () => {
+                    const q = CHAPTERS[state.chapIdx].questions[state.qIdx];
+                    state.answers[state.qIdx] = Array.isArray(state.sel) ? [...state.sel] : [];
+                    state.answered = true;
+                    if (isCorrectAnswer(q, state.sel)) state.correct++;
+                    render();
+                });
+            }
 
             const nxt = document.getElementById("nxt");
             if (nxt)
