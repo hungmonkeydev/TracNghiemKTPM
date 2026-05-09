@@ -3774,7 +3774,176 @@
                         "e": "Một Neuron cơ bản là sự kết hợp của tổng có trọng số z = Wx + b (hàm tuyến tính) và một hàm kích hoạt (activation function) như ReLU, Sigmoid (hàm phi tuyến). Ký hiệu θ(y) không phải là ký hiệu chuẩn của neuron."
                     }
                 ]
-            }
+            },
+            {
+                "id": 8,
+                "name": "Đề thi AI - Chọn nhiều đáp án",
+                "desc": "Trích xuất từ hình ảnh đề thi trắc nghiệm AI (cho phép chọn nhiều đáp án)",
+                "questions": [
+                    {
+                        "q": "Câu 1: Huấn luyện AI trên mạng Neural Network thì dữ liệu/tri thức input được biểu diễn dưới dạng",
+                        "o": [
+                            "Đồ thị",
+                            "Bảng dữ liệu",
+                            "Vector & Cây",
+                            "Vector"
+                        ],
+                        "a": [
+                            3
+                        ],
+                        "e": "Trong mạng Neural Network, dữ liệu đầu vào cuối cùng luôn được trải phẳng hoặc biểu diễn dưới dạng các Vector (hoặc Tensor) số học để thực hiện các phép tính ma trận."
+                    },
+                    {
+                        "q": "Câu 2: Giai đoạn sau năm 2015 thì AI được xây dựng dựa trên",
+                        "o": [
+                            "Kiến trúc Deep Learning",
+                            "Mạng Neural Network",
+                            "Hàm học mục tiêu Xác suất",
+                            "Thuật toán & giải thuật"
+                        ],
+                        "a": [
+                            0,
+                            1
+                        ],
+                        "e": "Sau 2015 là kỷ nguyên bùng nổ của Deep Learning (Học sâu) được xây dựng trên nền tảng các Mạng Neural Network (mạng nơ-ron nhân tạo) nhiều lớp, nhờ sự phát triển của GPU và Big Data."
+                    },
+                    {
+                        "q": "Câu 3: Vấn đề chưa giải quyết được của AI trong giai đoạn 1980-2000",
+                        "o": [
+                            "Chưa có phương pháp đánh giá mô hình",
+                            "Xử lý BigData và giải pháp tích hợp tri thức",
+                            "Vấn đề ảo giác AI khi trả lời truy vấn của User",
+                            "Khả năng tự học như con người"
+                        ],
+                        "a": [
+                            1,
+                            3
+                        ],
+                        "e": "Giai đoạn này được gọi là 'mùa đông AI', gặp nút thắt lớn về năng lực tính toán/xử lý lượng dữ liệu lớn (BigData) và khó khăn trong việc thu nhận/tích hợp tri thức chuyên gia. Khả năng tự học hoàn toàn như con người (AGI) cũng là một bài toán chưa thể giải quyết."
+                    },
+                    {
+                        "q": "Câu 4: Để huấn luyện mô hình AI thì tối thiểu phải chia tập dữ liệu thành:",
+                        "o": [
+                            "Training set và Validation set",
+                            "Training set và Test set",
+                            "Validation set và Test set",
+                            "Training set, Validation set và Test set"
+                        ],
+                        "a": [
+                            1
+                        ],
+                        "e": "Tối thiểu để xây dựng và đánh giá một mô hình, ta cần tập huấn luyện (Training set) để mô hình học, và tập kiểm tra (Test set) để đánh giá khả năng tổng quát hóa của nó trên dữ liệu chưa từng thấy."
+                    },
+                    {
+                        "q": "Câu 5: Trong ma trận nhầm lẫn thì chỉ số TNi đại diện cho:",
+                        "o": [
+                            "Số lượng các ví dụ thuộc lớp ci- bị phân loại nhầm (vào các lớp khác ci)",
+                            "Số lượng các ví dụ thuộc lớp ci được phân loại chính xác vào lớp ci",
+                            "Số lượng các ví dụ không thuộc lớp ci được phân loại (chính xác)",
+                            "Số lượng các ví dụ không thuộc lớp ci bị phân loại nhầm vào lớp ci"
+                        ],
+                        "a": [
+                            2
+                        ],
+                        "e": "TNi (True Negative của lớp i): Số lượng mẫu thực tế KHÔNG thuộc lớp i và mô hình dự đoán chính xác là KHÔNG thuộc lớp i."
+                    },
+                    {
+                        "q": "Câu 6: Dựa vào thực nghiệm thì tỉ lệ tối ưu giữa Test set và Training set là",
+                        "o": [
+                            "1:2",
+                            "2:8",
+                            "1:9",
+                            "3:7"
+                        ],
+                        "a": [
+                            1
+                        ],
+                        "e": "Theo nguyên tắc Pareto và thực nghiệm phổ biến trong Machine Learning, tỉ lệ thường được sử dụng nhất là 80% cho Training và 20% cho Testing (tức tỉ lệ Test:Train là 2:8)."
+                    },
+                    {
+                        "q": "Câu 7: Cấu tạo của 1 Neural Network gồm có:",
+                        "o": [
+                            "3 Layer",
+                            "4 Layer",
+                            "1 Layer",
+                            "2 Layer"
+                        ],
+                        "a": [
+                            0
+                        ],
+                        "e": "Cấu trúc cơ bản nhất của một mạng nơ-ron nhân tạo (MLP) thường được mô tả gồm 3 phần (Layer) chính: Input Layer (Lớp đầu vào), Hidden Layer (Lớp ẩn), và Output Layer (Lớp đầu ra)."
+                    },
+                    {
+                        "q": "Câu 8: Điểm hạn chế chính của Naïve Bayes là gì?",
+                        "o": [
+                            "Không thể xử lý dữ liệu lớn",
+                            "Giả định độc lập giữa các đặc trưng",
+                            "Không thể tính xác suất hậu nghiệm",
+                            "Luôn yêu cầu dữ liệu chuẩn hóa"
+                        ],
+                        "a": [
+                            1
+                        ],
+                        "e": "Thuật toán Naive Bayes dựa trên một giả định rất 'ngây thơ' (naive) là các đặc trưng (features) hoàn toàn độc lập với nhau. Trong thực tế, các đặc trưng thường có sự tương quan, đây là điểm yếu lớn nhất của thuật toán này."
+                    },
+                    {
+                        "q": "Câu 9: Phân lớp Naïve Bayes dựa trên giả định nào?",
+                        "o": [
+                            "Các thuộc tính phải có cùng phân phối",
+                            "Các thuộc tính luôn tương quan tuyến tính",
+                            "Các thuộc tính không ảnh hưởng đến xác suất",
+                            "Các thuộc tính độc lập có điều kiện với lớp"
+                        ],
+                        "a": [
+                            3
+                        ],
+                        "e": "Định lý Bayes ngây thơ giả định tính độc lập có điều kiện của các thuộc tính (đặc trưng) khi đã biết trước nhãn lớp (class)."
+                    },
+                    {
+                        "q": "Câu 10: Ý tưởng giải quyết bài toán bằng AI trong giai đoạn cổ điển là:",
+                        "o": [
+                            "Lựa chọn Path tối ưu bằng hàm đánh giá.",
+                            "Triển khai kỹ thuật State Space Search trên đồ thị.",
+                            "Tìm kiếm trạng thái đích trong không gian trạng thái.",
+                            "Sử dụng kỹ thuật tìm kiếm vét cạn để tìm nghiệm."
+                        ],
+                        "a": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "e": "AI cổ điển (GOFAI) tập trung vào việc mô hình hóa bài toán dưới dạng không gian trạng thái (State Space) và sử dụng các thuật toán tìm kiếm (có thông tin như A* hoặc mù/vét cạn) để tìm đường đi đến trạng thái đích."
+                    },
+                    {
+                        "q": "Câu 11: Vai trò của Training set là:",
+                        "o": [
+                            "Kiểm thử kết quả huấn luyện",
+                            "Hiệu chỉnh tham số",
+                            "Khai phá và tích hợp tri thức",
+                            "Huấn luyện mô hình AI"
+                        ],
+                        "a": [
+                            3
+                        ],
+                        "e": "Training set (tập huấn luyện) là dữ liệu được cung cấp cho mô hình trong quá trình học để nó tự điều chỉnh trọng số và tìm ra quy luật, tức là dùng để huấn luyện mô hình."
+                    },
+                    {
+                        "q": "Câu 12: Hàm kích hoạt (activation function) có vai trò gì trong Neural Network?",
+                        "o": [
+                            "Đưa tính phi tuyến vào mô hình",
+                            "Giúp mạng học nhanh hơn",
+                            "Giảm số lượng tham số của f(x)",
+                            "Khuếch đại giá trị dữ liệu đầu vào"
+                        ],
+                        "a": [
+                            0
+                        ],
+                        "e": "Hàm kích hoạt đóng vai trò cực kỳ quan trọng trong việc đưa tính phi tuyến (non-linearity) vào mạng nơ-ron, giúp mạng có khả năng học và xấp xỉ các hàm số phức tạp trong thực tế."
+                    }
+                ]
+            },
+
         ];
 
         let state = {
