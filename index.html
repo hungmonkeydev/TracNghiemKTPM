@@ -3637,312 +3637,918 @@
                 ]
             },
             {
-                id: 7,
-                name: "Đề thi AI mấy tuần trước",
-                desc: "Đề thi AI thầy Khuê mấy tuần trước",
-                questions: [
+                "id": 7,
+                "name": "Ôn thi cuối kì",
+                "desc": "Đề thi mẫu câu trắc nghiệm tổng hợp kiến thức kiểm thử phần mềm",
+                "questions": [
                     {
-                        "q": "Trong giai đoạn 1980–2000 AI được xây dựng dựa trên",
+                        "q": "Câu 1: Mục tiêu quan trọng nhất của việc xác định độ ưu tiên kiểm thử là gì?",
                         "o": [
-                            "Hàm học mục tiêu Xác suất – Bayesian networks, xác suất thống kê được dùng rộng rãi",
-                            "Mạng Neural Network – Backpropagation ra đời 1986 (Rumelhart), perceptron phổ biến",
-                            "Thuật toán & giải thuật – Expert systems, search algorithms (A*, minimax) là nền tảng AI thời kỳ này",
-                            "Deep Learning – Chỉ bùng nổ sau 2010 (AlexNet 2012), giai đoạn này chưa khả thi do thiếu GPU và dữ liệu"
-                        ],
-                        "a": [0, 1, 2],
-                        "e": "Giai đoạn 1980-2000 AI phát triển dựa trên Xác suất, Mạng Neural Network và Thuật toán/Giải thuật. Deep Learning chỉ bùng nổ sau 2010 do trước đó còn hạn chế về GPU và dữ liệu."
-                    },
-                    {
-                        "q": "Căn cứ để xác định một thủ tục là thuật toán hay giải thuật",
-                        "o": [
-                            "Tính hiệu quả",
-                            "Tính phổ quát",
-                            "Tính đúng đắn",
-                            "Tính dừng & xác định"
-                        ],
-                        "a": [2, 3],
-                        "e": "Giáo trình viết rõ: 'Tiêu chuẩn: tính xác định và tính đúng đắn được mở rộng'. Tính xác định thay đổi (có thể dùng đệ quy ngẫu nhiên), tính đúng không còn bắt buộc (chấp nhận kết quả gần đúng). Tính hiệu quả và phổ quát là đặc trưng chung của cả hai."
-                    },
-                    {
-                        "q": "Hàm kích hoạt (activation function) có vai trò gì trong Neural Network?",
-                        "o": [
-                            "Giúp học nhanh hơn trực tiếp (đóng vai trò như learning rate, optimizer)",
-                            "Giảm số lượng tham số cho mô hình",
-                            "Đưa tính phi tuyến vào mô hình",
-                            "Khuếch đại giá trị đầu vào"
-                        ],
-                        "a": 2,
-                        "e": "Nếu không có hàm kích hoạt, nhiều lớp chồng nhau vẫn chỉ là hàm tuyến tính → không học được pattern phức tạp. Các hàm như ReLU, Sigmoid, Tanh giúp đưa tính phi tuyến vào mô hình."
-                    },
-                    {
-                        "q": "Phương pháp chia tập ngữ liệu hiệu quả – đơn giản nhưng hạn chế overfitting là:",
-                        "o": [
-                            "Leave-one-out",
-                            "Hold-out truyền thống",
-                            "Cross-validation",
-                            "Repeated hold-out"
-                        ],
-                        "a": 2,
-                        "e": "Cross-validation (k-fold) là phương pháp hiệu quả tiêu chuẩn để hạn chế overfitting, được giáo trình đề cao hơn để khắc phục nhược điểm trùng lặp dữ liệu kiểm thử của Repeated hold-out."
-                    },
-                    {
-                        "q": "Thành phần cơ bản của một mạng Neural Network là gì?",
-                        "o": [
-                            "Layer (input, hidden, output)",
-                            "Link (các kết nối/trọng số giữa các neuron)",
-                            "Vector (cấu trúc dữ liệu)",
-                            "Neuron (đơn vị tính toán cơ bản)"
-                        ],
-                        "a": [0, 1, 3],
-                        "e": "Mạng Neural Network gồm các Layer, các Link (kết nối) và các Neuron. Vector là cấu trúc dữ liệu, không phải thành phần kiến trúc mạng."
-                    },
-                    {
-                        "q": "Trong ma trận nhầm lẫn, chỉ số FPi (False Positive) đại diện cho:",
-                        "o": [
-                            "Số lượng các ví dụ không thuộc lớp ci bị phân loại nhầm vào lớp ci",
-                            "Số lượng các ví dụ thuộc lớp ci được phân loại đúng vào lớp ci (TP)",
-                            "Số lượng các ví dụ không thuộc lớp ci được phân loại đúng là không thuộc lớp ci (TN)",
-                            "Số lượng các ví dụ thuộc lớp ci bị phân loại nhầm vào lớp khác (FN)"
-                        ],
-                        "a": 0,
-                        "e": "FP = False Positive: mô hình dự đoán là ci nhưng thực tế không phải ci — tức các ví dụ từ lớp khác bị nhầm vào ci."
-                    },
-                    {
-                        "q": "Đối tượng nghiên cứu của AI là",
-                        "o": [
-                            "Data mining, knowledge discovery",
-                            "Mô phỏng tư duy (Turing test, cognitive AI)",
-                            "Ứng dụng tri thức (expert systems, inference engine)",
-                            "Biểu diễn tri thức (ontology, logic, frames)"
-                        ],
-                        "a": [0, 1, 2, 3],
-                        "e": "AI là lĩnh vực rộng, bao gồm cả biểu diễn tri thức, suy luận, học (data mining) và mô phỏng tư duy con người. Tất cả các phương án đều đúng."
-                    },
-                    {
-                        "q": "Việc chia tập huấn luyện không đảm bảo độ phủ đối với các nhãn có thể dẫn đến",
-                        "o": [
-                            "Quá trình học hội tụ",
-                            "Hiệu suất (P) giảm",
-                            "Quá khớp (over-fitting)",
-                            "Hiệu suất tăng"
-                        ],
-                        "a": [1, 2],
-                        "e": "Khi số lượng ví dụ quá nhỏ không đại diện cho phân bố (thiếu độ phủ), mô hình sẽ bị quá khớp (over-fitting) vào nhãn chiếm đa số, khiến khả năng tổng quát hóa kém đi và làm giảm hiệu suất dự đoán trên thực tế."
-                    },
-                    {
-                        "q": "Vấn đề chưa giải quyết được của AI cổ điển",
-                        "o": [
-                            "Chưa xử lý được Big Data / tích hợp tri thức",
-                            "Khả năng tự học như con người",
-                            "AI ảo giác (Hallucination)",
-                            "Khả năng tự thích nghi môi trường"
-                        ],
-                        "a": [0, 1],
-                        "e": "AI cổ điển hạn chế ở khả năng xử lý Big Data, tích hợp tri thức và tự học. AI ảo giác (Hallucination) không phải là vấn đề của AI cổ điển vì nó hoạt động dựa trên logic cứng (rule-based) khắt khe, không có khả năng tự 'bịa' ra dữ liệu như LLM/GenAI hiện đại."
-                    },
-                    {
-                        "q": "Ưu điểm chính của thuật toán phân lớp Naïve Bayes là gì?",
-                        "o": [
-                            "Luôn chính xác nhất so với mọi thuật toán khác",
-                            "Hoạt động tốt với tập dữ liệu vừa/lớn và số lượng lớn các đặc trưng",
-                            "Không có giả định gì về sự phụ thuộc giữa các đặc trưng",
-                            "Hoàn toàn không bao giờ bị hiện tượng overfitting"
+                            "Tìm càng nhiều lỗi càng tốt.",
+                            "Test các khu vực rủi ro cao.",
+                            "Đạt được độ bao phủ cao.",
+                            "Cái nào dễ thì test trước."
                         ],
                         "a": 1,
-                        "e": "Giáo trình chỉ rõ: Naïve Bayes nên được sử dụng khi tập huấn luyện có kích thước từ vừa đến lớn và các ví dụ được biểu diễn bởi một số lượng lớn các thuộc tính. Nó có giả định mạnh về việc các đặc trưng độc lập với nhau."
+                        "e": "Trong kiểm thử dựa trên rủi ro (Risk-based testing), thời gian và nguồn lực luôn có hạn. Việc xác định độ ưu tiên giúp tập trung kiểm thử vào các khu vực có rủi ro cao nhất (khả năng lỗi cao hoặc hậu quả nghiêm trọng) nhằm tối ưu hóa hiệu quả tìm lỗi sớm."
                     },
                     {
-                        "q": "Vai trò của tập dữ liệu kiểm chứng (Validation set) là",
+                        "q": "Câu 2: Kiểm thử được thực hiện đủ khi",
                         "o": [
-                            "Khai phá tri thức từ toàn bộ dữ liệu",
-                            "Sử dụng trực tiếp để cập nhật trọng số (huấn luyện)",
-                            "Kiểm thử kết quả sau quá trình huấn luyện",
-                            "Hiệu chỉnh các tham số (tuning hyperparameters)"
+                            "hết thời gian.",
+                            "Độ tin cậy cần thiết đã đạt.",
+                            "không tìm thấy lỗi nào nữa.",
+                            "người dùng sẽ không tìm thấy bất kỳ lỗi nghiêm trọng nào."
                         ],
-                        "a": [2, 3],
-                        "e": "Validation set dùng để đánh giá mô hình sau mỗi epoch/iteration và để hiệu chỉnh các siêu tham số (như learning rate, số lớp, số neuron...). Huấn luyện thì dùng Training set."
+                        "a": 1,
+                        "e": "Việc dừng kiểm thử dựa trên tiêu chí hoàn thành (Exit Criteria). Khi độ tin cậy cần thiết của hệ thống đã đạt (đáp ứng các tiêu chuẩn chất lượng, mật độ lỗi giảm xuống mức an toàn), kiểm thử có thể được coi là đủ."
                     },
                     {
-                        "q": "Cấu tạo của một Neuron là sự kết hợp của",
+                        "q": "Câu 3: Điều nào sau đây mô tả lợi ích chính của việc xác minh (verification) sớm trong vòng đời?",
                         "o": [
-                            "1 hàm tuyến tính với 1 hàm phi tuyến",
-                            "1 hàm f(x) với 1 hàm kích hoạt",
-                            "1 hàm f(x) với 1 hàm f(y)",
-                            "1 hàm tuyến tính với 1 hàm θ(y)"
+                            "Nó cho phép xác định các thay đổi trong yêu cầu của người dùng.",
+                            "Nó tạo điều kiện cho việc thiết lập môi trường kiểm thử kịp thời.",
+                            "Nó làm giảm sự gia tăng của lỗi.",
+                            "Nó cho phép người kiểm thử sớm tham gia vào dự án."
+                        ],
+                        "a": 2,
+                        "e": "Xác minh sớm (như review tài liệu thiết kế, đặc tả) giúp phát hiện sai sót ngay tại gốc. Điều này ngăn chặn việc lỗi từ giai đoạn trước lan sang và nhân lên (gia tăng) ở các giai đoạn code hoặc tích hợp sau đó."
+                    },
+                    {
+                        "q": "Câu 4: Kiểm thử alpha là:",
+                        "o": [
+                            "kiểm thử sau khi phát hành được thực hiện bởi người dùng cuối.",
+                            "Kiểm thử đầu tiên được thực hiện.",
+                            "Kiểm thử trước khi phát hành được thực hiện bởi nhóm đại diện người dùng.",
+                            "Kiểm thử cuối cùng trước khi phát hành."
+                        ],
+                        "a": 2,
+                        "e": "Alpha testing là một loại kiểm thử chấp nhận (Acceptance testing), được thực hiện tại nơi phát triển phần mềm bởi một nhóm khách hàng tiềm năng/đại diện người dùng hoặc đội kiểm thử độc lập trước khi sản phẩm được phát hành rộng rãi (Beta)."
+                    },
+                    {
+                        "q": "Câu 5: Trong một hệ thống được thiết kế để tính thuế phải trả: Một nhân viên có £4000 tiền lương miễn thuế. £1500 tiếp theo bị đánh thuế 10%. £28000 tiếp theo bị đánh thuế 22%. Bất kỳ số tiền còn lại sẽ bị đánh thuế ở mức 40%. Nhóm nào trong số các nhóm sẽ rơi vào cùng một lớp tương đương?",
+                        "o": [
+                            "£ 4800; £ 14000; £ 28000",
+                            "£ 5200; £ 5500; £ 28000",
+                            "£ 28001; £ 32000; £ 35000",
+                            "£ 5800; £ 28000; £ 32000"
+                        ],
+                        "a": 2,
+                        "e": "Ta phân tích các khoảng giá trị thu nhập: 1. Miễn thuế: 0 -> £4000. 2. Thuế 10%: trên £4000 đến £5500 (£4000 + £1500). 3. Thuế 22%: trên £5500 đến £33500 (£5500 + £28000). 4. Thuế 40%: trên £33500. Xét đáp án C: Tất cả các giá trị £28001, £32000, £35000 đều nằm trong khoảng từ trên £5500 đến £33500, do đó chúng cùng thuộc một lớp tương đương (chịu mức thuế 22%)."
+                    },
+                    {
+                        "q": "Câu 6: Điều quan trọng nhất về thiết kế kiểm thử sớm là:",
+                        "o": [
+                            "Làm cho việc chuẩn bị kiểm thử dễ dàng hơn.",
+                            "Giúp phát hiện và sửa các lỗi trong tài liệu yêu cầu ngay từ đầu.",
+                            "Giúp lập kế hoạch phân bổ tài nguyên kiểm thử tốt hơn.",
+                            "Đảm bảo các ca kiểm thử chạy nhanh hơn."
+                        ],
+                        "a": 1,
+                        "e": "Khi thiết kế các ca kiểm thử sớm (ngay từ lúc có tài liệu yêu cầu), người kiểm thử sẽ nhận ra các điểm mâu thuẫn, thiếu sót hoặc mơ hồ trong đặc tả, từ đó giúp sửa lỗi tài liệu ngay lập tức trước khi code được viết."
+                    },
+                    {
+                        "q": "Câu 7: Phát biểu nào sau đây là phát biểu đúng về review?",
+                        "o": [
+                            "Review không thể thực hiện dựa trên thông số kỹ thuật yêu cầu của người dùng.",
+                            "Review là cách kiểm tra mã kém hiệu quả nhất.",
+                            "Review không có khả năng tìm ra lỗi trong kế hoạch kiểm thử.",
+                            "Review được thực hiện dựa theo thông số kỹ thuật, code và kế hoạch kiểm thử."
+                        ],
+                        "a": 3,
+                        "e": "Review là một hoạt động kiểm thử tĩnh rất linh hoạt, có thể áp dụng cho hầu hết các loại tài liệu trong dự án bao gồm tài liệu đặc tả phần mềm (thông số kỹ thuật), mã nguồn (code) và cả kế hoạch kiểm thử (test plan)."
+                    },
+                    {
+                        "q": "Câu 8: Các test case được thiết kế khi nào?",
+                        "o": [
+                            "Khi thực thi kiểm thử",
+                            "Khi lập kế hoạch kiểm thử",
+                            "Khi cấu hình môi trường kiểm thử",
+                            "Khi phân tích và thiết kế kiểm thử"
+                        ],
+                        "a": 3,
+                        "e": "Theo quy trình kiểm thử chuẩn của ISTQB, hoạt động viết và thiết kế chi tiết các Test Case nằm ở giai đoạn Phân tích và Thiết kế kiểm thử (Test Analysis and Design)."
+                    },
+                    {
+                        "q": "Câu 9: Nếu kết quả mong đợi (trong test case) không được xác định thì:",
+                        "o": [
+                            "Chúng ta không thể chạy kiểm thử",
+                            "Có thể khó lặp lại bài kiểm thử",
+                            "Có thể khó xác định xem bài kiểm thử là đạt hay không đạt",
+                            "Chúng ta không thể nhập tự động đầu vào của người dùng"
+                        ],
+                        "a": 2,
+                        "e": "Mục đích của kết quả mong đợi (Expected Result) là để so sánh với kết quả thực tế (Actual Result). Nếu không xác định rõ ràng từ trước, người kiểm thử sẽ phân vân và rất khó đánh giá chính xác test case đó Pass (Đạt) hay Fail (Không đạt)."
+                    },
+                    {
+                        "q": "Câu 10: Xác minh (verification) là:",
+                        "o": [
+                            "Kiểm thử xem chúng ta có đang xây dựng hệ thống có phù hợp không",
+                            "Kiểm thử xem chúng ta có đang xây dựng hệ thống đúng cách không",
+                            "Được thực hiện bởi một nhóm kiểm thử độc lập",
+                            "Đảm bảo rằng đó là những gì người dùng thực sự muốn"
+                        ],
+                        "a": 1,
+                        "e": "Theo định nghĩa kinh điển của Boehm: Verification (Xác minh) trả lời cho câu hỏi 'Are we building the product right?' (Chúng ta có đang xây dựng hệ thống đúng cách/đúng thiết kế không). Còn Validation (Xác nhận) mới là 'Are we building the right product?' (Chúng ta có xây dựng đúng hệ thống người dùng cần không)."
+                    },
+                    {
+                        "q": "Câu 11: Khi kiểm thử hệ thống tính điểm, tester xác định rằng tất cả các điểm từ 90 đến 100 sẽ mang lại kết quả A, nhưng điểm dưới 90 sẽ không được điểm A. Phương pháp phân tích này được gọi là:",
+                        "o": [
+                            "Phân vùng tương đương",
+                            "Phân tích giá trị ranh giới",
+                            "Bảng quyết định",
+                            "Phân tích lai"
                         ],
                         "a": 0,
-                        "e": "Một Neuron cơ bản là sự kết hợp của tổng có trọng số z = Wx + b (hàm tuyến tính) và một hàm kích hoạt (activation function) như ReLU, Sigmoid (hàm phi tuyến). Ký hiệu θ(y) không phải là ký hiệu chuẩn của neuron."
+                        "e": "Đề bài mô tả việc chia các giá trị đầu vào thành các tập hợp (vùng) có cùng tính chất xử lý: Vùng hợp lệ đạt điểm A (90 - 100) và Vùng không đạt điểm A (< 90). Đây là định nghĩa cốt lõi của kỹ thuật Phân vùng tương đương (Equivalence Partitioning)."
+                    },
+                    {
+                        "q": "Câu 12: Phát biểu nào sau đây đúng với kiểm thử beta",
+                        "o": [
+                            "Được thực hiện bởi coder",
+                            "Được thực hiện bởi các chuyên gia",
+                            "Được thực hiện bởi người dùng cuối",
+                            "Được thực hiện bởi tester"
+                        ],
+                        "a": 2,
+                        "e": "Kiểm thử Beta (Beta testing) là một dạng kiểm thử chấp nhận được thực hiện bên ngoài môi trường của nhà phát triển phần mềm, bởi những người dùng cuối (hoặc khách hàng tiềm năng) thực tế trên chính môi trường của họ trước khi sản phẩm ra mắt chính thức."
+                    },
+                    {
+                        "q": "Câu 13: Phát biểu nào sau đây về tiêu chuẩn component testing là sai:",
+                        "o": [
+                            "Các kỹ thuật kiểm thử hộp đen đều có một kỹ thuật đo lường liên quan",
+                            "Các kỹ thuật kiểm thử hộp trắng đều có một kỹ thuật đo lường liên quan",
+                            "Độ phức tạp chu trình không phải là một kỹ thuật do kiểm thử",
+                            "Các kỹ thuật đo lường kiểm thử hộp trắng đều có một kỹ thuật thiết kế kiểm thử liên quan"
+                        ],
+                        "a": 0,
+                        "e": "Trong kiểm thử thành phần (Component testing), các kỹ thuật hộp trắng dựa trên cấu trúc mã nguồn luôn gắn liền với các số đo độ bao phủ cụ thể (như statement coverage, branch coverage). Ngược lại, các kỹ thuật hộp đen dựa trên chức năng thường không có một số đo độ bao phủ định lượng liên quan trực tiếp một cách tự động và chặt chẽ như hộp trắng ở mức độ này."
+                    },
+                    {
+                        "q": "Câu 14: Phát biểu nào sau đây đúng về kết quả mong đợi.",
+                        "o": [
+                            "Chỉ quan trọng trong kiểm thử hệ thống",
+                            "Chỉ được sử dụng trong kiểm thử đơn vị",
+                            "Không bao giờ được xác định trước",
+                            "Hữu ích nhất khi được xác định trước"
+                        ],
+                        "a": 3,
+                        "e": "Kết quả mong đợi (Expected result) cần phải được xác định rõ ràng TRƯỚC khi thực thi ca kiểm thử để đảm bảo tính khách quan cho tester khi so sánh với kết quả thực tế, tránh việc tester bị thiên vị hoặc công nhận sai sót của phần mềm là đúng."
+                    },
+                    {
+                        "q": "Câu 15: Given the Following program\nIF X < Y\nTHEN Statement 1;\nELSE IF Y >= Z\nTHEN Statement 2;\nEND\nĐộ phức tạp chu trình là bao nhiêu?",
+                        "o": [
+                            "2",
+                            "3",
+                            "4",
+                            "5"
+                        ],
+                        "a": 1,
+                        "e": "Công thức tính độ phức tạp chu trình McCabe đơn giản dựa trên số lượng điểm quyết định (Predicate Nodes): $M = P + 1$. Trong đoạn code trên có 2 câu lệnh điều kiện (điểm quyết định) là: 'X < Y' và 'Y >= Z'. Do đó, độ phức tạp chu trình $M = 2 + 1 = 3$."
+                    },
+                    {
+                        "q": "Câu 16: Chúng ta có thể tìm thấy điều kiện dừng kiểm thử trong tài liệu nào.",
+                        "o": [
+                            "Báo cáo kết quả kiểm thử",
+                            "Test suite",
+                            "Test case",
+                            "Test plan"
+                        ],
+                        "a": 3,
+                        "e": "Tiêu chí/Điều kiện dừng kiểm thử (Exit Criteria) xác định rõ khi nào hoạt động kiểm thử của một giai đoạn hoặc dự án được phép kết thúc. Tiêu chí này bắt buộc phải được định nghĩa rõ ràng trong Kế hoạch kiểm thử (Test Plan)."
+                    },
+                    {
+                        "q": "Câu 17: Sau giai đoạn nào, chúng ta có thể tiến hành kiểm thử hộp trắng?",
+                        "o": [
+                            "Sau giai đoạn code",
+                            "Sau giai đoạn thiết kế",
+                            "Sau khi tạo SRS",
+                            "Sau giai đoạn cài đặt"
+                        ],
+                        "a": 0,
+                        "e": "Kiểm thử hộp trắng (White-box testing) là kỹ thuật kiểm thử động dựa trên việc xem xét và thực thi cấu trúc logic bên trong của mã nguồn. Do đó, chúng ta chỉ có thể tiến hành chạy kiểm thử hộp trắng sau khi lập trình viên đã hoàn thành việc viết mã nguồn (Sau giai đoạn code)."
+                    },
+                    {
+                        "q": "Câu 18: Lý do chính để kiểm thử phần mềm trước khi phát hành là gì?",
+                        "o": [
+                            "để cho thấy rằng hệ thống sẽ hoạt động sau khi phát hành",
+                            "để quyết định khi nào phần mềm có đủ chất lượng để phát hành",
+                            "để tìm càng nhiều lỗi càng tốt trước khi phát hành",
+                            "để cung cấp thông tin cho một quyết định dựa trên rủi ro về việc phát hành"
+                        ],
+                        "a": 3,
+                        "e": "Theo quan điểm quản lý chất lượng hiện đại của ISTQB, kiểm thử không đưa ra quyết định duyệt phát hành trực tiếp mà đóng vai trò đo lường chất lượng, thu thập dữ liệu về các lỗi còn tồn đọng để cung cấp thông tin toàn diện cho các bên liên quan (Stakeholders) đưa ra quyết định phát hành dựa trên rủi ro một cách hợp lý."
+                    },
+                    {
+                        "q": "Câu 19: Phát biểu nào sau đây đúng về độ bao phủ",
+                        "o": [
+                            "Không liên quan gì đến thử nghiệm",
+                            "Là một thước đo về tính kỹ lưỡng của thử nghiệm",
+                            "Độ phủ nhánh phải là bắt buộc đối với tất cả phần mềm",
+                            "Chỉ có thể được áp dụng trong kiểm thử đơn vị hoặc mô-đun, không áp dụng trong kiểm thử hệ thống"
+                        ],
+                        "a": 1,
+                        "e": "Độ bao phủ (Coverage) thể hiện tỷ lệ phần trăm các thành phần (câu lệnh, nhánh, yêu cầu, chức năng...) đã được thực thi bởi các ca kiểm thử. Vì thế, nó chính là thước đo định lượng phản ánh mức độ kỹ lưỡng, đầy đủ của hoạt động kiểm thử."
+                    },
+                    {
+                        "q": "Câu 20: Lỗi nào trong các lỗi sau tốn chi phí khắc phục nhất",
+                        "o": [
+                            "Lỗi trong đặc tả chương trình",
+                            "Lỗi trong code",
+                            "Lỗi trong yêu cầu",
+                            "Lỗi trong thiết kế"
+                        ],
+                        "a": 2,
+                        "e": "Theo nguyên lý kiểm thử, lỗi được phát hiện càng muộn trong vòng đời phát triển thì chi phí khắc phục càng nhân lên gấp bội. Lỗi xuất hiện ngay từ giai đoạn đầu là Yêu cầu (Requirement) nếu không được phát hiện sớm, nó sẽ kéo theo sai lệch ở thiết kế, code và test, dẫn tới việc phải đập đi xây lại diện rộng và tốn kém chi phí nhất."
+                    }, {
+                        "q": "Câu 21: Mục tiêu chính khi review một giao phẩm phần mềm là gì?",
+                        "o": [
+                            "Để xác định các lỗi tiềm ẩn bằng cách sử dụng đặc tả kiểm thử",
+                            "Để xác định các (defect) khiếm khuyết trong bất kỳ sản phẩm công việc phần mềm nào.",
+                            "Để xác định các lỗi chính tả trong một đặc tả yêu cầu.",
+                            "Để xác định code viết không theo chuẩn."
+                        ],
+                        "a": 1,
+                        "e": "Mục tiêu chính của việc review (đánh giá tĩnh) là phát hiện sớm các khiếm khuyết (defect) trong bất kỳ tài liệu hay sản phẩm phần mềm nào (ví dụ: requirement, design, code...) để giảm thiểu chi phí khắc phục."
+                    },
+                    {
+                        "q": "Câu 22: Việc xác định tiêu chí dừng kiểm thử được thực hiện khi nào?",
+                        "o": [
+                            "Trong khi lập kế hoạch kiểm thử.",
+                            "Khi đánh giá các tiêu chí dừng và lập báo cáo.",
+                            "Khi đóng quá trình kiểm thử.",
+                            "Khi kiểm soát quá trình kiểm thử."
+                        ],
+                        "a": 0,
+                        "e": "Tiêu chí dừng (Exit Criteria) xác định điều kiện khi nào quá trình kiểm thử được coi là hoàn tất. Tiêu chí này cần được thống nhất và định nghĩa ngay từ giai đoạn đầu tiên là Lập kế hoạch kiểm thử (Test Planning)."
+                    },
+                    {
+                        "q": "Câu 23: Cho đoạn mã sau, cần tối thiểu bao nhiêu test case để phủ quyết định 100%?\nif width > length then\n  biggest_dimension = width\n  if height > width then\n    biggest_dimension = height\n  end_if\nelse\n  biggest_dimension = length\n  if height > length then\n    biggest_dimension = height\n  end_if\nend_if",
+                        "o": [
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                        ],
+                        "a": 3,
+                        "e": "Để đạt 100% phủ quyết định (Decision Coverage), mọi nhánh True/False của các câu lệnh IF đều phải được đi qua. Nhánh 'if width > length' rẽ làm 2 hướng True và False. Ở hướng True có thêm 1 lệnh IF cần 2 test case (True/False). Ở hướng False cũng có thêm 1 lệnh IF cần 2 test case (True/False). Tổng cộng cần 2 + 2 = 4 test cases."
+                    },
+                    {
+                        "q": "Câu 24: Bạn đã thiết kế các test case để đạt 100% phủ lệnh và 100% phủ quyết định cho đoạn mã sau:\nif width > length then\n  biggest_dimension = width\nelse\n  biggest_dimension = length\nend_if\n\nPhần sau được thêm vào cuối đoạn mã ở trên:\nprint \"Biggest dimension is \" & biggest_dimension\nprint \"Width: \" & width\nprint \"Length: \" & length\n\nHỏi cần thêm bao nhiêu test case nữa để đạt được yêu cầu?",
+                        "o": [
+                            "Thêm 1 test case nữa để đạt phủ cấp 2.",
+                            "Thêm 2 test case nữa để phủ cấp 1 và 1 trong 2 test case đó được dùng để phủ cấp 2.",
+                            "Không cần thêm test case nào nữa.",
+                            "Thêm 1 test case nữa để đạt phủ cấp 1."
+                        ],
+                        "a": 2,
+                        "e": "Đoạn mã if-else ban đầu cần 2 test case để đạt 100% phủ lệnh và phủ quyết định (1 cho nhánh True, 1 cho nhánh False). Các câu lệnh print thêm vào cuối mang tính tuần tự, không tạo ra điều kiện rẽ nhánh mới. Do đó, 2 test case ban đầu khi chạy tiếp sẽ tự động bao phủ luôn các lệnh print này, không cần thiết kế thêm test case nào."
+                    },
+                    {
+                        "q": "Câu 25: Test suite được tạo ra trong giai đoạn nào?",
+                        "o": [
+                            "Phân tích yêu cầu.",
+                            "Lập kế hoạch.",
+                            "Phát triển test case.",
+                            "Thiết lập môi trường"
+                        ],
+                        "a": 2,
+                        "e": "Test suite (Bộ kiểm thử) là tập hợp các test case có liên quan với nhau. Việc gom nhóm và cấu trúc các test suite được thực hiện song song trong giai đoạn thiết kế và phát triển test case (Test Case Development / Test Implementation)."
+                    },
+                    {
+                        "q": "Câu 26: Kiểm tra hệ thống nên:",
+                        "o": [
+                            "Chỉ kiểm các yêu cầu phi chức năng không cần kiểm các yêu cầu chức năng",
+                            "Chỉ kiểm các yêu cầu chức năng không cần kiểm các yêu cầu phi chức năng",
+                            "Kiểm cả yêu cầu phi chức năng và yêu cầu chức năng",
+                            "Kiểm yêu cầu phi chức năng hoặc yêu cầu chức năng"
+                        ],
+                        "a": 2,
+                        "e": "Kiểm thử hệ thống (System Testing) là mức độ kiểm tra toàn bộ hệ thống đã được tích hợp hoàn chỉnh. Ở giai đoạn này, Tester phải đánh giá xem hệ thống có đáp ứng toàn diện các tiêu chuẩn hay không, bao gồm cả các yêu cầu về chức năng (Functional) và phi chức năng (Non-functional như hiệu năng, bảo mật...)."
+                    },
+                    {
+                        "q": "Câu 27: Cái nào không phải là mục tiêu kiểm thử?",
+                        "o": [
+                            "Tìm khuyết điểm của phần mềm",
+                            "Để đạt được mức độ tin tưởng về chất lượng",
+                            "Ngăn ngừa khiếm khuyết.",
+                            "Gỡ lỗi"
+                        ],
+                        "a": 3,
+                        "e": "Gỡ lỗi (Debugging) là quá trình truy tìm nguyên nhân gốc rễ của lỗi code và tiến hành sửa chữa nó. Đây là công việc của Lập trình viên (Developer), không phải là mục tiêu của quá trình Kiểm thử (Testing). Kiểm thử chỉ có nhiệm vụ tìm ra lỗi, đánh giá chất lượng và hỗ trợ ngăn ngừa lỗi."
+                    },
+                    {
+                        "q": "Câu 28: Thứ tự nào sau đây phù hợp với vòng đời bug (Bug Life Cycle)?",
+                        "o": [
+                            "Open, Assigned, Fixed, Closed",
+                            "Open, Fixed, Assigned, Closed",
+                            "Assigned, Open, Closed, Fixed",
+                            "Assigned, Open, Fixed, Closed"
+                        ],
+                        "a": 0,
+                        "e": "Quy trình tiêu chuẩn nhất của một Bug: Bắt đầu được mở và ghi nhận (Open) -> Phân công cho một Developer xử lý (Assigned) -> Developer sửa lỗi xong (Fixed) -> Tester kiểm tra lại thành công và đóng lỗi (Closed)."
+                    },
+                    {
+                        "q": "Câu 29: Phát biểu nào sau đây mô tả về kiểm thử tĩnh là sai:",
+                        "o": [
+                            "Kiểm tra tĩnh yêu cầu chạy các bài kiểm tra thông qua mã",
+                            "Kiểm tra tĩnh bao gồm kiểm tra bàn",
+                            "Kiểm tra tĩnh bao gồm các kỹ thuật như xem xét và kiểm tra",
+                            "Kiểm tra tĩnh có thể cho các phép đo như độ phức tạp chu kỳ"
+                        ],
+                        "a": 0,
+                        "e": "Đặc trưng cốt lõi của Kiểm thử tĩnh (Static Testing) là KHÔNG thực thi (chạy) chương trình. Do đó, việc 'yêu cầu chạy các bài kiểm tra thông qua mã' là định nghĩa của Kiểm thử động (Dynamic Testing), khiến phát biểu A là phát biểu sai."
+                    },
+                    {
+                        "q": "Câu 30: Phát biểu nào sau đây không đúng về kiểm thử hồi quy?",
+                        "o": [
+                            "Để đảm bảo phần mềm sau khi sửa chữa không gặp thêm lỗi mới có liên quan",
+                            "Để đảm bảo các test case mới không trùng với test case cũ",
+                            "Để đảm bảo phiên bản mới nhất của phần mềm không làm ảnh hưởng đến các chức năng đang hoạt động tốt",
+                            "Để tiết kiệm công sức phải kiểm thử lại toàn bộ hệ thống"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử hồi quy (Regression Testing) được thực hiện sau khi có thay đổi code để đảm bảo các chức năng cũ không bị hỏng (side-effects). Việc 'đảm bảo test case mới không trùng với test case cũ' là công việc rà soát, bảo trì và quản lý kịch bản kiểm thử, không phải là định nghĩa hay tính chất của kiểm thử hồi quy."
+                    }, {
+                        "q": "Câu 31: Phát biểu nào sau đây phù hợp nhất với code review",
+                        "o": [
+                            "Chạy các test case để phát hiện các vấn đề của code",
+                            "Chạy chương trình bằng tay để tìm lỗi",
+                            "Dựa vào sơ đồ dòng điều khiển để tìm lỗi",
+                            "So sánh với tài liệu thiết kế để xác định code chưa đạt"
+                        ],
+                        "a": 3,
+                        "e": "Code review là một kỹ thuật kiểm thử tĩnh (static testing), trong đó người đánh giá xem xét mã nguồn thủ công để tìm ra lỗi, đảm bảo tuân thủ tiêu chuẩn mã hóa hoặc phát hiện sự sai lệch so với tài liệu thiết kế mà không cần phải thực thi chương trình."
+                    },
+                    {
+                        "q": "Câu 32: Các bước cơ bản của quá trình kiểm thử dòng điều khiển là",
+                        "o": [
+                            "Tính độ phức tạp chu trình để xác định loại đồ thị dòng điều khiển, xác định đường thi hành, sinh test case dựa vào đường thi hành",
+                            "Sinh đồ thị các test case từ code với độ đo cần kiểm thử, thực hiện các test case",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các test case, thực hiện các test case",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các đường thi hành, sinh các test case, thực hiện các test case"
+                        ],
+                        "a": 3,
+                        "e": "Quy trình chuẩn bị cho kiểm thử dòng điều khiển (Control Flow Testing) bao gồm 4 bước trình tự: (1) Xây dựng đồ thị dòng điều khiển (CFG), (2) Áp dụng các tiêu chí độ đo (như bao phủ lệnh, bao phủ nhánh) để xác định các đường thi hành cần thiết, (3) Sinh các test case cho các đường thi hành đó, và (4) Thực hiện các test case."
+                    },
+                    {
+                        "q": "Câu 33: Định nghĩa nào là phù hợp cho test case",
+                        "o": [
+                            "Là một cơ chế xác minh tính chính xác của kết quả đầu ra",
+                            "Là một cơ sở nguyên tắc về đo lường và thống kê.",
+                            "Là một tập giá trị đầu vào và đầu ra mong đợi",
+                            "Là một trạng thái của hệ thống"
+                        ],
+                        "a": 2,
+                        "e": "Theo định nghĩa chuẩn của ISTQB, một kịch bản kiểm thử (test case) cơ bản bao gồm một tập hợp các giá trị đầu vào (input), các điều kiện tiền quyết, và kết quả đầu ra mong đợi (expected output) để kiểm chứng một chức năng cụ thể."
+                    },
+                    {
+                        "q": "Câu 34: Phát biểu nào đúng về mối quan hệ giữa bao phủ dòng lệnh và bao phủ quyết định",
+                        "o": [
+                            "Bao phủ quyết định đạt 100% sẽ đảm bảo bao phủ lệnh 100%",
+                            "Bao phủ lệnh đạt 100% sẽ đảm bảo bao phủ quyết định 100%",
+                            "Bao phủ lệnh đạt 50% sẽ đảm bảo bao phủ quyết định 100%",
+                            "Bao phủ quyết định đạt 50% sẽ đảm bảo bao phủ lệnh 100%"
+                        ],
+                        "a": 0,
+                        "e": "Trong kỹ thuật hộp trắng, bao phủ quyết định (Decision Coverage) là mức độ đo lường mạnh hơn bao phủ lệnh (Statement Coverage). Việc đi qua tất cả các nhánh quyết định (True/False) sẽ tự động đi qua tất cả các câu lệnh bên trong các nhánh đó, do đó 100% quyết định chắc chắn đảm bảo 100% lệnh."
+                    },
+                    {
+                        "q": "Câu 35: Công ty X muốn xây dựng hàm tính thưởng của một nhân viên dựa vào số năm làm việc với các mức sau: Ít hơn hoặc bằng 2 năm: 1 triệu; Nhiều hơn 2 năm và ít hơn 5 năm: 2 triệu; Nhiều hơn 5 năm và ít hơn 10 năm: 3 triệu; Trên 10 năm: 4 triệu. Để kiểm thử hàm tính thưởng của công ty X theo phương pháp phân hoạch tương đương, cần tối thiểu bao nhiêu test case?",
+                        "o": [
+                            "2",
+                            "3",
+                            "4",
+                            "5"
+                        ],
+                        "a": 2,
+                        "e": "Dựa trên mô tả, bài toán được chia thành 4 vùng phân hoạch tương đương hợp lệ: (1) <= 2 năm, (2) >2 và <5 năm, (3) >5 và <10 năm, (4) >10 năm. Phương pháp phân hoạch tương đương yêu cầu ít nhất một giá trị đại diện cho mỗi vùng, vì vậy cần tối thiểu 4 test case."
+                    },
+                    {
+                        "q": "Câu 36: Thông tin nào không có trong báo cáo kết quả kiểm thử",
+                        "o": [
+                            "Mục tiêu kiểm thử và tiêu chí để đánh giá",
+                            "Các vấn đề xảy ra trong quá trình kiểm thử",
+                            "So sánh tiến trình thực tế với các tiêu chí đã đặt ra",
+                            "Đánh giá chất lượng của đối tượng được kiểm thử"
+                        ],
+                        "a": 0,
+                        "e": "Mục tiêu kiểm thử và tiêu chí đánh giá (như tiêu chí bắt đầu, tiêu chí dừng) là nội dung nằm trong Kế hoạch kiểm thử (Test Plan). Báo cáo kết quả (Test Report) chỉ so sánh kết quả thực tế đạt được so với các tiêu chí đã đặt ra ở kế hoạch, chứ không định nghĩa lại chúng."
+                    },
+                    {
+                        "q": "Câu 37: Kiểm thử chức năng được thực hiện khi nào?",
+                        "o": [
+                            "Chỉ được thực hiện ở mức kiểm thử hệ thống và kiểm thử chấp nhận",
+                            "Chỉ được thực hiện ở mức kiểm thử đơn vị",
+                            "Chỉ được thực hiện ở mức kiểm thử chấp nhận",
+                            "Được thực hiện ở tất cả các mức kiểm thử"
+                        ],
+                        "a": 3,
+                        "e": "Kiểm thử chức năng (Functional Testing) xác minh phần mềm có hoạt động đúng theo chức năng yêu cầu hay không, và nó có thể (và nên) được áp dụng tại mọi cấp độ kiểm thử: Unit Testing, Integration Testing, System Testing và Acceptance Testing."
+                    },
+                    {
+                        "q": "Câu 38: Đâu không phải là mục tiêu của kiểm thử",
+                        "o": [
+                            "Tìm lỗi",
+                            "Tăng sự tự tin về chất lượng",
+                            "Ngăn chặn lỗi",
+                            "Tìm nguyên nhân lỗi"
+                        ],
+                        "a": 3,
+                        "e": "Tìm nguyên nhân gây ra lỗi trong mã nguồn (Root cause) là bước thuộc quá trình Gỡ lỗi (Debugging), do lập trình viên thực hiện. Mục tiêu của kiểm thử (Testing) là tìm ra sự hiện diện của lỗi (Failure/Defect), chứ không phải đi tìm nguyên nhân gốc bên trong code."
+                    },
+                    {
+                        "q": "Câu 39: Kiểm thử tĩnh được thực hiện trong giai đoạn nào?",
+                        "o": [
+                            "Đặc tả yêu cầu",
+                            "Thiết kế",
+                            "Lập trình",
+                            "Tất cả các giai đoạn trên"
+                        ],
+                        "a": 3,
+                        "e": "Kiểm thử tĩnh (Static Testing) là việc kiểm tra các phần mềm, tài liệu mà không cần chạy chương trình. Vì vậy, nó có thể được áp dụng sớm ngay từ khâu Đặc tả yêu cầu (review requirement), Thiết kế (review design) và Lập trình (code review, static analysis)."
                     }
                 ]
             },
             {
                 "id": 8,
-                "name": "Đề thi AI - Chọn nhiều đáp án",
-                "desc": "Trích xuất từ hình ảnh đề thi trắc nghiệm AI (cho phép chọn nhiều đáp án)",
+                "name": "Ôn thi cuối kì",
+                "desc": "Đề thi mẫu câu trắc nghiệm tổng hợp kiến thức kiểm thử phần mềm",
                 "questions": [
                     {
-                        "q": "Câu 1: Huấn luyện AI trên mạng Neural Network thì dữ liệu/tri thức input được biểu diễn dưới dạng",
+                        "q": "Câu 1: “Ngụy biện không có lỗi” (absence-of-errors fallacy) nghĩa là gì?",
                         "o": [
-                            "Đồ thị",
-                            "Bảng dữ liệu",
-                            "Vector & Cây",
-                            "Vector"
+                            "Nếu không tìm thấy lỗi thì chắc chắn không có lỗi",
+                            "Nếu phần mềm ít lỗi thì chắc chắn đáp ứng nhu cầu người dùng",
+                            "Dù ít/không có lỗi, phần mềm vẫn có thể không đáp ứng nhu cầu/giá trị sử dụng",
+                            "Lỗi chỉ xuất hiện khi thay đổi môi trường triển khai"
                         ],
-                        "a": [
-                            3
-                        ],
-                        "e": "Trong mạng Neural Network, dữ liệu đầu vào cuối cùng luôn được trải phẳng hoặc biểu diễn dưới dạng các Vector (hoặc Tensor) số học để thực hiện các phép tính ma trận."
+                        "a": 2,
+                        "e": "Dựa trên 7 nguyên lý kiểm thử, nguyên lý thứ 6 'Sự vắng mặt của lỗi là một ngụy biện' chỉ ra rằng một hệ thống dù được test kỹ đến đâu và sửa hết các bug tìm thấy thì vẫn có thể thất bại nếu nó được xây dựng sai yêu cầu, không đáp ứng đúng nhu cầu và mong đợi của người dùng."
                     },
                     {
-                        "q": "Câu 2: Giai đoạn sau năm 2015 thì AI được xây dựng dựa trên",
+                        "q": "Câu 2: Phát biểu nào mô tả đúng “exhaustive testing” (kiểm thử toàn diện)?",
                         "o": [
-                            "Kiến trúc Deep Learning",
-                            "Mạng Neural Network",
-                            "Hàm học mục tiêu Xác suất",
-                            "Thuật toán & giải thuật"
+                            "Luôn bắt buộc với mọi dự án",
+                            "Thường không khả thi vì số lượng trường hợp đầu vào/quyết định quá lớn",
+                            "Chỉ áp dụng cho UI testing",
+                            "Chỉ cần đạt 100% statement coverage là đủ gọi là exhaustive"
                         ],
-                        "a": [
-                            0,
-                            1
-                        ],
-                        "e": "Sau 2015 là kỷ nguyên bùng nổ của Deep Learning (Học sâu) được xây dựng trên nền tảng các Mạng Neural Network (mạng nơ-ron nhân tạo) nhiều lớp, nhờ sự phát triển của GPU và Big Data."
+                        "a": 1,
+                        "e": "Kiểm thử toàn diện (Exhaustive Testing) là việc test mọi sự kết hợp có thể của dữ liệu đầu vào và các điều kiện. Nguyên lý thứ 2 của kiểm thử khẳng định điều này là không thể trong thực tế do giới hạn về mặt thời gian và nguồn lực, thay vào đó người ta sử dụng các kỹ thuật để ưu tiên kiểm thử."
                     },
                     {
-                        "q": "Câu 3: Vấn đề chưa giải quyết được của AI trong giai đoạn 1980-2000",
+                        "q": "Câu 3: Trong JUnit, khi test có tham số thì annotation nào thường dùng để truyền dữ liệu dạng nhiều dòng (CSV) trực tiếp?",
                         "o": [
-                            "Chưa có phương pháp đánh giá mô hình",
-                            "Xử lý BigData và giải pháp tích hợp tri thức",
-                            "Vấn đề ảo giác AI khi trả lời truy vấn của User",
-                            "Khả năng tự học như con người"
+                            "@CsvSource",
+                            "@ValueSource",
+                            "@MethodSource",
+                            "@FileSource"
                         ],
-                        "a": [
-                            1,
-                            3
-                        ],
-                        "e": "Giai đoạn này được gọi là 'mùa đông AI', gặp nút thắt lớn về năng lực tính toán/xử lý lượng dữ liệu lớn (BigData) và khó khăn trong việc thu nhận/tích hợp tri thức chuyên gia. Khả năng tự học hoàn toàn như con người (AGI) cũng là một bài toán chưa thể giải quyết."
+                        "a": 0,
+                        "e": "Trong JUnit 5, annotation @CsvSource cho phép bạn khai báo và truyền dữ liệu trực tiếp dưới dạng danh sách các chuỗi định dạng CSV (Comma-Separated Values) cho một phương thức @ParameterizedTest."
                     },
                     {
-                        "q": "Câu 4: Để huấn luyện mô hình AI thì tối thiểu phải chia tập dữ liệu thành:",
+                        "q": "Câu 5: Trong JUnit 5, Annotation nào sau đây làm cho 1 phương thức được chạy trước mỗi phương thức test trong test class?",
                         "o": [
-                            "Training set và Validation set",
-                            "Training set và Test set",
-                            "Validation set và Test set",
-                            "Training set, Validation set và Test set"
+                            "@BeforeEach",
+                            "@BeforeAll",
+                            "@Before",
+                            "@BeforeClass"
                         ],
-                        "a": [
-                            1
-                        ],
-                        "e": "Tối thiểu để xây dựng và đánh giá một mô hình, ta cần tập huấn luyện (Training set) để mô hình học, và tập kiểm tra (Test set) để đánh giá khả năng tổng quát hóa của nó trên dữ liệu chưa từng thấy."
+                        "a": 0,
+                        "e": "Trong JUnit 5, @BeforeEach được sử dụng để chỉ định một phương thức setup cần được thực thi một lần trước *mỗi* phương thức @Test riêng biệt trong cùng một class. Nó thay thế cho annotation @Before của JUnit 4."
                     },
                     {
-                        "q": "Câu 5: Trong ma trận nhầm lẫn thì chỉ số TNi đại diện cho:",
+                        "q": "Câu 7: Trong chiến lược kiểm thử tích hợp từ trên xuống (Top-down Integration), thành phần giả lập được sử dụng để thay thế cho các module cấp thấp chưa được phát triển gọi là gì?",
                         "o": [
-                            "Số lượng các ví dụ thuộc lớp ci- bị phân loại nhầm (vào các lớp khác ci)",
-                            "Số lượng các ví dụ thuộc lớp ci được phân loại chính xác vào lớp ci",
-                            "Số lượng các ví dụ không thuộc lớp ci được phân loại (chính xác)",
-                            "Số lượng các ví dụ không thuộc lớp ci bị phân loại nhầm vào lớp ci"
+                            "Driver",
+                            "Stub",
+                            "Dummy",
+                            "Proxy"
                         ],
-                        "a": [
-                            2
-                        ],
-                        "e": "TNi (True Negative của lớp i): Số lượng mẫu thực tế KHÔNG thuộc lớp i và mô hình dự đoán chính xác là KHÔNG thuộc lớp i."
+                        "a": 1,
+                        "e": "Trong kiểm thử tích hợp Top-down, quy trình đi từ các module cấp cao nhất xuống. Các module cấp thấp hơn (bị module cấp cao gọi tới) nhưng chưa được lập trình xong sẽ được thay thế bằng các đoạn mã giả lập đơn giản gọi là Stub để trả về dữ liệu ảo."
                     },
                     {
-                        "q": "Câu 6: Dựa vào thực nghiệm thì tỉ lệ tối ưu giữa Test set và Training set là",
+                        "q": "Câu 8: Cho đoạn mã sau, cần tối thiểu bao nhiêu test case để phủ nhánh 100%?\nint n;\ncout << \"Nhap n: \";\ncin >> n;\nswitch (n%3)\n{\n  case 0:\n    cout << \"Chia het cho 3\";\n    break;\n  case 1:\n  case 2:\n    cout << \"Khong chia het cho 3\";\n}",
                         "o": [
-                            "1:2",
-                            "2:8",
-                            "1:9",
-                            "3:7"
+                            "2",
+                            "3",
+                            "1",
+                            "4"
                         ],
-                        "a": [
-                            1
-                        ],
-                        "e": "Theo nguyên tắc Pareto và thực nghiệm phổ biến trong Machine Learning, tỉ lệ thường được sử dụng nhất là 80% cho Training và 20% cho Testing (tức tỉ lệ Test:Train là 2:8)."
+                        "a": 1,
+                        "e": "Biểu thức `n % 3` chỉ có thể cho ra 3 kết quả nguyên là 0, 1, và 2. Câu lệnh switch được thiết kế để đón cả 3 trường hợp nhãn case này. Để phủ 100% các nhánh (bao gồm việc rơi vào case 0, case 1 và case 2), bạn cần cung cấp tối thiểu 3 test case sinh ra 3 giá trị tương ứng."
                     },
                     {
-                        "q": "Câu 7: Cấu tạo của 1 Neural Network gồm có:",
+                        "q": "Câu 9: Hoạt động nào dùng để kiểm tra xem đã phát triển sản phẩm theo yêu cầu của khách hàng chưa.",
                         "o": [
-                            "3 Layer",
-                            "4 Layer",
-                            "1 Layer",
-                            "2 Layer"
+                            "Validation",
+                            "Verification",
+                            "Quality Assurance",
+                            "Quality Control"
                         ],
-                        "a": [
-                            0
-                        ],
-                        "e": "Cấu trúc cơ bản nhất của một mạng nơ-ron nhân tạo (MLP) thường được mô tả gồm 3 phần (Layer) chính: Input Layer (Lớp đầu vào), Hidden Layer (Lớp ẩn), và Output Layer (Lớp đầu ra)."
+                        "a": 0,
+                        "e": "Validation (Xác nhận) đánh giá phần mềm ở cuối chu kỳ phát triển để đảm bảo nó đáp ứng đúng mong đợi và nhu cầu thực tế của người dùng (Are we building the right product?). Trong khi đó, Verification (Xác minh) đánh giá xem có làm đúng tài liệu thiết kế hay không (Are we building the product right?)."
                     },
                     {
-                        "q": "Câu 8: Điểm hạn chế chính của Naïve Bayes là gì?",
+                        "q": "Câu 10: Annotation JUnit nào được sử dụng để đánh dấu một phương test có tham số?",
                         "o": [
-                            "Không thể xử lý dữ liệu lớn",
-                            "Giả định độc lập giữa các đặc trưng",
-                            "Không thể tính xác suất hậu nghiệm",
-                            "Luôn yêu cầu dữ liệu chuẩn hóa"
+                            "@ParametrizedTest",
+                            "@Parameterized",
+                            "@ParamTest",
+                            "@ParameterizedTest"
                         ],
-                        "a": [
-                            1
-                        ],
-                        "e": "Thuật toán Naive Bayes dựa trên một giả định rất 'ngây thơ' (naive) là các đặc trưng (features) hoàn toàn độc lập với nhau. Trong thực tế, các đặc trưng thường có sự tương quan, đây là điểm yếu lớn nhất của thuật toán này."
+                        "a": 3,
+                        "e": "@ParameterizedTest là annotation đúng cú pháp trong JUnit 5 để thay thế cho @Test khi bạn muốn bài test đó được thực thi lặp lại với các bộ dữ liệu tham số đầu vào khác nhau."
                     },
                     {
-                        "q": "Câu 9: Phân lớp Naïve Bayes dựa trên giả định nào?",
+                        "q": "Câu 11: Cho đoạn mã sau và phát biểu nào sau đây đúng:\nint USCLN(int a, int b){\n  while (a != b)\n    if (a > b)\n      a = a - b;\n    else\n      b = b - a;\n  return a;\n}",
                         "o": [
-                            "Các thuộc tính phải có cùng phân phối",
-                            "Các thuộc tính luôn tương quan tuyến tính",
-                            "Các thuộc tính không ảnh hưởng đến xác suất",
-                            "Các thuộc tính độc lập có điều kiện với lớp"
+                            "2 test case để phủ các dòng lệnh, 2 test case để phủ nhánh",
+                            "1 test case để phủ các dòng lệnh, 2 test case để phủ nhánh",
+                            "2 test case để phủ các dòng lệnh, 3 test case để phủ nhánh",
+                            "1 test case để phủ các dòng lệnh, 1 test case để phủ nhánh"
                         ],
-                        "a": [
-                            3
-                        ],
-                        "e": "Định lý Bayes ngây thơ giả định tính độc lập có điều kiện của các thuộc tính (đặc trưng) khi đã biết trước nhãn lớp (class)."
+                        "a": 1,
+                        "e": "Với test case (a=6, b=4), vòng lặp chạy nhiều lần và sẽ đi qua cả nhánh if (a=6-4=2) lẫn nhánh else (b=4-2=2), do đó chỉ cần 1 test case để phủ 100% câu lệnh. Tuy nhiên, để phủ toàn bộ nhánh, ta cần cover thêm trường hợp điều kiện while (a != b) bị sai ngay từ đầu (nghĩa là a=b, không vào vòng lặp), do đó cần thêm 1 test case nữa (như a=2, b=2). Tổng là 2 test case cho phủ nhánh."
                     },
                     {
-                        "q": "Câu 10: Ý tưởng giải quyết bài toán bằng AI trong giai đoạn cổ điển là:",
+                        "q": "Câu 12: Một hệ thống tính phí gửi xe: Miễn phí cho 15 phút đầu. 10.000đ cho mỗi giờ tiếp theo. Tối đa 200.000đ/ngày. Kỹ thuật thiết kế test case nào phù hợp nhất để kiểm tra logic nghiệp vụ này?",
                         "o": [
-                            "Lựa chọn Path tối ưu bằng hàm đánh giá.",
-                            "Triển khai kỹ thuật State Space Search trên đồ thị.",
-                            "Tìm kiếm trạng thái đích trong không gian trạng thái.",
-                            "Sử dụng kỹ thuật tìm kiếm vét cạn để tìm nghiệm."
+                            "Bảng quyết định (Decision Table Testing).",
+                            "Phân tích luồng điều khiển (Control Flow Analysis).",
+                            "Kiểm thử trường hợp sử dụng (Use Case Testing).",
+                            "Kiểm thử chuyển đổi trạng thái (State Transition Testing)."
                         ],
-                        "a": [
-                            0,
-                            1,
-                            2,
-                            3
-                        ],
-                        "e": "AI cổ điển (GOFAI) tập trung vào việc mô hình hóa bài toán dưới dạng không gian trạng thái (State Space) và sử dụng các thuật toán tìm kiếm (có thông tin như A* hoặc mù/vét cạn) để tìm đường đi đến trạng thái đích."
+                        "a": 0,
+                        "e": "Bài toán tính phí này dựa trên các quy tắc nghiệp vụ (Business Rules) có điều kiện về mốc thời gian rõ ràng. Kỹ thuật Bảng quyết định (Decision Table Testing) là lựa chọn tốt nhất trong các đáp án này để lập bảng nối các điều kiện (thời gian <=15p, >15p...) với các hành động tương ứng (miễn phí, cộng 10k, đạt max 200k) nhằm tránh bỏ sót trường hợp."
                     },
                     {
-                        "q": "Câu 11: Vai trò của Training set là:",
+                        "q": "Câu 13: Cần tối thiểu bao nhiêu test case để phủ được cấp 3 đoạn mã sau\nint f(int a, int b)\n{\n  if (a < 0 && b < 0)\n    return 0;\n  if (a > b || a == b)\n    return 1;\n  return -1;\n}",
                         "o": [
-                            "Kiểm thử kết quả huấn luyện",
-                            "Hiệu chỉnh tham số",
-                            "Khai phá và tích hợp tri thức",
-                            "Huấn luyện mô hình AI"
+                            "2",
+                            "5",
+                            "4",
+                            "3"
                         ],
-                        "a": [
-                            3
-                        ],
-                        "e": "Training set (tập huấn luyện) là dữ liệu được cung cấp cho mô hình trong quá trình học để nó tự điều chỉnh trọng số và tìm ra quy luật, tức là dùng để huấn luyện mô hình."
+                        "a": 2,
+                        "e": "Phủ cấp 3 (Phủ điều kiện / Đa điều kiện) yêu cầu kiểm tra sự kết hợp của các điều kiện logic con. Ở lệnh `if` đầu tiên có 2 điều kiện `(a < 0)` và `(b < 0)`, sinh ra 4 tổ hợp cơ bản (True-True, True-False, False-True, False-False). Chọn 4 test case đại diện cho 4 tổ hợp này (ví dụ: a=-1 b=-1; a=-1 b=1; a=1 b=-1; a=1 b=1) sẽ bao phủ đủ cả các nhánh cho lệnh `if` thứ hai (a>=b) ở bên dưới. Vậy tối thiểu là 4."
                     },
                     {
-                        "q": "Câu 12: Hàm kích hoạt (activation function) có vai trò gì trong Neural Network?",
+                        "q": "Câu 14: Annotation JUnit nào được sử dụng để xác định thứ tự chạy của các test case?",
                         "o": [
-                            "Đưa tính phi tuyến vào mô hình",
-                            "Giúp mạng học nhanh hơn",
-                            "Giảm số lượng tham số của f(x)",
-                            "Khuếch đại giá trị dữ liệu đầu vào"
+                            "@Step",
+                            "@Order",
+                            "@Important",
+                            "@Display"
                         ],
-                        "a": [
-                            0
+                        "a": 1,
+                        "e": "Trong JUnit 5, để ấn định thứ tự chạy cụ thể cho các test method, bạn phải thêm lớp @TestMethodOrder vào class và sử dụng annotation @Order(số_thứ_tự) đặt trên từng phương thức kiểm thử."
+                    },
+                    {
+                        "q": "Câu 15: Độ phức tạp chu trình của đoạn mã giả sau là bao nhiêu?\nint i = 1, s = 2;\ndo {\n  s += i;\n  cout << \"i = \" << i << \" => s = \"<< s << endl;\n} while (i++<10);",
+                        "o": [
+                            "3",
+                            "2",
+                            "4",
+                            "5"
                         ],
-                        "e": "Hàm kích hoạt đóng vai trò cực kỳ quan trọng trong việc đưa tính phi tuyến (non-linearity) vào mạng nơ-ron, giúp mạng có khả năng học và xấp xỉ các hàm số phức tạp trong thực tế."
+                        "a": 1,
+                        "e": "Độ phức tạp chu trình của McCabe, kí hiệu V(G), được tính bằng công thức: Số điểm quyết định (Predicate Nodes) + 1. Đoạn code không có lệnh rẽ nhánh if/else nào, chỉ có duy nhất 1 vòng lặp do-while mang điều kiện `(i++ < 10)`. Vậy V(G) = 1 + 1 = 2."
+                    },
+                    {
+                        "q": "Câu 16: Kiểm thử giá trị biên mạnh của hàm tính số lượng nghiệm không trùng nhau của phương trình bậc hai int f(int a, int b, int c) với ba số a, b, c có khoảng giá trị từ 1 đến 100 thì cần bao nhiêu test case",
+                        "o": [
+                            "13",
+                            "19",
+                            "9",
+                            "125"
+                        ],
+                        "a": 1,
+                        "e": "Kỹ thuật phân tích giá trị biên mạnh (Robust Boundary Value Analysis) sinh ra 7 giá trị cho mỗi biến (min-1, min, min+1, nom, max-1, max, max+1). Công thức tính tổng test case cho n biến là: 6n + 1. Hàm trên có n = 3 biến (a, b, c), do đó tổng số test case là 6 * 3 + 1 = 19."
+                    },
+                    {
+                        "q": "Câu 17: Nguyên tắc kiểm thử “Không thể chứng minh sự tồn tại của lỗi” có ý nghĩa gì?",
+                        "o": [
+                            "Kiểm thử chỉ có thể phát hiện lỗi, không thể chứng minh phần mềm không có lỗi",
+                            "Kiểm thử có thể loại bỏ mọi lỗi trong phần mềm",
+                            "Kiểm thử giúp chứng minh phần mềm hoàn hảo",
+                            "Kiểm thử chỉ cần kiểm tra giao diện người dùng"
+                        ],
+                        "a": 0,
+                        "e": "Nguyên lý thứ nhất trong 7 nguyên lý kiểm thử của ISTQB là 'Testing shows the presence of defects, not their absence'. Nghĩa là kiểm thử có thể chứng minh phần mềm có lỗi, nhưng ngay cả khi không tìm thấy lỗi nào, ta cũng không thể khẳng định chắc chắn 100% rằng phần mềm đó hoàn toàn sạch lỗi."
+                    },
+                    {
+                        "q": "Câu 18: Test suite được tạo ra trong giai đoạn nào?",
+                        "o": [
+                            "Thiết lập môi trường",
+                            "Lập kế hoạch.",
+                            "Phân tích yêu cầu.",
+                            "Phát triển test case."
+                        ],
+                        "a": 3,
+                        "e": "Test suite (bộ kiểm thử) là một tập hợp các test case. Việc đóng gói và tổ chức các test case vào các test suite được thực hiện trong quá trình thiết kế và phát triển kịch bản kiểm thử (Test Implementation / Test Case Development)."
+                    },
+                    {
+                        "q": "Câu 19: Cái nào sau đây không phải là một trong những nguyên tắc của kiểm thử",
+                        "o": [
+                            "Kiểm thử càng sớm càng tốt",
+                            "Lỗi thường phân bố tập trung",
+                            "Nghịch lý thuốc trừ sâu",
+                            "Kiểm thử toàn bộ"
+                        ],
+                        "a": 3,
+                        "e": "Nguyên lý số 2 của kiểm thử khẳng định rằng: 'Kiểm thử toàn diện/toàn bộ là không thể' (Exhaustive testing is impossible). Do đó, đáp án D 'Kiểm thử toàn bộ' là một phát biểu đi ngược lại nguyên tắc."
+                    },
+                    {
+                        "q": "Câu 20: Cấp độ kiểm thử nào tập trung vào sự tương tác giữa các thành phần hoặc hệ thống?",
+                        "o": [
+                            "Kiểm thử hệ thống (System Testing).",
+                            "Kiểm thử chấp nhận (Acceptance Testing).",
+                            "Kiểm thử đơn vị (Unit Testing).",
+                            "Kiểm thử tích hợp (Integration Testing)."
+                        ],
+                        "a": 3,
+                        "e": "Kiểm thử tích hợp (Integration Testing) có mục tiêu chính là phát hiện lỗi trong quá trình giao tiếp, tương tác (interfaces/interactions) giữa các module, các thành phần hoặc các hệ thống con với nhau sau khi chúng đã được Unit Test."
+                    },
+                    {
+                        "q": "Câu 21: Kiểm thử hệ thống nên:",
+                        "o": [
+                            "Kiểm cả yêu cầu phi chức năng và yêu cầu chức năng",
+                            "Kiểm yêu cầu phi chức năng hoặc yêu cầu chức năng",
+                            "Chỉ kiểm các yêu cầu phi chức năng không cần kiểm các yêu cầu chức năng",
+                            "Chỉ kiểm các yêu cầu chức năng không cần kiểm các yêu cầu phi chức năng"
+                        ],
+                        "a": 0,
+                        "e": "Trong giai đoạn kiểm thử hệ thống (System Testing), hệ thống đã được tích hợp hoàn chỉnh. Do đó, tester bắt buộc phải đánh giá hệ thống dựa trên cả yêu cầu chức năng (các tính năng hoạt động đúng không) và phi chức năng (hiệu năng, bảo mật, khả năng chịu tải...)."
+                    },
+                    {
+                        "q": "Câu 22: Bạn đang test một hệ thống bán hàng online. Chi phí vận chuyển được xác định với mức giá là: dưới 5kg là 3$, từ 5kg đến 10kg là 5$, trên 10kg là 10$. Trọng lượng mà nhỏ hơn hoặc bằng 0 được xem là không hợp lệ. Xác định có bao nhiêu lớp tương đương cần thiết để test.",
+                        "o": [
+                            "2",
+                            "3",
+                            "4",
+                            "5"
+                        ],
+                        "a": 2,
+                        "e": "Dựa vào yêu cầu, ta chia được 4 phân vùng tương đương như sau: 1 vùng không hợp lệ (Trọng lượng <= 0) và 3 vùng hợp lệ (0 < x < 5; 5 <= x <= 10; x > 10). Do đó, cần tối thiểu 4 test case đại diện cho 4 lớp này."
+                    },
+                    {
+                        "q": "Câu 23: Kỹ thuật đoán lỗi được sử dụng tốt nhất",
+                        "o": [
+                            "Khi tiếp cận đầu tiên để tạo ra các test case",
+                            "Sau khi các kỹ thuật chính thức được áp dụng",
+                            "Sau khi hệ thống hoạt động",
+                            "Bởi những tester thiếu kinh nghiệm"
+                        ],
+                        "a": 1,
+                        "e": "Đoán lỗi (Error Guessing) là một kỹ thuật dựa trên kinh nghiệm (experience-based). Kỹ thuật này phát huy hiệu quả cao nhất khi được sử dụng như một phương pháp bổ sung sau khi các kỹ thuật thiết kế test case chính thức (hộp đen, hộp trắng) đã được áp dụng, nhằm bắt những lỗi lắt léo mà các phương pháp hệ thống có thể bỏ sót."
+                    },
+                    {
+                        "q": "Câu 24: Cho đoạn mã giả sau, số test case tối thiểu cần có để phủ tất cả các nhánh?\nint test(int k){\n  if(k<=1) return -1;\n  for(int i=2; i<k; i++)\n    if(k%i==0) return -1;\n  return 1;\n}",
+                        "o": [
+                            "Có 4 test case",
+                            "Có 2 test case",
+                            "Có 3 test case",
+                            "Tất cả đều sai"
+                        ],
+                        "a": 2,
+                        "e": "Hàm kiểm tra số nguyên tố này có 3 điểm rẽ nhánh: (1) k<=1, (2) điều kiện lặp i<k, (3) điều kiện chia hết k%i==0. Cần 3 test case: TC1 với k=1 (phủ if đầu True); TC2 với k=4 (phủ lặp True, if trong lặp True); TC3 với k=3 (phủ lặp True, if trong lặp False, kết thúc lặp là điều kiện lặp False). Do đó cần tối thiểu 3 test case."
+                    },
+                    {
+                        "q": "Câu 25: Đoạn mã giả: IF (Tuổi < 18 OR Là_Học_Sinh == TRUE) THEN Giảm_giá = 10%. Để đạt được 100% Độ bao phủ quyết định (Decision Coverage) với số lượng test case tối thiểu, bạn cần các trường hợp nào?",
+                        "o": [
+                            "TC1: Tuổi=20, Là_Học_Sinh=FALSE.",
+                            "TC1: Tuổi=20, Là_Học_Sinh=TRUE; TC2: Tuổi=20, Là_Học_Sinh=FALSE.",
+                            "TC1: Tuổi=15, Là_Học_Sinh=TRUE; TC2: Tuổi=15, Là_Học_Sinh=FALSE.",
+                            "TC1: Tuổi=10, Là_Học_Sinh=FALSE."
+                        ],
+                        "a": 1,
+                        "e": "Độ bao phủ quyết định (Decision/Branch Coverage) yêu cầu toàn bộ biểu thức điều kiện của IF phải được đánh giá là TRUE ít nhất 1 lần và FALSE ít nhất 1 lần. Ở đáp án B: TC1 làm biểu thức trả về TRUE (False OR True = True), và TC2 làm biểu thức trả về FALSE (False OR False = False), do đó đáp ứng đủ yêu cầu."
+                    },
+                    {
+                        "q": "Câu 26: Phát biểu nào sau đây đúng về độ bao phủ",
+                        "o": [
+                            "Cho biết test kỹ hay không",
+                            "Không liên quan gì đến kiểm thử",
+                            "Chỉ dừng test khi đạt được độ bao phủ là 100%",
+                            "Số test case càng lớn thì độ bao phủ càng cao"
+                        ],
+                        "a": 0,
+                        "e": "Độ bao phủ (Coverage) là một số đo (metric) quan trọng trong kiểm thử, giúp định lượng xem mã nguồn hoặc các yêu cầu đã được các test case 'chạm' đến mức độ nào, từ đó đánh giá được tính triệt để (mức độ kỹ lưỡng) của quá trình test."
+                    },
+                    {
+                        "q": "Câu 27: Nguyên lý 'Nghịch lý thuốc trừ sâu' (Pesticide Paradox) gợi ý hành động nào sau đây?",
+                        "o": [
+                            "Cần thường xuyên xem xét và cập nhật bộ test case, viết thêm test case mới.",
+                            "Dừng kiểm thử khi đã tìm thấy đủ số lượng lỗi dự kiến.",
+                            "Chỉ sử dụng những test case đã tìm thấy lỗi trong quá khứ.",
+                            "Nên tập trung vào kiểm thử tự động hơn là thủ công."
+                        ],
+                        "a": 0,
+                        "e": "Nghịch lý thuốc trừ sâu phát biểu rằng nếu một bộ test case được chạy lặp đi lặp lại nhiều lần, nó sẽ không còn khả năng tìm ra lỗi mới (giống như sâu bọ lờn thuốc). Giải pháp là các bộ test case cần được thường xuyên review, bảo trì và bổ sung các kịch bản mới."
+                    },
+                    {
+                        "q": "Câu 28: Nguồn nào sau đây là nguồn tốt nhất về “Kết quả mong đợi” cho các tập lệnh “Kiểm thử chấp nhận” của người dùng",
+                        "o": [
+                            "Đặc tả chương trình",
+                            "Yêu cầu của người dùng",
+                            "Đặc tả hệ thống",
+                            "Kết quả thực tế"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử chấp nhận (Acceptance Testing / UAT) là giai đoạn kiểm thử cuối cùng trước khi bàn giao sản phẩm, được thực hiện bởi chính khách hàng/người dùng. Do đó, 'Yêu cầu của người dùng' (User Requirements) là nguồn tham chiếu chuẩn xác nhất để làm mốc xác định kết quả mong đợi."
+                    },
+                    {
+                        "q": "Câu 29: Cho đoạn mã giả sau, số test case tối thiểu để phủ được tất cả các nhánh là?\nif(x>y) x=x+1;\ny=y+1;\nwhile (x>y)\n  y=y*y;\nx=x+1;",
+                        "o": [
+                            "Có 2 ca kiểm thử",
+                            "Có 1 ca kiểm thử",
+                            "Có 3 ca kiểm thử",
+                            "Có 4 ca kiểm thử"
+                        ],
+                        "a": 0,
+                        "e": "Đoạn mã có lệnh if và while (mỗi lệnh sinh 2 nhánh True/False). Dùng 2 test case là đủ: TC1(x=3, y=1) làm if đúng (x thành 4, y thành 2), vào lặp while đúng (y thành 4), sau đó while sai (thoát). Phủ được if-True, while-True, while-False. TC2(x=1, y=2) làm if sai (y thành 3), while sai luôn (x=1 < y=3). Phủ được thêm if-False. Tổng cộng 2 test case là bao phủ toàn bộ."
+                    }, {
+                        "q": "Câu 30: Kết quả của đoạn mã sau là gì.\npublic class TestClass {\n  @Test\n  public void testingMethod() {\n    String message = \"Test\";\n    assertEquals(3,message.length());\n  }\n}",
+                        "o": [
+                            "Test chạy với kết quả là thành công",
+                            "Lỗi Runtime",
+                            "Lỗi biên dịch",
+                            "Test chạy với kết quả là thất bại"
+                        ],
+                        "a": 3,
+                        "e": "Chuỗi `message` có giá trị là \"Test\" nên hàm `message.length()` sẽ trả về độ dài bằng 4. Lệnh kiểm tra `assertEquals(3, 4)` sẽ fail do giá trị mong đợi (3) khác với giá trị thực tế (4). Do cú pháp hoàn toàn hợp lệ nên mã vẫn biên dịch và chạy bình thường, nhưng Test case sẽ báo kết quả là thất bại (Failed)."
+                    },
+                    {
+                        "q": "Câu 31: Ai thực hiện Unit Test",
+                        "o": [
+                            "QC",
+                            "Developer",
+                            "User",
+                            "Designer"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử mức đơn vị (Unit Test) là mức kiểm tra thấp nhất nhắm vào các đoạn code nhỏ nhất có thể test được (hàm, phương thức, class). Giai đoạn này do chính các lập trình viên (Developer) viết code và thực hiện để đảm bảo logic của các thành phần đó hoạt động đúng."
+                    },
+                    {
+                        "q": "Câu 32: Ưu điểm chính của phương pháp kiểm thử tích hợp dưới lên (Bottom-up) là gì?",
+                        "o": [
+                            "Không cần phải tạo stub",
+                            "Thiết kế test case dễ và không cần driver",
+                            "Kiểm thử ngay chức năng điều khiển hệ thống",
+                            "Phát hiện sớm các lỗi hệ thống"
+                        ],
+                        "a": 0,
+                        "e": "Trong kiểm thử tích hợp từ dưới lên (Bottom-up), các module ở cấp thấp nhất sẽ được phát triển và kiểm thử trước, sau đó tích hợp dần lên các module cấp cao hơn. Do các module cấp thấp đã có sẵn và không gọi xuống các tầng chưa hoàn thiện nào khác, người ta chỉ cần tạo ra các 'Driver' để gọi chúng mà KHÔNG cần phải tạo các 'Stub' (mã giả lập tầng dưới)."
+                    },
+                    {
+                        "q": "Câu 33: Các file JUnit test được lưu trong các file có phần mở rộng là gì?",
+                        "o": [
+                            ".test",
+                            ".unit",
+                            ".junit",
+                            ".java"
+                        ],
+                        "a": 3,
+                        "e": "JUnit là một framework phục vụ kiểm thử dành riêng cho ngôn ngữ lập trình Java. Các kịch bản kiểm thử (test class/test suite) của JUnit được viết hoàn toàn bằng cú pháp mã Java và lưu dưới dạng các file mã nguồn Java thông thường, tức là có phần mở rộng `.java`."
+                    },
+                    {
+                        "q": "Câu 34: Cho đoạn mã sau, cần tối thiểu bao nhiêu test case để phủ lệnh 100%?\nint n; cout << \"Nhap n: \"; cin >> n;\nswitch (n%3){\n  case 0:\n    cout << \"Chia het cho 3\";break;\n  case 1:\n  case 2:\n    cout << \"Khong chia het cho 3\";\n}",
+                        "o": [
+                            "1",
+                            "3",
+                            "2",
+                            "4"
+                        ],
+                        "a": 2,
+                        "e": "Bao phủ lệnh (Statement Coverage) yêu cầu mọi dòng code phải được thực thi ít nhất một lần. Đoạn mã có 2 lệnh in ra màn hình. Ta cần 1 test case (VD: n=0) để chạy vào nhánh `case 0` và in dòng 1. Ta cần thêm 1 test case nữa (VD: n=1 hoặc n=2) để chạy vào nhánh `case 1` / `case 2` và in dòng 2. Vì vậy, cần tối thiểu 2 test case."
+                    },
+                    {
+                        "q": "Câu 35: Kỹ thuật nào sau đây là một hình thức kiểm thử tĩnh?",
+                        "o": [
+                            "Đoán lỗi",
+                            "Kiểm thử hồi quy tự động",
+                            "Cung cấp đầu vào, thực hiện và kiểm tra kết quả đầu ra",
+                            "Review code"
+                        ],
+                        "a": 3,
+                        "e": "Kiểm thử tĩnh (Static Testing) là phương pháp đánh giá mã nguồn, tài liệu hoặc thiết kế mà KHÔNG cần phải chạy (thực thi) hệ thống. 'Review code' (Đánh giá mã nguồn thủ công) là ví dụ điển hình và phổ biến nhất của kiểm thử tĩnh. Các đáp án còn lại đều yêu cầu phải chạy hệ thống (kiểm thử động)."
+                    },
+                    {
+                        "q": "Câu 36: Phát biểu nào sau đây đúng về độ bao phủ",
+                        "o": [
+                            "Số test case càng lớn thì độ bao phủ càng cao",
+                            "Không liên quan gì đến kiểm thử",
+                            "Chỉ dừng test khi đạt được độ bao phủ là 100%",
+                            "Cho biết test kỹ hay không"
+                        ],
+                        "a": 3,
+                        "e": "Độ bao phủ (Coverage) cung cấp một số đo để đánh giá mức độ triệt để của quá trình test (đã kiểm tra được bao nhiêu phần trăm mã nguồn, bao nhiêu nhánh, bao nhiêu requirement...). Nhờ đó, nó giúp đánh giá xem phần mềm đã được 'test kỹ hay chưa'. Số lượng test case nhiều chưa chắc độ bao phủ đã cao nếu chúng bị trùng lặp vùng test."
+                    },
+                    {
+                        "q": "Câu 37: Kịch bản test được tạo ra trong giai đoạn nào?",
+                        "o": [
+                            "Phát triển test case.",
+                            "Phân tích yêu cầu.",
+                            "Thiết lập môi trường test",
+                            "Lập kế hoạch test"
+                        ],
+                        "a": 0,
+                        "e": "Kịch bản kiểm thử (Test Scenario / Test Case) được thiết kế, định nghĩa và viết ra một cách chi tiết trong giai đoạn Thiết kế và Phát triển bộ kiểm thử (Test Case Development / Test Implementation), sau khi đã có bảng phân tích yêu cầu từ giai đoạn trước."
+                    },
+                    {
+                        "q": "Câu 38: Kiểm thử được thực hiện đầy đủ khi",
+                        "o": [
+                            "Khi phát hiện được tất cả các lỗi.",
+                            "Người dùng hài lòng",
+                            "Đạt độ tin cậy cần thiết được thiết lập trong test plan",
+                            "Không tìm thấy lỗi nào nữa"
+                        ],
+                        "a": 2,
+                        "e": "Nguyên tắc số 1 của kiểm thử là không thể khẳng định phần mềm hết 100% lỗi. Quá trình kiểm thử không thể diễn ra vô hạn, mà nó sẽ được coi là hoàn tất khi đáp ứng được các Tiêu chí dừng (Exit Criteria) nhằm thỏa mãn mức độ tin cậy và chất lượng mong muốn đã được định nghĩa và thiết lập từ trước trong Kế hoạch kiểm thử (Test Plan)."
+                    },
+                    {
+                        "q": "Câu 39: Phát biểu nào sau đây đúng về quá trình xây dựng phần mềm theo hướng tiếp cận TDD",
+                        "o": [
+                            "Phải thực hiện việc test 2 lần để có ít bug hơn",
+                            "Trải qua 2 giai đoạn: test trước, code sau",
+                            "Trải qua 3 giai đoạn: red, green, refactor",
+                            "Trải qua 3 giai đoạn: test, code, retest"
+                        ],
+                        "a": 2,
+                        "e": "TDD (Test-Driven Development - Phát triển hướng kiểm thử) xoay quanh một quy trình cốt lõi gồm 3 bước lặp lại liên tục: Red (Viết một test case cho chức năng mới sao cho nó chạy thất bại), Green (Viết một đoạn code tối giản nhất để làm cho test case đó pass), và Refactor (Cải tiến, dọn dẹp lại đoạn code mà không làm thay đổi kết quả test)."
+                    },
+                    {
+                        "q": "Câu 40: Trường hợp nào sẽ là trường hợp kiểm thử chức năng cho hệ thống mua hàng online?",
+                        "o": [
+                            "Kiểm tra cách hệ thống hoạt động khi số lượng lớn người dùng đang truy cập trang web",
+                            "Đảm bảo người già cũng có thể sử dụng dễ dàng",
+                            "Kiểm tra xem người dùng có thể huỷ đơn hàng đã được đặt hay không",
+                            "Tất cả đều đúng"
+                        ],
+                        "a": 2,
+                        "e": "Kiểm thử chức năng (Functional Testing) tập trung vào hành vi và luồng nghiệp vụ cụ thể xem hệ thống có làm đúng yêu cầu không (VD: đặt hàng, hủy đơn). Đáp án A là kiểm thử hiệu năng (chịu tải), đáp án B là kiểm thử tính khả dụng (dễ dùng), cả hai đều là kiểm thử phi chức năng (Non-functional)."
+                    },
+                    {
+                        "q": "Câu 41: Cái nào không phải là mục tiêu kiểm thử",
+                        "o": [
+                            "Tìm nguyên nhân gây ra lỗi",
+                            "Ngăn ngừa khiếm khuyết",
+                            "Để đạt được mức độ tin tưởng về chất lượng",
+                            "Tìm khuyết điểm của phần mềm"
+                        ],
+                        "a": 0,
+                        "e": "Mục tiêu của kiểm thử là tìm ra sự hiện diện của lỗi (defect/bug), nâng cao sự tự tin vào sản phẩm và cung cấp thông tin để ngăn ngừa lỗi. Việc đi sâu vào mã nguồn để 'tìm ra nguyên nhân gốc rễ' và sửa chữa nó là quá trình Gỡ lỗi (Debugging), thuộc trách nhiệm của các Developer chứ không phải mục tiêu của Testing."
+                    },
+                    {
+                        "q": "Câu 42: Việc xác định tiêu chí dừng test được thực hiện khi nào?",
+                        "o": [
+                            "Trong khi lập kế hoạch kiểm thử",
+                            "Khi đóng quá trình kiểm thử",
+                            "Khi đánh giá các tiêu chí dừng và lập báo cáo",
+                            "Khi kiểm soát quá trình kiểm thử"
+                        ],
+                        "a": 0,
+                        "e": "Tiêu chí dừng (Exit Criteria) giúp trả lời câu hỏi 'Khi nào thì ngừng test?'. Các điều kiện này cần được xác định ngay từ bước khởi đầu tiên của quy trình kiểm thử là giai đoạn Lập kế hoạch kiểm thử (Test Planning) để làm cơ sở cho toàn bộ các hoạt động phía sau."
+                    },
+                    {
+                        "q": "Câu 43: Cái nào sau đây không phải là một phần của kiểm thử hệ thống:",
+                        "o": [
+                            "Kiểm thử khả năng phục hồi khi gặp sự cố",
+                            "Kiểm tra viết code có đúng chuẩn không",
+                            "Kiểm tra xem có sử dụng dễ không",
+                            "Kiểm thử hiệu suất"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử hệ thống (System Testing) là việc kiểm thử động trên một hệ thống đã được tích hợp hoàn chỉnh để đánh giá các hành vi chức năng và phi chức năng (hiệu năng, phục hồi, bảo mật). Việc rà soát 'viết code có đúng chuẩn không' là một hình thức kiểm thử tĩnh (Code Review) diễn ra ở giai đoạn phát triển hoặc kiểm thử đơn vị, không thuộc phạm vi của System Testing."
+                    },
+                    {
+                        "q": "Câu 44: Các bước cơ bản của quá trình kiểm thử dòng điều khiển là",
+                        "o": [
+                            "Tính độ phức tạp chu trình để xác định loại đồ thị dòng điều khiển, xác định đường thi hành, sinh test case dựa vào đường thi hành",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các đường thi hành, sinh các test case, thực hiện các test case",
+                            "Sinh đồ thị các test case từ code với độ đo cần kiểm thử, thực hiện các test case",
+                            "Sinh đồ thị dòng điều khiển CFG với tiêu chí độ đo cần kiểm thử, sinh các test case, thực hiện các test case"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử luồng điều khiển (Control Flow Testing) chuẩn mực cần tuân theo 4 bước liên tục: (1) Sinh đồ thị dòng điều khiển (CFG) từ mã nguồn, (2) Dựa trên tiêu chí độ đo đã chọn để sinh ra các đường thi hành cụ thể (paths), (3) Sinh các test case tương ứng để đi qua các đường đó, và (4) Thực hiện chạy các test case này."
+                    },
+                    {
+                        "q": "Câu 45: Kiểm thử hồi quy (Regression Testing) nên được thực hiện khi nào?",
+                        "o": [
+                            "Sau khi mã nguồn đã được sửa đổi hoặc thay đổi môi trường.",
+                            "Khi khách hàng yêu cầu kiểm thử hiệu năng.",
+                            "Chỉ thực hiện một lần duy nhất trước khi phát hành.",
+                            "Chỉ khi bắt đầu một dự án mới."
+                        ],
+                        "a": 0,
+                        "e": "Kiểm thử hồi quy được áp dụng để đảm bảo rằng các tính năng cũ, vốn dĩ đang hoạt động bình thường, không vô tình bị hỏng (side-effects) do những tác động mới. Vì vậy, nó cần thiết được kích hoạt mỗi khi có sự sửa đổi về mã nguồn (vá lỗi, thêm tính năng mới) hoặc thay đổi trong môi trường vận hành."
                     }
                 ]
-            },
+            }
 
         ];
 
