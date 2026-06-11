@@ -4548,6 +4548,475 @@
                         "e": "Kiểm thử hồi quy được áp dụng để đảm bảo rằng các tính năng cũ, vốn dĩ đang hoạt động bình thường, không vô tình bị hỏng (side-effects) do những tác động mới. Vì vậy, nó cần thiết được kích hoạt mỗi khi có sự sửa đổi về mã nguồn (vá lỗi, thêm tính năng mới) hoặc thay đổi trong môi trường vận hành."
                     }
                 ]
+            },
+            {
+                id: 9,
+                name: "Chương 4: Kiểm thử hệ thống và kiểm thử chấp nhận",
+                desc: "System Testing & Acceptance Testing",
+                questions: [
+                    {
+                        "q": "Câu 1: Lệnh nào sau đây dùng để thiết lập giá trị trả về của một đối tượng giả lập",
+                        "o": [
+                            "onInvokeReturn()",
+                            "returnValue()",
+                            "return WhenCalled()",
+                            "when().thenReturn()"
+                        ],
+                        "a": 3,
+                        "e": "Trong framework Mockito, cú pháp tiêu chuẩn để giả lập (stubbing) hành vi của một đối tượng mock và yêu cầu nó trả về một giá trị cụ thể là when(mock.method()).thenReturn(value)."
+                    },
+                    {
+                        "q": "Câu 2: JUnít chủ yếu được sử dụng để làm gì?",
+                        "o": [
+                            "Unit Test",
+                            "Debug",
+                            "Tích hợp liên tục",
+                            "Thiết kế test case"
+                        ],
+                        "a": 0,
+                        "e": "JUnit là một framework mã nguồn mở phổ biến nhất được thiết kế dành riêng cho việc viết và thực thi các bài kiểm thử mức đơn vị (Unit Test) cho ngôn ngữ lập trình Java."
+                    },
+                    {
+                        "q": "Câu 3: Làm thế nào có thể mong đợi một ngoại lệ cụ thể được đưa ra trong 1 test case JUnit?",
+                        "o": [
+                            "Sử dụng annotation @ExpectException",
+                            "Sử dụng try-catch",
+                            "Sử dụng phương thức ExpectException trên đối tượng test",
+                            "Sử dụng phương thức assertThrows()"
+                        ],
+                        "a": 3,
+                        "e": "Trong phiên bản hiện đại (JUnit 5), phương thức assertThrows() được sử dụng để bọc một đoạn mã lại và kiểm chứng xem đoạn mã đó có ném ra chính xác loại ngoại lệ (Exception) như mong đợi hay không."
+                    },
+                    {
+                        "q": "Câu 4: Annotation nào được sử dụng để chỉ ra một phương thức là phương thức test trong JUnit",
+                        "o": [
+                            "@Testing",
+                            "@Testify",
+                            "@TestCase",
+                            "@Test"
+                        ],
+                        "a": 3,
+                        "e": "Annotation @Test được đặt ngay phía trước một phương thức trong class kiểm thử nhằm đánh dấu và báo cho JUnit framework biết rằng đây là một phương thức test cần được thực thi."
+                    },
+                    {
+                        "q": "Câu 5: Hàm so khớp Hamcrest nào giống toán tử &&",
+                        "o": [
+                            "all",
+                            "and",
+                            "anyOf",
+                            "allOf"
+                        ],
+                        "a": 3,
+                        "e": "Trong thư viện assertion Hamcrest, hàm allOf() hoạt động với logic tương tự toán tử AND (&&). Nghĩa là test case chỉ pass khi tất cả các matcher (điều kiện) được khai báo bên trong allOf() đều trả về kết quả đúng."
+                    },
+                    {
+                        "q": "Câu 6: Việc thực hiện các test case chức năng là một phần của",
+                        "o": [
+                            "Quá trình xác minh (verification)",
+                            "Quá trình báo cáo kết quả test",
+                            "Quá trình thiết kế cấp cao",
+                            "Quá trình xác nhận (validation)"
+                        ],
+                        "a": 3,
+                        "e": "Kiểm thử chức năng (Functional Testing) là một khâu quan trọng của Quá trình xác nhận (Validation) nhằm đánh giá xem phần mềm đã được xây dựng có đáp ứng đúng các nhu cầu, hành vi và mong đợi thực tế của người dùng hay không ('Are we building the right system?')."
+                    },
+                    {
+                        "q": "Câu 7: Test case Selenium IDE có ba cột: command, target và value. Cột Target lưu trữ dữ liệu gì?",
+                        "o": [
+                            "Phần tử hoặc vị trí nơi lệnh được thực thi",
+                            "Bước tiếp theo",
+                            "Kết quả thực hiện của 1 bước test",
+                            "Mục đích của 1 bước test"
+                        ],
+                        "a": 0,
+                        "e": "Trong giao diện Selenium IDE, cột Target (Mục tiêu) được dùng để chứa các chuỗi định vị (như ID, Name, XPath, CSS Selector) giúp tool tìm được chính xác phần tử UI trên trang web để tương tác."
+                    },
+                    {
+                        "q": "Câu 8: Hàm verify() của Mockito dùng để làm gì?",
+                        "o": [
+                            "So sánh kết quả thực tế với kết quả mong đợi",
+                            "Tạo đối tượng giả lập bản phần",
+                            "Tạo đối tượng giả lập toàn phần",
+                            "Xác minh 1 phương thức có được gọi hay không"
+                        ],
+                        "a": 3,
+                        "e": "Hàm verify() là một tính năng cốt lõi của Mockito dùng để thực hiện 'Behavior Verification' (Xác minh hành vi). Nó giúp Tester kiểm tra xem một phương thức cụ thể của đối tượng mock có được gọi hay không, và được gọi với các tham số nào."
+                    },
+                    {
+                        "q": "Câu 9: Giả sử đối tượng giả lập objA có 1 phương thức f() không được gọi. Lệnh nào sau đây dùng để xác định phương thức f() không được gọi.",
+                        "o": [
+                            "verify(objA, never()).f()",
+                            "verifyNoInteractions(objA)",
+                            "verifyNever(objA)",
+                            "assertNever(objA).f()"
+                        ],
+                        "a": 0,
+                        "e": "Cú pháp chuẩn xác nhất trong Mockito để khẳng định một phương thức f() không bao giờ bị gọi tới là verify(objA, never()).f(). (Ghi chú: Lựa chọn A trong đề gốc có thể bị gõ nhầm chữ verify thành assert, mình đã tự động chuẩn hóa lại)."
+                    },
+                    {
+                        "q": "Câu 10: Phát biểu nào phù hợp nhất cho kết quả mong đợi (expected result)",
+                        "o": [
+                            "Chỉ được sử dụng trong test component",
+                            "Tốt nhất là giá trị khi thực thi chương trình",
+                            "Hữu ích nhất khi được xác định trước",
+                            "Chỉ quan trọng trong test hệ thống"
+                        ],
+                        "a": 2,
+                        "e": "Kết quả mong đợi (Expected Result) phải luôn được định nghĩa TỪ TRƯỚC dựa vào tài liệu đặc tả (Requirement). Nếu đợi đến khi chạy chương trình mới xác định thì Tester sẽ bị mất đi tính khách quan và dễ bị logic của code đánh lừa."
+                    },
+                    {
+                        "q": "Câu 11: Phát biểu nào sau đây đúng với Unit test",
+                        "o": [
+                            "Đó là việc xác nhận các thành phần đơn vị, được thực hiện bởi developer trong môi trường test",
+                            "Đó là việc xác nhận các thành phần đơn vị, được thực hiện bởi tester trong môi trường test",
+                            "Đó là việc xác nhận các thành phần đơn vị, được thực hiện bởi developer trong môi trường phát triển",
+                            "Đó là xác nhận giao diện (interface) giữa các thành phần đơn vị"
+                        ],
+                        "a": 2,
+                        "e": "Kiểm thử đơn vị (Unit Test) tập trung vào các hàm/phương thức nhỏ nhất. Đây là trách nhiệm của Lập trình viên (Developer) và được họ code, chạy trực tiếp ngay trong Môi trường phát triển (IDE/Dev Environment) của mình."
+                    },
+                    {
+                        "q": "Câu 12: Phát biểu nào sau đây sai về test tĩnh",
+                        "o": [
+                            "Test tĩnh có thể đưa ra các phép đo như độ phức tạp chu trình",
+                            "Test tĩnh yêu cầu phải chạy code",
+                            "Là quá trình review một tài liệu như test plan",
+                            "Là quá trình review source code"
+                        ],
+                        "a": 1,
+                        "e": "Đặc trưng lớn nhất phân biệt Kiểm thử tĩnh (Static Testing) là KHÔNG CẦN CHẠY (thực thi) hệ thống hay mã nguồn. Do đó, việc 'yêu cầu phải chạy code' là định nghĩa của Kiểm thử động, làm cho B trở thành phát biểu sai."
+                    },
+                    {
+                        "q": "Câu 13: Sự khác biệt giữa lệnh assert và lệnh verify của Selenium IDE là gì?",
+                        "o": [
+                            "Lệnh assert không thành công sẽ dừng kiểm tra nhưng lệnh verify không thành công thì vẫn tiếp tục.",
+                            "Lệnh verify không thành công sẽ dừng kiểm tra nhưng lệnh assert không thành công thì vẫn tiếp tục.",
+                            "Lệnh verify ít phổ biến hơn các lệnh assert",
+                            "Lệnh assert ít phổ biến hơn các lệnh verify"
+                        ],
+                        "a": 0,
+                        "e": "Trong Selenium, 'assert' là kiểm tra cứng (hard assertion), nếu rớt thì script sẽ báo lỗi và dừng ngay lập tức (phù hợp cho các mốc quan trọng như login). 'verify' là kiểm tra mềm (soft assertion), nếu rớt nó chỉ ghi log lỗi và vẫn chạy tiếp các câu lệnh bên dưới."
+                    },
+                    {
+                        "q": "Câu 14: Kiểm tra thời gian chờ là",
+                        "o": [
+                            "Phụ thuộc vào phần mềm và phần cứng",
+                            "Phụ thuộc vào phần mềm",
+                            "Phụ thuộc vào phần cứng",
+                            "Độc lập với phần mềm và phần cứng"
+                        ],
+                        "a": 0,
+                        "e": "Thời gian chờ (Timeout) hoặc thời gian phản hồi của một ứng dụng bị chi phối bởi cả cấu hình phần cứng (như tốc độ CPU, dung lượng RAM, băng thông mạng) và kiến trúc phần mềm (thuật toán xử lý nặng hay nhẹ, cách tối ưu database)."
+                    },
+                    {
+                        "q": "Câu 15: Phát biểu nào sau đây đúng về phương thức thenReturn() trong Mockito?",
+                        "o": [
+                            "Nó được sử dụng để xác minh rằng một phương thức đã được gọi trên một đối tượng giả",
+                            "Nó được sử dụng để chỉ định giá trị trả về của một lệnh gọi phương thức trên một đối tượng giả",
+                            "Nó được sử dụng để tạo một đối tượng giả",
+                            "Nó không phải là một phương thức hợp lệ trong Mockito"
+                        ],
+                        "a": 1,
+                        "e": "Hàm thenReturn() được ghép nối phía sau hàm when() để chỉ định trước một giá trị output giả (mock data) mà hệ thống sẽ trả về khi test case chạm vào phương thức tương ứng."
+                    },
+                    {
+                        "q": "Câu 16: Trong test double, đối tượng stub khác với đối tượng mock như thế nào?",
+                        "o": [
+                            "Mock mô phỏng kết quả xử lý của một hành động còn stub được sử dụng để xác nhận một hành động có được thực hiện hay không.",
+                            "Mock là đối tượng giả còn stub là đối tượng thật",
+                            "Stub mô phỏng kết quả xử lý của một hành động còn mock được sử dụng để xác nhận một hành động có được thực hiện hay không",
+                            "Stub là đối tượng giả còn mock là đối tượng thật."
+                        ],
+                        "a": 2,
+                        "e": "Mặc dù cả hai đều là đối tượng giả lập (Test Double), Stub chủ yếu chỉ là một kịch bản dữ liệu thụ động dùng để trả về trạng thái (State verification). Trong khi Mock 'thông minh' hơn, được dùng để theo dõi và xác minh xem các hành vi/phương thức có thật sự được tương tác hay không (Behavior verification)."
+                    },
+                    {
+                        "q": "Câu 17: Phát biểu nào sau đây đúng về phương thức when() trong Mockito?",
+                        "o": [
+                            "Nó được sử dụng để xác minh rằng một phương thức đã được gọi trên một đối tượng giả",
+                            "Nó được sử dụng để ném một ngoại lệ khi một phương thức được gọi trên một đối tượng giả",
+                            "Nó được sử dụng để chỉ định hành vi của một lệnh gọi phương thức trên một đối tượng giả",
+                            "Nó được sử dụng để tạo một đối tượng giả"
+                        ],
+                        "a": 2,
+                        "e": "Phương thức when() đóng vai trò như mệnh đề 'NẾU' trong việc thiết lập hành vi giả lập. Nghĩa là 'NẾU (khi) phương thức này được gọi, THÌ hãy làm một việc gì đó (như trả về chuỗi hay ném lỗi)'."
+                    },
+                    {
+                        "q": "Câu 18: Phát biểu nào sau đây phù hợp cho khái niệm độ bao phủ",
+                        "o": [
+                            "Chỉ áp dụng cho unit test, không áp dụng cho system test",
+                            "Là thước đo một phần của tính kỹ lưỡng của bài kiểm tra",
+                            "Độ bao phủ nhánh là bắt buộc đối với tất cả các phần mềm",
+                            "Khi nào đạt được độ bao phủ 100% thì việc kiểm thử hoàn thành"
+                        ],
+                        "a": 1,
+                        "e": "Độ bao phủ (Coverage) là một con số đo lường (metric) giúp Tester hình dung được mức độ triệt để của tập hợp các Test Case (ví dụ: đã test qua được bao nhiêu nhánh, bao nhiêu tính năng). Đạt 100% bao phủ không đồng nghĩa với phần mềm đã hoàn toàn không còn lỗi."
+                    },
+                    {
+                        "q": "Câu 19: Phát biểu nào sau đây đúng về phương thức never() của Mockito?",
+                        "o": [
+                            "Nó được sử dụng để xác minh rằng một phương thức đã được gọi trên một đối tượng giả",
+                            "Nó được sử dụng để tạo một đối tượng giả",
+                            "Nó được sử dụng để xác minh rằng một phương thức không được gọi trên một đối tượng giả",
+                            "Nó được sử dụng để chỉ định hành vi của một lệnh gọi phương thức trên một đối tượng giả"
+                        ],
+                        "a": 2,
+                        "e": "Hàm never() kết hợp với verify() (ví dụ: verify(mock, never()).method()) sẽ kiểm tra và xác nhận chắc chắn rằng hệ thống đã KHÔNG BAO GIỜ tương tác hay gọi đến phương thức đó trong quá trình chạy test."
+                    },
+                    {
+                        "q": "Câu 21: Hàm nào sau đây được sử dụng để tạo một phần mô phỏng với Mockito",
+                        "o": [
+                            "spy()",
+                            "partialMock()",
+                            "halfMock()",
+                            "mockPartial()"
+                        ],
+                        "a": 0,
+                        "e": "Trong Mockito, spy() được dùng để tạo ra một Partial Mock (giả lập một phần). Không giống như mock() giả lập toàn bộ, spy() bao bọc một object thật, cho phép gọi code thật mặc định nhưng vẫn có khả năng ghi đè (stub) một vài phương thức cụ thể."
+                    },
+                    {
+                        "q": "Câu 22: Cách nào sau đây dùng để tạo mới 1 đối tượng giả lập bằng Mockito",
+                        "o": [
+                            "mock()",
+                            "createMock()",
+                            "new Mock()",
+                            "new Mock()"
+                        ],
+                        "a": 0,
+                        "e": "Lệnh cơ bản và phổ biến nhất để khởi tạo một đối tượng giả (dummy/mock object) từ một Interface hay một Class trong thư viện Mockito chính là phương thức tĩnh mock(T.class)."
+                    },
+                    {
+                        "q": "Câu 23: Chọn phát biểu đúng cho Smoke testing",
+                        "o": [
+                            "Nó được thực hiện sau khi quá trình test hệ thống kết thúc",
+                            "Nó là sự thay thế cho test hồi quy",
+                            "Nó là sự thay thế cho test chấp nhận",
+                            "Nó được thực hiện để đảm bảo hệ thống đã sẵn sàng trải qua quá trình kiểm tra chuyên sâu và nghiêm ngặt hơn"
+                        ],
+                        "a": 3,
+                        "e": "Smoke Testing (Kiểm thử khói) là bước chạy rà soát rất nhanh các luồng nghiệp vụ cốt lõi ngay khi nhận bản Build mới. Nó giống như bài test 'chào sân' để xem ứng dụng có bị chết ngang (crash) hay không, trước khi đổ nhân lực vào kiểm thử chi tiết."
+                    },
+                    {
+                        "q": "Câu 24: Điều quan trọng nhất về thiết kế kiểm thử sớm là:",
+                        "o": [
+                            "Không cần kiểm duyệt.",
+                            "Sẽ tìm thấy tất cả các lỗi.",
+                            "Làm cho việc chuẩn bị kiểm thử dễ dàng hơn.",
+                            "Có thể ngăn chặn lỗi gia tăng."
+                        ],
+                        "a": 3,
+                        "e": "Nguyên lý 'Kiểm thử càng sớm càng tốt' có giá trị tối thượng là Ngăn ngừa lỗi (Defect Prevention). Việc QA tham gia review tài liệu từ sớm giúp phát hiện ra các yêu cầu mâu thuẫn, ngăn chặn việc lập trình viên dựa vào sai lầm đó để code tạo ra một đống lỗi lớn hơn ở các khâu sau."
+                    },
+                    {
+                        "q": "Câu 25: Mục đích của annotation @DisplayName trong JUnit là gì?",
+                        "o": [
+                            "Để chỉ định tên của test suite.",
+                            "Đổi tên phương pháp thử trong thời gian chạy.",
+                            "Đặt tên hiển thị tùy chỉnh cho phương pháp thử nghiệm.",
+                            "Hiển thị tên người chạy thử."
+                        ],
+                        "a": 2,
+                        "e": "Trong JUnit 5, annotation @DisplayName cung cấp khả năng đặt những tên tự do, dễ hiểu, chứa cả dấu cách hoặc tiếng Việt (Ví dụ: @DisplayName('Test đăng nhập sai mật khẩu')) để thay thế cho tên hàm Java cứng nhắc khi in ra bảng báo cáo (Report)."
+                    },
+                    {
+                        "q": "Câu 26: Cú pháp đúng để truy cập giá trị của biến x trong Selenium IDE là gì?",
+                        "o": [
+                            "(x)",
+                            "x",
+                            "$x",
+                            "${x}"
+                        ],
+                        "a": 3,
+                        "e": "Trong Selenium IDE, khi muốn gọi lại một biến đã được lưu trữ (thông qua lệnh store), cú pháp quy chuẩn là ${tên_biến}. Mình đã sửa lại lỗi font chữ nhận diện nhầm dấu $ thành chữ S của đề gốc ở đáp án D."
+                    },
+                    {
+                        "q": "Câu 28: Loại test nào được thực hiện để kiểm tra xem giao diện người dùng có dễ sử dụng không",
+                        "o": [
+                            "White Box Testing",
+                            "Usability Testing",
+                            "Security Testing",
+                            "Unit Testing"
+                        ],
+                        "a": 1,
+                        "e": "Usability Testing (Kiểm thử tính khả dụng) chuyên tập trung vào việc đánh giá Trải nghiệm người dùng (UX) và Giao diện (UI) để xem ứng dụng có thân thiện, dễ hiểu, thao tác trơn tru và trực quan hay không."
+                    },
+                    {
+                        "q": "Câu 29: Nguồn nào sau đây là nguồn tốt nhất về \"Kết quả mong đợi\" cho các test case “Kiểm thử chấp nhận\" của người dùng",
+                        "o": [
+                            "Đặc tả chương trình",
+                            "Đặc tả hệ thống",
+                            "Yêu cầu của người dùng",
+                            "Kết quả thực tế"
+                        ],
+                        "a": 2,
+                        "e": "Kiểm thử chấp nhận (UAT) là vòng cuối cùng do khách hàng/người dùng thực hiện để xem hệ thống đã làm họ hài lòng và sẵn sàng bàn giao chưa. Vì vậy, đối chiếu với 'Yêu cầu của người dùng' (User Requirements) lúc ban đầu là nguồn chuẩn xác nhất."
+                    },
+                    {
+                        "q": "Câu 30: Hàm assertTrue(\"message\",A) làm gì?",
+                        "o": [
+                            "Khẳng định rằng điều kiện A là đúng",
+                            "Khẳng định rằng A chứa A \"message\"",
+                            "Khẳng định rằng điều kiện A là sai",
+                            "Khẳng định rằng \"menage\"-A"
+                        ],
+                        "a": 0,
+                        "e": "Hàm assertTrue() trong JUnit sẽ tiến hành kiểm tra (assert) xem điều kiện truyền vào (A) có trả về boolean là True hay không. Nếu A là False, Test case sẽ Fail và hệ thống sẽ hiển thị 'message' ra log để thông báo lỗi cho người lập trình."
+                    },
+                    {
+                        "q": "Câu 32: Phát biểu nào sau đây phù hợp nhất về kiểm thử",
+                        "o": [
+                            "Mục tiêu mục đích của kiểm thử là để chứng minh rằng chương trình hoạt động.",
+                            "Mục đích của kiểm thử là để chứng minh rằng chương trình không có lỗi.",
+                            "Mục đích của kiểm thử là để chứng minh rằng chương trình được thực hiện đúng phương pháp",
+                            "Kiểm thử là thực thi phần mềm nhằm mục đích tìm ra những khuyết điểm của phần mềm"
+                        ],
+                        "a": 3,
+                        "e": "Theo triết lý nền tảng của ISTQB, Kiểm thử KHÔNG THỂ chứng minh hệ thống hết lỗi (nguyên lý số 1). Mục tiêu cốt lõi của nghề Kiểm thử là tích cực tìm ra sự hiện diện của các khiếm khuyết (Defects/Bugs) đang ẩn nấp trong phần mềm."
+                    },
+                    {
+                        "q": "Câu 33: Phủ lệnh và phủ nhánh có nghĩa là",
+                        "o": [
+                            "Mỗi dòng lệnh đều được test",
+                            "Mọi câu lệnh và mọi nhánh đều được kiểm",
+                            "Tất cả các câu lệnh if đều được kiểm",
+                            "Đã kiểm tra mọi tổ hợp giá trị của câu lệnh IF trong chương trình"
+                        ],
+                        "a": 1,
+                        "e": "Phủ lệnh (Statement Coverage) đảm bảo 100% các dòng code đều được bộ test chạy qua ít nhất 1 lần. Phủ nhánh (Branch Coverage) yêu cầu mọi luồng ra True/False của các câu lệnh rẽ nhánh cũng phải được đi qua. Khi đạt cả hai, mọi lệnh và nhánh đều được bao quát."
+                    },
+                    {
+                        "q": "Câu 34: Làm cách nào để đánh giá thời gian chạy của một phương thức trong JUnit?",
+                        "o": [
+                            "Sử dụng phương thức assertTimeout",
+                            "Sử dụng annotation @Speed",
+                            "Sử dụng phương thức assert Speed",
+                            "Sử dụng phương thức Timeout"
+                        ],
+                        "a": 0,
+                        "e": "Trong JUnit 5, hàm assertTimeout() (hoặc assertTimeoutPreemptively) được cung cấp để đo lường. Lập trình viên sẽ khai báo một mốc thời gian giới hạn, nếu mã nguồn bên trong chạy vượt quá số thời gian đó thì Test case sẽ bị đánh là Fail."
+                    },
+                    {
+                        "q": "Câu 35: Cái nào sau đây là một CSS locator tương đương với Xpath //div[@id='example']",
+                        "o": [
+                            "css=div.example",
+                            "css=div#example",
+                            "css=div@example",
+                            "css=div example"
+                        ],
+                        "a": 1,
+                        "e": "Theo quy chuẩn của CSS Selector, ký tự thăng '#' được sử dụng làm tiền tố trỏ trực tiếp đến thuộc tính 'id' của một thẻ HTML. Do đó thẻ div có ID 'example' sẽ được truy vấn nhanh qua chuỗi css=div#example."
+                    },
+                    {
+                        "q": "Câu 36: Trường hợp nào sẽ là trường hợp kiểm thử chức năng cho hệ thống đặt chỗ trực tuyến?",
+                        "o": [
+                            "Kiểm tra cách hệ thống hoạt động khi số lượng lớn người dùng đang truy cập trang web",
+                            "Kiểm tra xem người dùng có thể đặt vé từ Mumbai đến Goa không",
+                            "Đo thời gian đáp ứng của hệ thống",
+                            "Đảm bảo người giả cũng có thể sử dụng dễ dàng"
+                        ],
+                        "a": 1,
+                        "e": "Kiểm thử chức năng trả lời cho câu hỏi 'Hệ thống làm được cái gì?'. Việc đặt vé chặng Mumbai đi Goa là một luồng nghiệp vụ chức năng chính. Chịu tải, đo thời gian hay tính thân thiện dễ sử dụng là các khía cạnh phi chức năng (Non-functional)."
+                    },
+                    {
+                        "q": "Câu 37: Phát biểu nào sau đây đúng về các hoạt động “verification” trong kiểm thử",
+                        "o": [
+                            "Kiểm tra xem chúng ta đang xây dựng hệ thống có đúng không",
+                            "Kiểm tra xem chúng ta có đang xây dựng đúng hệ thống không",
+                            "Được thực hiện bởi một nhóm kiểm thử độc lập",
+                            "Đàm bảo rằng đó là điều người dùng thực sự muốn"
+                        ],
+                        "a": 0,
+                        "e": "Khái niệm Verification (Xác minh) trong V-Model hướng tới việc rà soát quá trình nội bộ: 'Are we building the product right?' (Kiểm tra xem sản phẩm có được xây dựng đúng theo khuôn khổ tài liệu thiết kế và kiến trúc đã định hay không)."
+                    },
+                    {
+                        "q": "Câu 38: Một kỹ thuật kiểm thử phổ biến trong quá trình Unit test là",
+                        "o": [
+                            "Kiểm tra độ phủ lệnh và phủ nhánh",
+                            "Đánh giá năng suất",
+                            "Kiểm tra tính khả dụng",
+                            "Kiểm tra tính bảo mật"
+                        ],
+                        "a": 0,
+                        "e": "Unit Test nằm ở cấp độ thấp nhất và áp dụng nguyên lý Kiểm thử hộp trắng (White-box). Ở tầng này, Lập trình viên sẽ sử dụng các bộ đếm (Metrics) như độ Phủ lệnh (Statement Coverage) và Phủ nhánh (Branch Coverage) để xem bộ test case của mình đã duyệt hết các ngóc ngách của source code hay chưa."
+                    },
+                    {
+                        "q": "Câu 39: Annotation nào xác định 1 phương thức test có tham số?",
+                        "o": [
+                            "@ParameterizedTest",
+                            "@DataDriven Test",
+                            "@Parameters",
+                            "@TestWithParams"
+                        ],
+                        "a": 0,
+                        "e": "Kể từ JUnit 5, nếu bạn muốn một phương thức Test có thể tự động chạy lặp đi lặp lại nhiều lần với việc nhồi các bộ dữ liệu tham số khác nhau (Data-Driven), bạn phải sử dụng annotation @ParameterizedTest thay vì @Test thông thường."
+                    },
+                    {
+                        "q": "Câu 40: Phát biểu nào sau đây đúng về quá trình xây dựng phần mềm theo hướng tiếp cận TDD.",
+                        "o": [
+                            "Trải qua 3 giai đoạn: test, code, retest",
+                            "Trải qua 2 giai đoạn: test trước, code sau",
+                            "Trải qua 3 giai đoạn: red, green, refactor",
+                            "Phải thực hiện việc test 2 lần để có ít bug"
+                        ],
+                        "a": 2,
+                        "e": "TDD (Test-Driven Development) bắt buộc Lập trình viên phải tuân theo chu trình 3 bước lặp: Viết test case (Red - chạy rớt do chưa có code), Viết code đủ để test chạy (Green - chạy pass), và Tinh chỉnh lại mã nguồn cho tối ưu (Refactor - dọn dẹp)."
+                    },
+                    {
+                        "q": "Câu 41: Phát biểu nào sau đây không phải là một trong những nguyên tắc của kiểm thử",
+                        "o": [
+                            "Lỗi thường phân bố tập trung",
+                            "Kiểm thử càng sớm càng tốt",
+                            "Kiểm thử phải đạt được 100% độ bao phủ",
+                            "Nghịch lý thuốc trừ sâu"
+                        ],
+                        "a": 2,
+                        "e": "Việc yêu cầu phải test '100% độ bao phủ' đi ngược lại trực tiếp với Nguyên lý số 2: 'Kiểm thử toàn diện mọi trường hợp là điều không thể do giới hạn về nguồn lực và thời gian'. Tester phải sử dụng rủi ro để biết lúc nào nên dừng."
+                    },
+                    {
+                        "q": "Câu 42: Trong test double, đối tượng dummy khác với đối tượng fake như thế nào?",
+                        "o": [
+                            "Dummy là đối tượng giả lập, fake là một đối tượng thật nhưng giả đối tượng khác",
+                            "Hai đối tượng này không khác nhau",
+                            "Fake là đối tượng giả lập, dummy là một đối tượng thật nhưng giả đối tượng khác",
+                            "Fake là giả hành vi, dummy là giả kết quả"
+                        ],
+                        "a": 0,
+                        "e": "Dummy objects (vật thế thân rỗng) chỉ tồn tại để truyền vào tham số nhằm tránh lỗi biên dịch, hoàn toàn không được hệ thống động vào. Ngược lại, Fake objects có triển khai logic thực sự (như In-memory Database), chúng 'thật' nhưng hoạt động dưới hình hài đơn giản hơn môi trường production."
+                    },
+                    {
+                        "q": "Câu 43: Trình tự đúng của các giai đoạn kiểm thử phần mềm là:",
+                        "o": [
+                            "Đơn vị -> Tích hợp -> Hệ thống -> Chấp nhận.",
+                            "Hệ thống - Đơn vị - Tích hợp -> Chấp nhận",
+                            "Tích hợp -> Chấp nhận -> Đơn vị -> Hệ thống",
+                            "Đơn vị -> Tích hợp -> Chấp nhận -> Hệ thống"
+                        ],
+                        "a": 0,
+                        "e": "Đây là 4 cấp độ (Test Levels) tiêu chuẩn theo mô hình phát triển phần mềm, bắt đầu từ kiểm tra từng đoạn code (Unit), sau đó ghép nối các đoạn (Integration), kiểm tra tổng thể phần mềm hoàn chỉnh (System), và cuối cùng đưa cho User đánh giá (Acceptance)."
+                    },
+                    {
+                        "q": "Câu 44: Kiểm thử được thực hiện đầy đủ khi",
+                        "o": [
+                            "Đạt độ tin cậy cần thiết được thiết lập trong test plan.",
+                            "Người dùng hài lòng.",
+                            "Hết thời gian.",
+                            "Không tìm thấy lỗi nào nữa"
+                        ],
+                        "a": 0,
+                        "e": "Kiểm thử không thể kéo dài mãi mãi. Quá trình này sẽ tuyên bố 'đủ' và kết thúc khi nó thỏa mãn các 'Tiêu chí dừng' (Exit Criteria) đã được hai bên đồng thuận và thiết lập rõ ràng trong bản Test Plan ban đầu."
+                    },
+                    {
+                        "q": "Câu 45: Làm thế nào để chỉ định một phương thức kiểm thử cụ thể sẽ bị bỏ qua trong quá trình thực thi",
+                        "o": [
+                            "@Skip",
+                            "@Ignore Test",
+                            "@Disabled",
+                            "@Avoid"
+                        ],
+                        "a": 2,
+                        "e": "Trong phiên bản JUnit 5, việc đặt annotation @Disabled ở phía trên một Test class hay Test method sẽ ra lệnh cho bộ thực thi lơ đi, không kích hoạt chạy test case đó nữa (thường dùng khi code lỗi đang chờ fix)."
+                    }
+                ]
             }
 
         ];
