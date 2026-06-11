@@ -4551,8 +4551,8 @@
             },
             {
                 id: 9,
-                name: "Chương 4: Kiểm thử hệ thống và kiểm thử chấp nhận",
-                desc: "System Testing & Acceptance Testing",
+                name: "Ôn cuối kì",
+                desc: "Ôn cuối kì",
                 questions: [
                     {
                         "q": "Câu 1: Lệnh nào sau đây dùng để thiết lập giá trị trả về của một đối tượng giả lập",
@@ -5015,6 +5015,948 @@
                         ],
                         "a": 2,
                         "e": "Trong phiên bản JUnit 5, việc đặt annotation @Disabled ở phía trên một Test class hay Test method sẽ ra lệnh cho bộ thực thi lơ đi, không kích hoạt chạy test case đó nữa (thường dùng khi code lỗi đang chờ fix)."
+                    }
+                ]
+            },
+            {
+                id: 10,
+                name: "Ôn cuối kì",
+                desc: "Ôn cuối kì",
+                questions: [
+                    {
+                        "q": "Câu 1: Đặc điểm nào sau đây là yêu cầu bắt buộc đối với một phương thức được đánh dấu bởi annotation @Test trong JUnit 5?",
+                        "o": [
+                            "Phải nhận tham số đầu vào",
+                            "Không nhận tham số và không trả về giá trị",
+                            "Phải trả về một giá trị boolean",
+                            "Phải được khai báo là static"
+                        ],
+                        "a": 1,
+                        "e": "Theo định nghĩa, annotation @Test dùng để đánh dấu phương thức là một bài test. Phương thức này yêu cầu không nhận tham số và không trả về giá trị."
+                    },
+                    {
+                        "q": "Câu 2: Điểm chung bắt buộc đối với phương thức khi sử dụng annotation @BeforeAll và @AfterAll (khi không có cấu hình vòng đời đặc biệt) là gì?",
+                        "o": [
+                            "Phương thức phải là static",
+                            "Phương thức chạy trước/sau mỗi bài test",
+                            "Phương thức trả về đối tượng Object",
+                            "Phương thức phải nằm trong lớp nội bộ"
+                        ],
+                        "a": 0,
+                        "e": "Cả hai annotation @BeforeAll và @AfterAll đều yêu cầu phương thức phải được khai báo là static để có thể chạy 1 lần duy nhất trước/sau tất cả các bài test trong class hiện tại."
+                    },
+                    {
+                        "q": "Câu 3: Cặp annotation nào sau đây được sử dụng để thiết lập (setup) và dọn dẹp (teardown) môi trường trước và sau MỖI phương thức test?",
+                        "o": [
+                            "@BeforeAll và @AfterAll",
+                            "@Test và @Nested",
+                            "@BeforeEach và @AfterEach",
+                            "@TestInstance và @AfterEach"
+                        ],
+                        "a": 2,
+                        "e": "Annotation @BeforeEach chạy trước mỗi phương thức test để thiết lập môi trường (setup), còn @AfterEach chạy sau mỗi phương thức test để tiến hành dọn dẹp môi trường (teardown)."
+                    },
+                    {
+                        "q": "Câu 4: Annotation @Nested trong JUnit 5 được sử dụng nhằm mục đích gì?",
+                        "o": [
+                            "Vô hiệu hóa một nhóm bài test.",
+                            "Đánh dấu một lớp nội bộ (Inner Class) là một nhóm test có phân cấp giúp tổ chức theo dạng cây.",
+                            "Lặp lại một bài test nhiều lần.",
+                            "Định cấu hình vòng đời của test class."
+                        ],
+                        "a": 1,
+                        "e": "@Nested được sử dụng để đánh dấu một lớp nội bộ (Inner Class) là một nhóm test có phân cấp, nhờ đó giúp tổ chức tài liệu test theo dạng cây rõ ràng và rành mạch."
+                    },
+                    {
+                        "q": "Câu 5: Để cho phép phương thức đánh dấu @BeforeAll KHÔNG CẦN phải là hàm static, bạn có thể sử dụng annotation nào để cấu hình lại vòng đời của class test?",
+                        "o": [
+                            "@TestInstance",
+                            "@Nested",
+                            "@BeforeEach",
+                            "@AfterAll"
+                        ],
+                        "a": 0,
+                        "e": "Bằng cách sử dụng @TestInstance (ví dụ: @TestInstance(Lifecycle.PER_CLASS)) để cấu hình vòng đời của class test, bạn cho phép các hàm khởi tạo như @BeforeAll không cần phải khai báo là static nữa."
+                    },
+                    {
+                        "q": "Câu 6: Sự khác biệt về thời điểm thực thi giữa @BeforeAll và @BeforeEach là gì?",
+                        "o": [
+                            "@BeforeAll chạy trước mỗi test, @BeforeEach chạy 1 lần trước tất cả.",
+                            "Cả hai đều chạy trước mỗi bài test.",
+                            "@BeforeAll chạy 1 lần duy nhất trước tất cả bài test, @BeforeEach chạy lặp lại trước từng bài test.",
+                            "Không có sự khác biệt về mặt thời gian thực thi."
+                        ],
+                        "a": 2,
+                        "e": "Theo mô tả, @BeforeAll chỉ chạy 1 lần duy nhất trước khi toàn bộ các bài test trong class bắt đầu. Ngược lại, @BeforeEach sẽ được gọi chạy lại nhiều lần, ngay trước mỗi phương thức test riêng lẻ."
+                    },
+                    {
+                        "q": "Câu 7: Để vô hiệu hóa (bỏ qua) một class hoặc phương thức test và đồng thời để lại lời nhắn giải thích lý do, bạn nên sử dụng cú pháp nào sau đây?",
+                        "o": [
+                            "@Ignore(\"Chờ fix bug\")",
+                            "@Skip(\"Chờ fix bug\")",
+                            "@Disabled(\"Chờ fix bug\")",
+                            "@DisableTest(\"Chờ fix bug\")"
+                        ],
+                        "a": 2,
+                        "e": "Trong JUnit 5, annotation @Disabled được sử dụng để vô hiệu hóa một bài test. Bạn có thể truyền trực tiếp lý do vào bên trong như @Disabled(\"Chờ fix bug\") để các thành viên khác trong team dễ dàng nắm bắt."
+                    },
+                    {
+                        "q": "Câu 8: Annotation @Timeout trong JUnit 5 được sử dụng với mục đích chính là gì?",
+                        "o": [
+                            "Tạm dừng chương trình một khoảng thời gian trước khi chạy test.",
+                            "Đặt giới hạn thời gian chạy tối đa cho bài test, nếu vượt quá sẽ báo lỗi.",
+                            "Chạy lặp đi lặp lại bài test trong một khoảng thời gian quy định.",
+                            "Đo lường và in ra thời gian chạy của bài test mà không đánh rớt test."
+                        ],
+                        "a": 1,
+                        "e": "Annotation @Timeout dùng để đặt giới hạn thời gian chạy cho bài test. Nếu bài test thực thi lâu hơn thời gian đã cấu hình (ví dụ: @Timeout(value = 5, unit = TimeUnit.SECONDS)), hệ thống sẽ tự động đánh fail test case đó."
+                    },
+                    {
+                        "q": "Câu 9: Khi làm việc với một dự án lớn, bạn muốn phân loại các test case thành các nhóm như \"Fast\" (chạy nhanh) và \"Slow\" (chạy chậm) để dễ dàng lọc khi thực thi. Annotation nào giúp bạn làm điều này?",
+                        "o": [
+                            "@Group",
+                            "@Filter",
+                            "@Category",
+                            "@Tag"
+                        ],
+                        "a": 3,
+                        "e": "Annotation @Tag được dùng để gắn nhãn cho các bài test. Việc gắn nhãn (ví dụ: @Tag(\"Fast\")) giúp lập trình viên có thể dễ dàng gom nhóm, lọc và chỉ định chạy một tập hợp các bài test cụ thể theo nhu cầu."
+                    },
+                    {
+                        "q": "Câu 10: Để annotation @Order có thể hoạt động và xác định đúng thứ tự chạy của các phương thức test, bạn bắt buộc phải khai báo cấu hình nào đi kèm ở cấp độ Class?",
+                        "o": [
+                            "@ExecutionOrder(OrderAnnotation.class)",
+                            "@TestMethodOrder(MethodOrderer.OrderAnnotation.class)",
+                            "@TestOrder(Ordered.class)",
+                            "@RunInOrder(Method.class)"
+                        ],
+                        "a": 1,
+                        "e": "Annotation @Order chỉ dùng để đánh số thứ tự trên từng phương thức. Để kích hoạt tính năng chạy theo thứ tự này, bạn bắt buộc phải khai báo @TestMethodOrder(MethodOrderer.OrderAnnotation.class) ở trên đầu class test."
+                    },
+                    {
+                        "q": "Câu 11: Khẳng định nào sau đây là mô tả chính xác về nhóm annotation kiểm soát thực thi (Execution Control) trong đoạn tài liệu trên?",
+                        "o": [
+                            "Chúng can thiệp trực tiếp vào việc sắp xếp, phân loại, giới hạn thời gian hoặc bỏ qua việc thực thi các bài test.",
+                            "Chúng dùng để cung cấp dữ liệu đầu vào (data-driven) cho các phương thức test.",
+                            "Chúng được dùng để thiết lập hoặc dọn dẹp môi trường database trước khi test.",
+                            "Chúng thay thế hoàn toàn cho các hàm assert (khẳng định) bên trong bài test."
+                        ],
+                        "a": 0,
+                        "e": "Các annotation như @Disabled (bỏ qua), @Timeout (giới hạn thời gian), @Tag (phân loại lọc) và @Order (sắp xếp thứ tự) đều có chung mục đích là kiểm soát luồng thực thi và cách thức framework chạy các bài test, chứ không phải để cung cấp dữ liệu hay xác minh kết quả."
+                    },
+                    {
+                        "q": "Câu 12: Để triển khai kiểm thử hướng dữ liệu (Data-driven testing) trong JUnit 5, bạn cần sử dụng annotation nào để bài test có thể nhận dữ liệu từ các nguồn tham số?",
+                        "o": [
+                            "@TestFactory",
+                            "@RepeatedTest",
+                            "@ParameterizedTest",
+                            "@ExtendWith"
+                        ],
+                        "a": 2,
+                        "e": "Theo tài liệu, @ParameterizedTest được sử dụng để đánh dấu một bài test có khả năng nhận dữ liệu đầu vào từ một nguồn tham số, phục vụ rất tốt cho kỹ thuật Data-driven testing."
+                    },
+                    {
+                        "q": "Câu 13: Nếu bạn muốn một bài test cụ thể được hệ thống tự động chạy lặp đi lặp lại 10 lần, bạn sẽ sử dụng cú pháp nào sau đây?",
+                        "o": [
+                            "@Test(repeat = 10)",
+                            "@RepeatedTest(10)",
+                            "@LoopTest(10)",
+                            "@TestFactory(10)"
+                        ],
+                        "a": 1,
+                        "e": "Annotation @RepeatedTest được dùng để chỉ định số lần chạy lại một bài test nhất định. Cú pháp chuẩn xác trong ví dụ là @RepeatedTest(10)."
+                    },
+                    {
+                        "q": "Câu 14: Annotation @TestFactory trong JUnit 5 có vai trò gì trong nhóm test nâng cao?",
+                        "o": [
+                            "Đánh dấu phương thức tạo ra các test động (DynamicTest) trong lúc runtime.",
+                            "Đăng ký các tiện ích mở rộng của bên thứ ba.",
+                            "Khởi tạo tự động các đối tượng giả lập (Mock).",
+                            "Cung cấp dữ liệu dạng bảng CSV cho bài test."
+                        ],
+                        "a": 0,
+                        "e": "Trong kiểm thử nâng cao, @TestFactory được dùng để đánh dấu một phương thức (đóng vai trò như một 'nhà máy') chuyên tạo ra các bài test động (DynamicTest) ngay trong quá trình thực thi chương trình (runtime)."
+                    },
+                    {
+                        "q": "Câu 15: Để tích hợp các tiện ích mở rộng (Extension) của bên thứ ba, chẳng hạn như Mockito (MockitoExtension.class) vào JUnit 5, bạn bắt buộc phải sử dụng annotation nào?",
+                        "o": [
+                            "@RunWith",
+                            "@ImportExtension",
+                            "@RegisterExtension",
+                            "@ExtendWith"
+                        ],
+                        "a": 3,
+                        "e": "Annotation @ExtendWith được kiến trúc JUnit 5 cung cấp để đăng ký và kích hoạt các tiện ích mở rộng (Extension) của bên thứ ba. Ví dụ điển hình là @ExtendWith(MockitoExtension.class) khi làm việc với đối tượng Mock."
+                    },
+                    {
+                        "q": "Câu 16: Annotation nào sau đây được sử dụng để truyền một mảng các kiểu dữ liệu nguyên thủy hoặc chuỗi (String) trực tiếp vào bài test có tham số?",
+                        "o": [
+                            "@CsvSource",
+                            "@MethodSource",
+                            "@ValueSource",
+                            "@EnumSource"
+                        ],
+                        "a": 2,
+                        "e": "Theo tài liệu, @ValueSource được dùng để truyền một mảng các kiểu dữ liệu nguyên thủy hoặc String (ví dụ: ints = {1, 2, 3}, strings = {\"A\", \"B\"}) vào bài test."
+                    },
+                    {
+                        "q": "Câu 17: Để kiểm thử một phương thức với cả trường hợp đầu vào là giá trị null và giá trị rỗng (chuỗi rỗng, mảng rỗng...) một cách ngắn gọn nhất, bạn nên sử dụng annotation nào?",
+                        "o": [
+                            "@NullAndEmptySource",
+                            "@BlankSource",
+                            "@EmptyOrNullSource",
+                            "@NoneSource"
+                        ],
+                        "a": 0,
+                        "e": "Annotation @NullAndEmptySource là sự kết hợp tiện lợi của cả @NullSource và @EmptySource, giúp bạn truyền đồng thời cả giá trị null và giá trị rỗng vào bài test chỉ với một khai báo."
+                    },
+                    {
+                        "q": "Câu 18: Sự khác biệt cơ bản giữa @CsvSource và @CsvFileSource là gì?",
+                        "o": [
+                            "@CsvSource lấy dữ liệu từ database, @CsvFileSource lấy từ file text.",
+                            "@CsvSource truyền dữ liệu bảng CSV viết trực tiếp dưới dạng String, @CsvFileSource đọc dữ liệu từ tệp .csv bên ngoài.",
+                            "@CsvSource chỉ nhận định dạng số, @CsvFileSource nhận định dạng chuỗi.",
+                            "Không có sự khác biệt, hai annotation này có thể dùng thay thế cho nhau."
+                        ],
+                        "a": 1,
+                        "e": "@CsvSource cho phép bạn khai báo dữ liệu dạng CSV trực tiếp ngay trong mã nguồn dưới dạng mảng String. Trong khi đó, @CsvFileSource dùng để đọc khối lượng dữ liệu lớn hơn được lưu trữ sẵn trong một file .csv bên ngoài hệ thống."
+                    },
+                    {
+                        "q": "Câu 19: Khi muốn cấp dữ liệu cho Parameterized Test thông qua một phương thức (hàm static) trả về Stream hoặc List các đối tượng, lập trình viên cần sử dụng annotation nào?",
+                        "o": [
+                            "@MethodSource",
+                            "@ListSource",
+                            "@StreamSource",
+                            "@ArgumentSource"
+                        ],
+                        "a": 0,
+                        "e": "@MethodSource được sử dụng để trỏ tới tên của một phương thức (hàm static) trong class. Phương thức này có nhiệm vụ sinh ra và trả về một Stream hoặc List các đối tượng dùng làm dữ liệu đầu vào cho test."
+                    },
+                    {
+                        "q": "Câu 20: Annotation @ArgumentSource được sử dụng trong trường hợp nào khi viết bài test có tham số?",
+                        "o": [
+                            "Khi cần lấy dữ liệu từ tham số dòng lệnh (command line).",
+                            "Khi cần truyền vào các giá trị của một Enum.",
+                            "Khi cần sử dụng một class tùy biến (implement từ interface ArgumentsProvider) để cung cấp dữ liệu.",
+                            "Khi muốn tự động sinh ra các giá trị ngẫu nhiên cho tham số."
+                        ],
+                        "a": 2,
+                        "e": "Theo mô tả, @ArgumentSource được dùng khi bạn xây dựng một logic sinh dữ liệu phức tạp được tách riêng ra một class tùy biến (class này phải implement interface ArgumentsProvider của JUnit) để cấp dữ liệu cho bài test."
+                    },
+                    {
+                        "q": "Câu 21: Hàm assertion nào sau đây được sử dụng để kiểm tra xem giá trị thực tế có bằng với giá trị mong đợi hay không?",
+                        "o": [
+                            "assertEquals(expected, actual)",
+                            "assertNotEquals(unexpected, actual)",
+                            "assertArrayEquals(expectedArray, actualArray)",
+                            "assertIterableEquals(expectedIterable, actualIterable)"
+                        ],
+                        "a": 0,
+                        "e": "Hàm assertEquals(expected, actual) được sử dụng để kiểm tra xem giá trị thực tế (actual) có hoàn toàn bằng với giá trị mong đợi (expected) hay không."
+                    },
+                    {
+                        "q": "Câu 22: Chức năng chính của hàm assertArrayEquals() trong JUnit 5 là gì?",
+                        "o": [
+                            "Kiểm tra xem hai mảng có trỏ cùng vào một ô nhớ không.",
+                            "So sánh hai mảng xem có cùng kích thước không.",
+                            "So sánh hai mảng xem chúng có chứa các phần tử giống nhau và theo đúng thứ tự hay không.",
+                            "So sánh sâu hai tập hợp List hoặc Set."
+                        ],
+                        "a": 2,
+                        "e": "Hàm assertArrayEquals(expectedArray, actualArray) được thiết kế đặc biệt để so sánh hai mảng dữ liệu, đảm bảo chúng khớp nhau cả về các phần tử bên trong lẫn thứ tự xuất hiện của các phần tử đó."
+                    },
+                    {
+                        "q": "Câu 23: Để so sánh sâu hai tập hợp (như List, Set) xem có khớp từng phần tử theo đúng thứ tự hay không, bạn nên dùng hàm khẳng định nào?",
+                        "o": [
+                            "assertArrayEquals",
+                            "assertEquals",
+                            "assertLinesMatch",
+                            "assertIterableEquals"
+                        ],
+                        "a": 3,
+                        "e": "Hàm assertIterableEquals(expectedIterable, actualIterable) dùng để thực hiện so sánh sâu hai tập hợp (Collection/Iterable như List, Set) xem chúng có khớp từng phần tử theo đúng thứ tự hay không."
+                    },
+                    {
+                        "q": "Câu 24: Hàm khẳng định (assertion) nào trong JUnit 5 hỗ trợ so sánh hai danh sách String và cho phép sử dụng biểu thức chính quy (Regex)?",
+                        "o": [
+                            "assertStringMatch",
+                            "assertRegexEquals",
+                            "assertLinesMatch",
+                            "assertIterableEquals"
+                        ],
+                        "a": 2,
+                        "e": "Hàm assertLinesMatch(expectedLines, actualLines) là hàm chuyên dụng để so sánh hai danh sách chứa các chuỗi (String), với tính năng đặc biệt là hỗ trợ so khớp bằng biểu thức chính quy (Regex)."
+                    },
+                    {
+                        "q": "Câu 25: Khi bạn muốn kiểm tra và đảm bảo rằng giá trị thực tế KHÔNG ĐƯỢC PHÉP bằng với một giá trị không mong đợi nào đó, bạn dùng hàm nào?",
+                        "o": [
+                            "assertFalse",
+                            "assertNotEquals",
+                            "assertNotSame",
+                            "assertNull"
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertNotEquals(unexpected, actual) được sử dụng để kiểm tra giá trị thực tế KHÔNG ĐƯỢC bằng giá trị không mong đợi (unexpected)."
+                    },
+                    {
+                        "q": "Câu 26: Hàm assertion nào trong JUnit 5 được sử dụng để kiểm tra xem hai biến có cùng trỏ vào một ô nhớ (cùng một thực thể Object) hay không?",
+                        "o": [
+                            "assertEquals(expected, actual)",
+                            "assertSame(expected, actual)",
+                            "assertArrayEquals(expectedArray, actualArray)",
+                            "assertNotSame(unexpected, actual)"
+                        ],
+                        "a": 1,
+                        "e": "Theo tài liệu, hàm assertSame(expected, actual) được sử dụng để kiểm tra hai biến có cùng trỏ vào một ô nhớ (cùng một thực thể Object) hay không."
+                    },
+                    {
+                        "q": "Câu 27: Nếu bạn muốn đảm bảo rằng hai biến được tạo ra hoàn toàn độc lập và KHÔNG trỏ cùng vào một ô nhớ, bạn nên sử dụng hàm khẳng định nào?",
+                        "o": [
+                            "assertNotEquals(unexpected, actual)",
+                            "assertFalse(condition)",
+                            "assertNotSame(unexpected, actual)",
+                            "assertNull(actual)"
+                        ],
+                        "a": 2,
+                        "e": "Hàm assertNotSame(unexpected, actual) được dùng để kiểm tra và đảm bảo rằng hai biến không được phép trỏ cùng vào một ô nhớ."
+                    },
+                    {
+                        "q": "Câu 28: Sự khác biệt cốt lõi giữa hai hàm assertSame() và assertEquals() trong kiểm thử là gì?",
+                        "o": [
+                            "assertSame so sánh giá trị thực tế, còn assertEquals so sánh kiểu dữ liệu.",
+                            "assertSame so sánh ô nhớ (tham chiếu đối tượng), còn assertEquals so sánh giá trị thực tế.",
+                            "Không có sự khác biệt, hai hàm này hoạt động hoàn toàn giống nhau.",
+                            "assertSame chỉ dùng cho các mảng, còn assertEquals dùng cho đối tượng."
+                        ],
+                        "a": 1,
+                        "e": "Dựa trên định nghĩa, assertSame kiểm tra việc hai biến có cùng trỏ vào một ô nhớ (Object Identity) hay không. Trong khi đó, assertEquals dùng để kiểm tra sự bằng nhau về mặt giá trị của đối tượng."
+                    },
+                    {
+                        "q": "Câu 29: Hàm assertion nào trong JUnit 5 được sử dụng để kiểm tra một điều kiện logic bắt buộc phải trả về giá trị đúng (true)?",
+                        "o": [
+                            "assertTrue(condition)",
+                            "assertFalse(condition)",
+                            "assertNull(actual)",
+                            "assertNotNull(actual)"
+                        ],
+                        "a": 0,
+                        "e": "Theo tài liệu, hàm assertTrue(condition) được sử dụng một cách chuyên biệt để kiểm tra và khẳng định rằng điều kiện truyền vào bắt buộc phải là true."
+                    },
+                    {
+                        "q": "Câu 30: Nếu bạn muốn khẳng định rằng một biểu thức hoặc điều kiện trong bài test phải trả về kết quả sai (false), bạn sẽ dùng hàm nào?",
+                        "o": [
+                            "assertNotEquals",
+                            "assertTrue",
+                            "assertFalse",
+                            "assertNull"
+                        ],
+                        "a": 2,
+                        "e": "Hàm assertFalse(condition) được cung cấp để kiểm tra điều kiện truyền vào phải là false. Nếu điều kiện trả về true, bài test sẽ bị đánh dấu là thất bại."
+                    },
+                    {
+                        "q": "Câu 31: Để kiểm tra xem một đối tượng (Object) có giá trị rỗng (chưa được cấp phát bộ nhớ) hay không, hàm khẳng định nào là phù hợp nhất?",
+                        "o": [
+                            "assertEmpty(actual)",
+                            "assertNull(actual)",
+                            "assertNotNull(actual)",
+                            "assertSame(null, actual)"
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertNull(actual) được sử dụng để kiểm tra đối tượng truyền vào phải là null."
+                    },
+                    {
+                        "q": "Câu 32: Hàm assertNotNull(actual) trong thư viện Assertions của JUnit 5 có ý nghĩa gì?",
+                        "o": [
+                            "Kiểm tra đối tượng phải là null.",
+                            "Kiểm tra đối tượng không được phép là null.",
+                            "Kiểm tra một chuỗi không được phép rỗng.",
+                            "Kiểm tra mảng không được phép thiếu phần tử."
+                        ],
+                        "a": 1,
+                        "e": "Khác với assertNull, hàm assertNotNull(actual) dùng để kiểm tra và đảm bảo rằng đối tượng thực tế (actual) đã được khởi tạo và không được phép là null."
+                    },
+                    {
+                        "q": "Câu 44: Điểm khác biệt quan trọng nhất giữa hàm assertThrows và assertThrowsExactly là gì?",
+                        "o": [
+                            "assertThrows không yêu cầu bắt buộc ném ra ngoại lệ, còn assertThrowsExactly thì có.",
+                            "assertThrowsExactly không chấp nhận các ngoại lệ con (subclass) của ngoại lệ được chỉ định.",
+                            "assertThrows chỉ dùng cho các checked exception.",
+                            "Cả hai hàm đều hoạt động hoàn toàn giống nhau."
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertThrowsExactly khẳng định đoạn code phải ném ra CHÍNH XÁC loại Exception được chỉ định và không chấp nhận các lớp con (subclass), trong khi assertThrows thì cho phép ngoại lệ con."
+                    },
+                    {
+                        "q": "Câu 45: Để khẳng định rằng một đoạn code thực thi thành công mà KHÔNG ném ra bất kỳ ngoại lệ (Exception) nào, lập trình viên sử dụng hàm nào?",
+                        "o": [
+                            "assertNoException",
+                            "assertDoesNotThrow",
+                            "assertSuccess",
+                            "assertNull"
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertDoesNotThrow(Executable executable) được sử dụng để khẳng định đoạn code chạy thành công trọn vẹn và không ném ra bất kỳ Exception nào."
+                    },
+                    {
+                        "q": "Câu 46: Hàm assertTimeout trong thư viện JUnit 5 được sử dụng để làm gì?",
+                        "o": [
+                            "Dừng chương trình (sleep) trong một khoảng thời gian nhất định.",
+                            "Kiểm tra xem đoạn code có chạy xong trước khoảng thời gian quy định hay không.",
+                            "Ngắt luồng chạy ngay lập tức khi hết giờ.",
+                            "Lặp lại bài test liên tục trong một khoảng thời gian."
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertTimeout(Duration duration, Executable executable) được sử dụng để kiểm tra xem một đoạn code có chạy xong trước khoảng thời gian đã được quy định hay không."
+                    },
+                    {
+                        "q": "Câu 47: Khi sử dụng assertTimeoutPreemptively, điều gì sẽ xảy ra nếu đoạn code vượt quá thời gian (timeout) đã cấu hình?",
+                        "o": [
+                            "Hệ thống sẽ chờ đoạn code chạy xong hoàn toàn rồi mới báo lỗi Timeout.",
+                            "Sẽ ngắt (kill) luồng chạy ngay lập tức tại thời điểm hết giờ.",
+                            "Bài test sẽ tự động tăng thêm thời gian chờ (grace period).",
+                            "Chỉ in ra cảnh báo (warning) nhưng bài test vẫn pass."
+                        ],
+                        "a": 1,
+                        "e": "Khác với assertTimeout thông thường, assertTimeoutPreemptively có tính năng mạnh mẽ là sẽ ngắt (kill) luồng chạy ngay lập tức khi hết giờ thay vì phải chờ đoạn code chạy xong."
+                    },
+                    {
+                        "q": "Câu 48: Nếu bạn muốn kiểm tra xem đoạn code CÓ ném ra một ngoại lệ cụ thể (hoặc các lớp kế thừa từ ngoại lệ đó) hay không, hàm nào là sự lựa chọn phù hợp nhất?",
+                        "o": [
+                            "assertThrowsExactly",
+                            "assertThrows",
+                            "assertDoesNotThrow",
+                            "assertTimeout"
+                        ],
+                        "a": 1,
+                        "e": "Hàm assertThrows(Class<T> expectedType, Executable executable) khẳng định đoạn code bắt buộc phải ném ra một Exception cụ thể, và nó chấp nhận cả các ngoại lệ con (subclass) của ngoại lệ đó."
+                    },
+                    {
+                        "q": "Câu 49: Ưu điểm lớn nhất của việc sử dụng hàm gộp `assertAll` trong JUnit 5 là gì?",
+                        "o": [
+                            "Ngừng thực thi ngay lập tức khi gặp lỗi đầu tiên để tiết kiệm thời gian.",
+                            "Tự động sửa các lỗi (auto-fix) bên trong các phương thức kiểm thử.",
+                            "Gộp nhiều assertion, nếu có lỗi thì các assertion còn lại vẫn tiếp tục chạy để gom hết lỗi báo cáo một thể.",
+                            "Chỉ cho phép gộp tối đa 2 assertion trong cùng một bài test."
+                        ],
+                        "a": 2,
+                        "e": "Hàm assertAll(String heading, Executable... executables) cho phép gộp nhiều assertion lại với nhau. Điểm đặc biệt là nếu có một assertion bị lỗi, các assertion khác vẫn được chạy để gom tất cả các lỗi và báo cáo trong một lần duy nhất."
+                    },
+                    {
+                        "q": "Câu 50: Hàm `fail(String message)` trong JUnit 5 được sử dụng để làm gì?",
+                        "o": [
+                            "Bỏ qua bài test và chuyển sang bài tiếp theo.",
+                            "Chủ động đánh dấu bài test bị thất bại ngay lập tức.",
+                            "Hiển thị cảnh báo nhưng vẫn cho phép bài test vượt qua.",
+                            "Bắt buộc ném ra ngoại lệ NullPointerException."
+                        ],
+                        "a": 1,
+                        "e": "Hàm fail(String message) được sử dụng để chủ động đánh dấu bài test bị thất bại (fail) ngay lập tức tại vị trí gọi hàm."
+                    },
+                    {
+                        "q": "Câu 51: Theo tài liệu, hàm `fail(String message)` thường được lập trình viên sử dụng trong trường hợp phổ biến nào?",
+                        "o": [
+                            "Nằm trong nhánh catch hoặc khi logic của test case chưa được hoàn thiện.",
+                            "Để kiểm tra xem hai mảng có bằng nhau hay không.",
+                            "Để thay thế hoàn toàn cho hàm assertNull.",
+                            "Nằm trong annotation @BeforeAll để dọn dẹp dữ liệu."
+                        ],
+                        "a": 0,
+                        "e": "Hàm fail thường được dùng để đánh rớt bài test một cách chủ động, điển hình là khi bắt lỗi trong nhánh catch (ngoại lệ không mong muốn xảy ra) hoặc khi đang viết dở một logic kiểm thử nào đó chưa hoàn thiện."
+                    },
+                    {
+                        "q": "Câu 52: Hàm giả định `assumeTrue(condition)` trong JUnit 5 hoạt động như thế nào?",
+                        "o": [
+                            "Kiểm tra điều kiện, nếu sai thì đánh rớt (fail) bài test ngay lập tức.",
+                            "Giả định điều kiện phải đúng để chạy tiếp bài test, nếu sai bài test sẽ bị bỏ qua.",
+                            "Chỉ in ra cảnh báo ở màn hình console nếu điều kiện sai.",
+                            "Lặp lại bài test liên tục cho đến khi điều kiện trở thành đúng."
+                        ],
+                        "a": 1,
+                        "e": "Theo tài liệu, `assumeTrue(condition)` giả định điều kiện phải đúng để chạy tiếp bài test. Nếu điều kiện sai, bài test sẽ bị bỏ qua (Skip) chứ không tính là thất bại."
+                    },
+                    {
+                        "q": "Câu 53: Để giả định một điều kiện bắt buộc phải SAI thì mới cho phép bài test tiếp tục thực thi, lập trình viên sử dụng hàm nào?",
+                        "o": [
+                            "assertFalse",
+                            "assumeFalse",
+                            "assumeTrue",
+                            "assumingThat"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `assumeFalse(condition)` được sử dụng để giả định điều kiện phải sai để có thể chạy tiếp bài test. Nếu điều kiện truyền vào lại là đúng (true), bài test sẽ lập tức bị dừng và bỏ qua."
+                    },
+                    {
+                        "q": "Câu 54: Đặc điểm nổi bật của hàm `assumingThat(boolean condition, Executable executable)` so với `assumeTrue` hay `assumeFalse` là gì?",
+                        "o": [
+                            "Nó sẽ đánh rớt (fail) bài test ngay lập tức nếu điều kiện sai.",
+                            "Nếu điều kiện sai, nó vẫn tiếp tục chạy các dòng code phía sau của bài test thay vì bỏ qua toàn bộ bài test.",
+                            "Nó tự động thực thi lại đoạn code nhiều lần nếu bị lỗi.",
+                            "Nó bắt buộc ném ra một ngoại lệ khi điều kiện trả về false."
+                        ],
+                        "a": 1,
+                        "e": "Với hàm `assumingThat`, nếu điều kiện sai, hệ thống chỉ bỏ qua đoạn code bên trong executable đó nhưng VẪN TIẾP TỤC chạy các dòng code phía sau của bài test, thay vì ngắt hoàn toàn bài test như `assumeTrue/False`."
+                    },
+                    {
+                        "q": "Câu 55: Hàm `anyOf(matcher1, matcher2)` trong thư viện Hamcrest tương đương với phép toán logic nào?",
+                        "o": [
+                            "AND",
+                            "OR",
+                            "NOT",
+                            "XOR"
+                        ],
+                        "a": 1,
+                        "e": "Theo tài liệu, hàm `anyOf(matcher1, matcher2)` trong Hamcrest được sử dụng để kết hợp nhiều điều kiện kiểm tra và nó tương đương với phép toán logic OR (chỉ cần một trong các điều kiện đúng)."
+                    },
+                    {
+                        "q": "Câu 56: Trong thư viện Hamcrest, nếu bạn muốn đảm bảo TẤT CẢ các điều kiện truyền vào đều phải thỏa mãn (tương đương với toán tử AND), bạn sẽ sử dụng hàm nào?",
+                        "o": [
+                            "both().and()",
+                            "anyOf()",
+                            "allOf()",
+                            "everyItem()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `allOf(matcher1, matcher2)` bắt buộc tất cả các matcher bên trong nó đều phải trả về kết quả đúng, tương đương với phép toán logic AND."
+                    },
+                    {
+                        "q": "Câu 57: Để phủ định một điều kiện kiểm tra trong Hamcrest (tương đương với toán tử `!`), bạn sử dụng hàm nào sau đây?",
+                        "o": [
+                            "isNot()",
+                            "negative()",
+                            "not()",
+                            "inverse()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `not(matcher)` trong Hamcrest có tác dụng đảo ngược (phủ định) lại kết quả của matcher bên trong nó, tương đương với phép toán phủ định (NOT) trong lập trình."
+                    },
+                    {
+                        "q": "Câu 65: Hàm `is(T value)` hoặc `is(Matcher<T> matcher)` trong Hamcrest được mô tả như thế nào trong tài liệu?",
+                        "o": [
+                            "Hàm so sánh ô nhớ của đối tượng.",
+                            "Hàm viết tắt (Shorthand matcher) giúp câu lệnh đọc thuận miệng hơn.",
+                            "Hàm dùng để ép kiểu dữ liệu.",
+                            "Hàm kiểm tra tính null của đối tượng."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `is()` là một Shorthand matcher, nó bọc ngoài các hàm khác để giúp câu lệnh kiểm thử trở nên dễ đọc, gần với ngôn ngữ tự nhiên hơn (ví dụ: `is(equalTo(5))` hoặc `is(5)`)."
+                    },
+                    {
+                        "q": "Câu 66: Hàm `equalTo(T operand)` kiểm tra sự bằng nhau dựa trên phương thức nào của Java?",
+                        "o": [
+                            "Phương thức toString().",
+                            "Phương thức hashCode().",
+                            "Phương thức equals().",
+                            "Phương thức compareTo()."
+                        ],
+                        "a": 2,
+                        "e": "Hàm `equalTo(T operand)` được sử dụng để kiểm tra sự bằng nhau giữa hai đối tượng dựa trên phương thức `equals()` được định nghĩa trong Java."
+                    },
+                    {
+                        "q": "Câu 67: Hàm `not(T value)` hoặc `not(Matcher<T> matcher)` trong Hamcrest có ý nghĩa tương đương với toán tử nào trong Java?",
+                        "o": [
+                            "Toán tử AND (&&).",
+                            "Toán tử OR (||).",
+                            "Toán tử phủ định (!).",
+                            "Toán tử bằng (==)."
+                        ],
+                        "a": 2,
+                        "e": "Hàm `not()` được dùng để phủ định một điều kiện kiểm tra, có vai trò tương đương với toán tử phủ định (!) trong lập trình Java."
+                    },
+                    {
+                        "q": "Câu 68: Nếu muốn khẳng định một đối tượng có giá trị là null, bạn sử dụng hàm nào của Hamcrest?",
+                        "o": [
+                            "notNullValue()",
+                            "nullValue()",
+                            "equalTo(null)",
+                            "is(null)"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `nullValue()` được sử dụng để khẳng định đối tượng thực tế phải có giá trị là null."
+                    },
+                    {
+                        "q": "Câu 69: Hàm `notNullValue()` được dùng để làm gì trong bài test?",
+                        "o": [
+                            "Kiểm tra xem đối tượng có phải là null hay không.",
+                            "Kiểm tra đối tượng phải là một chuỗi rỗng.",
+                            "Khẳng định đối tượng không được phép là null.",
+                            "Kiểm tra đối tượng có phải là instance của một class cụ thể."
+                        ],
+                        "a": 2,
+                        "e": "Hàm `notNullValue()` được dùng để khẳng định rằng đối tượng thực tế không được phép mang giá trị null."
+                    },
+                    {
+                        "q": "Câu 70: Bạn muốn kiểm tra xem đối tượng `actual` có phải là một thể hiện (instance) của class `String` hay không, bạn sử dụng hàm nào?",
+                        "o": [
+                            "isA(String.class)",
+                            "instanceOf(String.class)",
+                            "Cả hai cách trên đều đúng.",
+                            "is(String.class)"
+                        ],
+                        "a": 2,
+                        "e": "Cả `instanceOf(Class<?> type)` và hàm viết tắt `isA(Class<T> type)` đều được dùng để kiểm tra tính thể hiện của đối tượng so với một Class hoặc Interface cụ thể."
+                    },
+                    {
+                        "q": "Câu 71: Hàm `isA(Class<T> type)` trong Hamcrest là hàm viết tắt (shorthand) của biểu thức nào sau đây?",
+                        "o": [
+                            "is(equalTo(type))",
+                            "is(instanceOf(SomeClass.class))",
+                            "not(instanceOf(type))",
+                            "is(nullValue())"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `isA(Class<T> type)` là hàm viết tắt (shorthand) của biểu thức `is(instanceOf(SomeClass.class))` giúp code gọn gàng và dễ đọc hơn."
+                    },
+                    {
+                        "q": "Câu 72: Hàm `startsWith(String prefix)` trong Hamcrest dùng để kiểm tra điều gì?",
+                        "o": [
+                            "Chuỗi thực tế phải có độ dài bằng với prefix.",
+                            "Chuỗi thực tế phải bắt đầu bằng cụm từ chỉ định.",
+                            "Chuỗi thực tế phải kết thúc bằng cụm từ chỉ định.",
+                            "Chuỗi thực tế không được phép bắt đầu bằng prefix."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `startsWith(String prefix)` được dùng để xác nhận rằng chuỗi thực tế (actual string) bắt đầu bằng một cụm từ (prefix) chỉ định."
+                    },
+                    {
+                        "q": "Câu 73: Để khẳng định một chuỗi phải kết thúc bằng một cụm từ cụ thể, bạn sử dụng hàm nào?",
+                        "o": [
+                            "startsWith()",
+                            "endsWith()",
+                            "containsString()",
+                            "hasToString()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `endsWith(String suffix)` yêu cầu chuỗi thực tế phải kết thúc bằng cụm từ (suffix) chỉ định."
+                    },
+                    {
+                        "q": "Câu 74: Hàm nào trong Hamcrest kiểm tra xem chuỗi thực tế có chứa một chuỗi con ở BẤT KỲ vị trí nào không?",
+                        "o": [
+                            "containsString()",
+                            "stringContainsInOrder()",
+                            "startsWith()",
+                            "hasToString()"
+                        ],
+                        "a": 0,
+                        "e": "Hàm `containsString(String substring)` xác nhận chuỗi thực tế chứa chuỗi con được chỉ định bất kể vị trí của nó."
+                    },
+                    {
+                        "q": "Câu 75: Hàm nào sau đây được dùng để kiểm tra xem một chuỗi có bị rỗng (\"\") hay không?",
+                        "o": [
+                            "isEmptyString()",
+                            "nullValue()",
+                            "hasToString()",
+                            "isEmptyOrNullString()"
+                        ],
+                        "a": 0,
+                        "e": "Cả `emptyString()` và `isEmptyString()` đều được dùng để kiểm tra xem một chuỗi có độ dài bằng 0 (chuỗi rỗng \"\") hay không."
+                    },
+                    {
+                        "q": "Câu 76: Hàm `isEmptyOrNullString()` trong Hamcrest khác với `isEmptyString()` ở điểm nào?",
+                        "o": [
+                            "Nó kiểm tra chuỗi có độ dài > 0.",
+                            "Nó chỉ kiểm tra giá trị null.",
+                            "Nó kiểm tra chuỗi bị rỗng (\"\") HOẶC bị null.",
+                            "Nó kiểm tra chuỗi chỉ chứa ký tự đặc biệt."
+                        ],
+                        "a": 2,
+                        "e": "Hàm `isEmptyOrNullString()` kiểm tra điều kiện rộng hơn, bao gồm cả trường hợp chuỗi bị rỗng (\"\") và trường hợp chuỗi đó bằng null."
+                    },
+                    {
+                        "q": "Câu 77: Khi bạn muốn so sánh hai chuỗi mà không quan tâm đến việc viết hoa hay viết thường, hàm nào là lựa chọn tối ưu?",
+                        "o": [
+                            "equalTo()",
+                            "hasToString()",
+                            "equalToIgnoringCase()",
+                            "containsString()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `equalToIgnoringCase(String expectedString)` dùng để so sánh bằng hai chuỗi nhưng loại bỏ sự khác biệt về ký tự viết hoa và viết thường."
+                    },
+                    {
+                        "q": "Câu 78: Hàm `hasToString(String expectedToString)` thực hiện hành động nào trước khi so sánh?",
+                        "o": [
+                            "Gọi hàm toString() của đối tượng.",
+                            "Gọi hàm hashCode() của đối tượng.",
+                            "Chuyển đối tượng thành kiểu int.",
+                            "Kiểm tra xem đối tượng có phải là null hay không."
+                        ],
+                        "a": 0,
+                        "e": "Hàm `hasToString(String expectedToString)` gọi hàm `toString()` của đối tượng, sau đó kiểm tra xem kết quả trả về có bằng chuỗi mong đợi hay không."
+                    },
+                    {
+                        "q": "Câu 79: Nếu bạn cần kiểm tra chuỗi thực tế chứa các chuỗi con theo ĐÚNG THỨ TỰ xuất hiện, hàm nào đáp ứng yêu cầu này?",
+                        "o": [
+                            "containsString()",
+                            "stringContainsInOrder()",
+                            "equalToIgnoringCase()",
+                            "startsWith()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `stringContainsInOrder(Iterable<String> substrings)` kiểm tra chuỗi thực tế có chứa các chuỗi con theo đúng thứ tự xuất hiện được chỉ định hay không."
+                    },
+                    {
+                        "q": "Câu 80: Hàm `greaterThan(T value)` trong Hamcrest dùng để kiểm tra điều kiện nào?",
+                        "o": [
+                            "Số thực tế phải lớn hơn hoặc bằng giá trị mốc.",
+                            "Số thực tế phải lớn hơn giá trị mốc (>).",
+                            "Số thực tế phải nhỏ hơn giá trị mốc (<).",
+                            "Số thực tế phải bằng giá trị mốc."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `greaterThan(T value)` khẳng định số thực tế phải lớn hơn (>) giá trị mốc được chỉ định."
+                    },
+                    {
+                        "q": "Câu 81: Để khẳng định số thực tế phải nhỏ hơn giá trị mốc (<), bạn sử dụng hàm nào?",
+                        "o": [
+                            "lessThan(T value)",
+                            "lessThanOrEqualTo(T value)",
+                            "greaterThan(T value)",
+                            "closeTo(T value)"
+                        ],
+                        "a": 0,
+                        "e": "Hàm `lessThan(T value)` khẳng định số thực tế phải nhỏ hơn (<) giá trị mốc."
+                    },
+                    {
+                        "q": "Câu 82: Hàm nào dùng để kiểm tra số thực tế lớn hơn hoặc bằng (>=) giá trị mốc?",
+                        "o": [
+                            "greaterThan()",
+                            "greaterThanOrEqualTo()",
+                            "lessThanOrEqualTo()",
+                            "closeTo()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `greaterThanOrEqualTo(T value)` khẳng định số thực tế phải lớn hơn hoặc bằng (>=) giá trị mốc."
+                    },
+                    {
+                        "q": "Câu 83: Khi cần khẳng định số thực tế nhỏ hơn hoặc bằng (<=) giá trị mốc, bạn chọn hàm nào?",
+                        "o": [
+                            "lessThan()",
+                            "greaterThanOrEqualTo()",
+                            "lessThanOrEqualTo()",
+                            "closeTo()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `lessThanOrEqualTo(T value)` khẳng định số thực tế phải nhỏ hơn hoặc bằng (<=) giá trị mốc."
+                    },
+                    {
+                        "q": "Câu 84: Hàm `closeTo(double operand, double error)` trong Hamcrest phục vụ mục đích gì?",
+                        "o": [
+                            "Kiểm tra hai số có bằng nhau chính xác tuyệt đối.",
+                            "Kiểm tra số thực (Float/Double) có xấp xỉ bằng giá trị mốc trong biên độ sai số cho phép hay không.",
+                            "Kiểm tra xem số thực tế có phải là số âm hay không.",
+                            "Chuyển đổi số double thành số nguyên."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `closeTo(double operand, double error)` kiểm tra một số thực có xấp xỉ bằng giá trị mốc (operand) hay không, với biên độ sai số cho phép được quy định bởi tham số error."
+                    },
+                    {
+                        "q": "Câu 85: Hàm `hasSize(int size)` dùng để làm gì trong Hamcrest?",
+                        "o": [
+                            "Kiểm tra xem Collection có chứa phần tử nào không.",
+                            "Kiểm tra kích thước (số lượng phần tử) của Collection có bằng với size hay không.",
+                            "Kiểm tra kiểu dữ liệu của các phần tử trong Collection.",
+                            "Kiểm tra xem Collection có phải là một List hay không."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `hasSize(int size)` được sử dụng để kiểm tra số lượng phần tử của một Collection có khớp với giá trị `size` được chỉ định hay không."
+                    },
+                    {
+                        "q": "Câu 86: Nếu muốn kiểm tra xem một Collection có bị trống hoàn toàn (không chứa phần tử nào) hay không, bạn sử dụng hàm nào?",
+                        "o": [
+                            "empty()",
+                            "nullValue()",
+                            "isEmpty()",
+                            "hasSize(0)"
+                        ],
+                        "a": 0,
+                        "e": "Hàm `empty()` là phương thức chuẩn để kiểm tra xem một Collection có bị trống (không có phần tử nào) hay không."
+                    },
+                    {
+                        "q": "Câu 87: Điểm khác biệt khi sử dụng `emptyCollectionOf(Class<E> type)` so với `empty()` là gì?",
+                        "o": [
+                            "Không có sự khác biệt.",
+                            "`emptyCollectionOf` yêu cầu ràng buộc rõ ràng về kiểu dữ liệu của phần tử trong Collection trống đó.",
+                            "`emptyCollectionOf` chỉ dùng cho List, không dùng được cho Set.",
+                            "`emptyCollectionOf` sẽ ném ra ngoại lệ nếu Collection không rỗng."
+                        ],
+                        "a": 1,
+                        "e": "Trong khi `empty()` chỉ kiểm tra tính rỗng, `emptyCollectionOf(Class<E> type)` kiểm tra Collection đó trống nhưng đồng thời yêu cầu ràng buộc rõ ràng về kiểu dữ liệu (`type`) của các phần tử lẽ ra phải có trong đó."
+                    },
+                    {
+                        "q": "Câu 88: Bạn cần khẳng định rằng Collection chứa ít nhất một phần tử thỏa mãn một điều kiện nào đó, bạn chọn hàm nào?",
+                        "o": [
+                            "everyItem()",
+                            "hasItem()",
+                            "contains()",
+                            "isIn()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `hasItem(T item)` hoặc `hasItem(Matcher<? super T> itemMatcher)` dùng để khẳng định Collection có chứa ít nhất một phần tử thỏa mãn yêu cầu."
+                    },
+                    {
+                        "q": "Câu 89: Nếu bạn có một danh sách các phần tử cần kiểm tra và muốn khẳng định Collection chứa TẤT CẢ các phần tử đó mà KHÔNG QUAN TÂM đến thứ tự, hàm nào là phù hợp?",
+                        "o": [
+                            "contains()",
+                            "hasItems()",
+                            "everyItem()",
+                            "hasSize()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `hasItems(T... items)` hoặc `hasItems(Matcher<? super T>... itemMatchers)` khẳng định Collection có chứa tất cả các phần tử được liệt kê mà không quan tâm đến thứ tự xuất hiện của chúng."
+                    },
+                    {
+                        "q": "Câu 90: Hàm `everyItem(Matcher<U> itemMatcher)` có chức năng gì?",
+                        "o": [
+                            "Kiểm tra xem ít nhất một phần tử thỏa mãn điều kiện.",
+                            "Kiểm tra xem tất cả các phần tử trong Collection có đồng loạt thỏa mãn một điều kiện nào đó không.",
+                            "Kiểm tra xem phần tử đầu tiên có thỏa mãn điều kiện không.",
+                            "Lặp qua từng phần tử để gán giá trị mới."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `everyItem(Matcher<U> itemMatcher)` thực hiện kiểm tra xem toàn bộ các phần tử trong Collection có đồng loạt thỏa mãn một điều kiện (matcher) nào đó hay không."
+                    },
+                    {
+                        "q": "Câu 91: Sự khác biệt giữa `contains()` và `containsInAnyOrder()` khi kiểm tra Collection là gì?",
+                        "o": [
+                            "Không có sự khác biệt.",
+                            "`contains()` yêu cầu đúng thứ tự tuyệt đối, `containsInAnyOrder()` thì không quan tâm thứ tự.",
+                            "`contains()` không quan tâm thứ tự, `containsInAnyOrder()` yêu cầu đúng thứ tự.",
+                            "`contains()` chỉ kiểm tra phần tử đầu tiên."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `contains()` yêu cầu Collection phải chứa chính xác các phần tử và theo đúng thứ tự tuyệt đối, trong khi `containsInAnyOrder()` chứa chính xác các phần tử nhưng thứ tự xuất hiện thế nào cũng được."
+                    },
+                    {
+                        "q": "Câu 92: Nếu bạn muốn kiểm tra xem một giá trị thực tế có nằm trong một danh sách các giá trị cho trước hay không, bạn dùng hàm nào?",
+                        "o": [
+                            "hasItem()",
+                            "isIn() hoặc isOneOf()",
+                            "hasSize()",
+                            "everyItem()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `isIn(Collection<T> collection)` hoặc `isOneOf(T... elements)` kiểm tra xem giá trị thực tế có nằm trong (là một thành viên của) danh sách đã được chỉ định trước hay không."
+                    },
+                    {
+                        "q": "Câu 93: Hàm `arrayContaining(T... items)` trong Hamcrest có yêu cầu khắt khe như thế nào đối với mảng cần kiểm tra?",
+                        "o": [
+                            "Mảng phải chứa các phần tử này nhưng không quan tâm thứ tự.",
+                            "Mảng phải chứa đầy đủ các phần tử và theo ĐÚNG THỨ TỰ tuyệt đối.",
+                            "Mảng phải có độ dài lớn hơn số lượng phần tử truyền vào.",
+                            "Mảng chỉ được phép chứa duy nhất một phần tử."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `arrayContaining(T... items)` yêu cầu mảng phải chứa đầy đủ và chính xác các phần tử này, đồng thời phải tuân thủ đúng thứ tự như đã liệt kê."
+                    },
+                    {
+                        "q": "Câu 94: Để kiểm tra mảng chứa đầy đủ các phần tử nhưng KHÔNG QUAN TÂM đến thứ tự xuất hiện, bạn chọn hàm nào?",
+                        "o": [
+                            "arrayContaining()",
+                            "arrayContainingInAnyOrder()",
+                            "hasItemInArray()",
+                            "arrayWithSize()"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `arrayContainingInAnyOrder(T... items)` cho phép kiểm tra mảng chứa đầy đủ các phần tử, nhưng thứ tự của chúng trong mảng có thể tùy ý."
+                    },
+                    {
+                        "q": "Câu 95: Hàm `hasItemInArray(T element)` dùng để làm gì?",
+                        "o": [
+                            "Kiểm tra xem mảng có độ dài bằng bao nhiêu.",
+                            "Kiểm tra xem mảng có chứa một phần tử cụ thể nào đó hay không.",
+                            "Kiểm tra xem mảng có bị rỗng hay không.",
+                            "Kiểm tra thứ tự của phần tử trong mảng."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `hasItemInArray(T element)` được dùng để xác nhận mảng có chứa phần tử cụ thể được truyền vào hay không."
+                    },
+                    {
+                        "q": "Câu 96: Khi muốn kiểm tra độ dài (length) của mảng trong Hamcrest, bạn sử dụng hàm nào?",
+                        "o": [
+                            "hasSize()",
+                            "emptyArray()",
+                            "arrayWithSize(int size)",
+                            "arrayContaining()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `arrayWithSize(int size)` dùng để kiểm tra độ dài (length) của mảng có bằng chính xác giá trị `size` quy định hay không."
+                    },
+                    {
+                        "q": "Câu 97: Để khẳng định một mảng hoàn toàn không chứa phần tử nào (mảng rỗng), bạn chọn hàm nào?",
+                        "o": [
+                            "empty()",
+                            "emptyArray()",
+                            "arrayWithSize(0)",
+                            "hasItemInArray(null)"
+                        ],
+                        "a": 1,
+                        "e": "Hàm `emptyArray()` là hàm chuyên dụng dùng để khẳng định mảng không chứa bất kỳ phần tử nào (mảng rỗng)."
+                    },
+                    {
+                        "q": "Câu 98: Hàm `hasProperty(String propertyName)` trong Hamcrest dùng để kiểm tra điều gì trên một đối tượng Java Bean?",
+                        "o": [
+                            "Kiểm tra xem đối tượng có giá trị null hay không.",
+                            "Kiểm tra xem đối tượng có tồn tại thuộc tính (biến) mang tên `propertyName` hay không.",
+                            "Kiểm tra xem đối tượng có phải là một thể hiện của class hay không.",
+                            "So sánh giá trị của hai thuộc tính."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `hasProperty(String propertyName)` xác nhận rằng đối tượng Object (Java Bean) có tồn tại thuộc tính với tên gọi là `propertyName`."
+                    },
+                    {
+                        "q": "Câu 99: Hàm `hasProperty(String propertyName, Matcher<?> valueMatcher)` cung cấp khả năng kiểm tra nâng cao nào?",
+                        "o": [
+                            "Chỉ kiểm tra sự tồn tại của tên thuộc tính.",
+                            "Kiểm tra sự tồn tại của thuộc tính ĐỒNG THỜI đảm bảo giá trị của thuộc tính đó thỏa mãn điều kiện `valueMatcher`.",
+                            "So sánh toàn bộ các thuộc tính của hai đối tượng.",
+                            "Chỉ kiểm tra kiểu dữ liệu của thuộc tính."
+                        ],
+                        "a": 1,
+                        "e": "Đây là phiên bản nâng cao, giúp bạn không chỉ kiểm tra sự tồn tại của thuộc tính mà còn xác minh giá trị bên trong thuộc tính đó thông qua một matcher cụ thể."
+                    },
+                    {
+                        "q": "Câu 100: Để so sánh hai đối tượng Java Bean dựa trên giá trị của các thuộc tính thay vì so sánh ô nhớ, bạn nên sử dụng hàm nào?",
+                        "o": [
+                            "hasProperty()",
+                            "equalTo()",
+                            "samePropertyValuesAs(T expectedBean)",
+                            "is()"
+                        ],
+                        "a": 2,
+                        "e": "Hàm `samePropertyValuesAs(T expectedBean)` được thiết kế để so sánh cấu trúc dữ liệu bên trong (giá trị các thuộc tính) của hai Object, thay vì so sánh tham chiếu ô nhớ như toán tử `==`."
+                    },
+                    {
+                        "q": "Câu 101: Trong Hamcrest, hàm `allOf` được sử dụng để thể hiện phép toán logic nào?",
+                        "o": [
+                            "Phép toán OR (một trong các điều kiện đúng).",
+                            "Phép toán AND (tất cả các điều kiện con bắt buộc phải đúng).",
+                            "Phép toán phủ định NOT.",
+                            "Phép toán XOR (loại trừ)."
+                        ],
+                        "a": 1,
+                        "e": "Hàm `allOf` đại diện cho phép toán AND, yêu cầu tất cả các điều kiện con bên trong nó đều phải thỏa mãn thì bài test mới vượt qua."
+                    },
+                    {
+                        "q": "Câu 102: Để viết một test case sử dụng cú pháp kép cho phép toán AND (ví dụ: chuỗi phải chứa cả 'A' và 'B'), bạn nên dùng cấu trúc nào?",
+                        "o": [
+                            "either(containsString(\"A\")).or(containsString(\"B\"))",
+                            "both(containsString(\"A\")).and(containsString(\"B\"))",
+                            "anyOf(containsString(\"A\"), containsString(\"B\"))",
+                            "not(containsString(\"A\")).and(containsString(\"B\"))"
+                        ],
+                        "a": 1,
+                        "e": "Cú pháp kép `both(matcher).and(other)` được thiết kế để tạo ra các điều kiện kiểm tra kết hợp chặt chẽ theo logic AND, làm cho mã kiểm thử dễ đọc hơn."
+                    },
+                    {
+                        "q": "Câu 103: Sự khác biệt cơ bản giữa `anyOf` và `either().or()` khi thực hiện kiểm tra logic OR trong Hamcrest là gì?",
+                        "o": [
+                            "anyOf chỉ dùng được cho số, còn either dùng cho chuỗi.",
+                            "Cả hai đều thực hiện phép toán OR, nhưng either().or() cung cấp cú pháp kép giúp câu lệnh trở nên tường minh và giống ngôn ngữ tự nhiên hơn.",
+                            "anyOf yêu cầu tất cả điều kiện phải đúng, còn either().or() chỉ cần một.",
+                            "either().or() thực thi nhanh hơn anyOf."
+                        ],
+                        "a": 1,
+                        "e": "Mặc dù cả hai đều phục vụ mục đích thực hiện phép toán OR, nhưng `either().or()` là một cú pháp kép giúp câu lệnh test được trình bày theo cấu trúc thuận miệng, trực quan hơn cho người đọc."
                     }
                 ]
             }
